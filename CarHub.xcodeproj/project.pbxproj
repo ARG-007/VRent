@@ -17,6 +17,7 @@
 		F3368C362C50D3570023A1FD /* ExploreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C352C50D3570023A1FD /* ExploreTab.swift */; };
 		F3368C382C50D3660023A1FD /* BookingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C372C50D3660023A1FD /* BookingsTab.swift */; };
 		F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C392C50D3910023A1FD /* AccountTab.swift */; };
+		F3D3BD4F2C575FBC004DB3E1 /* RentSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		F3368C352C50D3570023A1FD /* ExploreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTab.swift; sourceTree = "<group>"; };
 		F3368C372C50D3660023A1FD /* BookingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsTab.swift; sourceTree = "<group>"; };
 		F3368C392C50D3910023A1FD /* AccountTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTab.swift; sourceTree = "<group>"; };
+		F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentSearchQuery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		F3368C1C2C4FBE050023A1FD /* CarHub */ = {
 			isa = PBXGroup;
 			children = (
+				F3D3BD4D2C575F8E004DB3E1 /* models */,
 				F3368C302C50D2FA0023A1FD /* UserTabs */,
 				F3368C1D2C4FBE050023A1FD /* CarHubApp.swift */,
 				F3368C1F2C4FBE050023A1FD /* ContentView.swift */,
@@ -91,6 +94,14 @@
 				F3368C392C50D3910023A1FD /* AccountTab.swift */,
 			);
 			path = UserTabs;
+			sourceTree = "<group>";
+		};
+		F3D3BD4D2C575F8E004DB3E1 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +177,7 @@
 				F3368C2A2C4FBE060023A1FD /* CarHub.xcdatamodeld in Sources */,
 				F3368C342C50D34C0023A1FD /* TaxiTab.swift in Sources */,
 				F3368C322C50D33D0023A1FD /* RentingTab.swift in Sources */,
+				F3D3BD4F2C575FBC004DB3E1 /* RentSearchQuery.swift in Sources */,
 				F3368C202C4FBE050023A1FD /* ContentView.swift in Sources */,
 				F3368C1E2C4FBE050023A1FD /* CarHubApp.swift in Sources */,
 				F3368C382C50D3660023A1FD /* BookingsTab.swift in Sources */,

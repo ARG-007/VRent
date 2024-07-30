@@ -53,8 +53,20 @@ enum Tab: String {
     
 }
 
+extension View {
+    func tabBarBackground(_ visibility: Visibility) -> some View {
+        if #available(iOS 16.0, *) {
+            return self.toolbarBackground(visibility, for: .tabBar)
+        } else {
+            return self
+        }
+    }
+}
+
 struct ContentView: View {
     @State var currentTab: Tab = .renting
+    
+    
     
     var body: some View {
         TabView(selection: $currentTab) {
@@ -62,7 +74,6 @@ struct ContentView: View {
                 .tabItem { Tab.renting.label }
                 .tag(Tab.renting)
                 
-
             TaxiTab()
                 .tabItem { Tab.taxi.label }
                 .tag(Tab.taxi)
@@ -79,9 +90,9 @@ struct ContentView: View {
                 .tabItem { Tab.account.label }
                 .tag(Tab.account)
         }
-        
         .transition(.slide)
         .animation(.easeIn, value: currentTab)
+        .background(.orange)
     }
 
     

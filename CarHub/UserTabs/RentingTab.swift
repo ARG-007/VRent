@@ -8,92 +8,211 @@
 import SwiftUI
 
 
-extension TimeInterval {
-    var min: TimeInterval { self * 60 }
-    var hr: TimeInterval { self * 3600}
-    var day: TimeInterval { self * 3600 * 24 }
+extension View {
+    func setDatePickerInterval(_ interval: Int) -> some View {
+        self
+            .onAppear() { UIDatePicker.appearance().minuteInterval = 30 }
+            .onDisappear() { UIDatePicker.appearance().minuteInterval = 1 }
+    }
 }
 
-struct RentSearchQuery {
-    var pickupLocation: String
-    var pickupDate: Date
-    private var dropDate: Date
-    var dropoffDate: Date {
-        get {
-            dropDate
-        }
-        set {
-            guard self.pickupDate < newValue else {
-                return
-            }
-            self.dropDate = newValue
-        }
-    }
+
+struct RentSearchState {
+    private var search: RentSearchQuery
     
-    var isSelfDrive: Bool
-    var isRequiredDeliver: Bool
+    private let calendar = Calendar.current
+    private let postponeRentStartBy = DateComponents(hour: 1)
+    private let maximumRentDuration = DateComponents(month: 3)
     
-    var duration: TimeInterval{
-//        Measurement(value: pickupDate.distance(to: dropDate), unit: .seconds)
-        pickupDate.distance(to: dropDate)
-    }
+    let minimumRentingHours = DateComponents(hour: 4, minute: 0, second: 0)
     
-    var durationFormatted: String {
-        let dateFormatter = DateComponentsFormatter()
-        dateFormatter.unitsStyle = .full
-        dateFormatter.allowedUnits = [.day, .hour, .minute]
+    var earliestRentDate: Date {
+        let earlyValidDate = calendar.date(byAdding: postponeRentStartBy, to: .now)!
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: earlyValidDate)
         
-        return dateFormatter.string(from: duration)!
+        components.minute = 0
+        components.second = 0
+        
+        return calendar.date(from: components)!
     }
     
-    init() {
-        self.pickupLocation = ""
-        self.pickupDate = Date()
-        self.dropDate = self.pickupDate.advanced(by: 1.day)
-        self.isSelfDrive = false
-        self.isRequiredDeliver = false
+    var lastRentDate: Date {
+        let lastValidDate = calendar.date(byAdding: maximumRentDuration, to: earliestRentDate)!
+        return calendar.date(bySetting: .hour, value: 23, of: lastValidDate)!
     }
     
+    var earliestDropDate: Date { calendar.date(byAdding: minimumRentingHours, to: search.pickupDate)! }
+    var lastPickupDate: Date { calendar.date(byAdding: .hour, value: -minimumRentingHours.hour!,to: lastRentDate)! }
     
-}
+    var pickupDateValidRange: ClosedRange<Date> { earliestRentDate...lastPickupDate }
+    var dropDateValidRange: ClosedRange<Date> { earliestDropDate...lastRentDate }
+    
+    var pickupDate: Date {
+        get { search.pickupDate }
+        set {
+            search.pickupDate = newValue
+            if(dropDate<earliestDropDate) {
+                dropDate = earliestDropDate
+            }
+        }
+    }
+    
+    var dropDate: Date {
+        get { search.dropDate }
+        set { search.dropDate = newValue }
+    }
+    
+    var pickupLocation: String {
+        get {search.pickupLocation}
+        set {search.pickupLocation = newValue}
+    }
+    
+    var isSelfDrive: Bool {
+        get {search.isSelfDrive}
+        set {search.isSelfDrive = newValue}
+    }
+    
+    var isRequiredDelivery: Bool {
+        get {search.isRequiredDeliver}
+        set {search.isRequiredDeliver = newValue}
+    }
 
-struct RentingTab: View {
-    @State var searchQuery = RentSearchQuery()
+    init() {
+        let tempRentStartDate = calendar.date(byAdding: postponeRentStartBy, to: .now)!
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: tempRentStartDate)
+        components.minute = 0
+        components.second = 0
+        
+        let earliestPickupDate = calendar.date(from: components)!
+        let earliestDropDate = calendar.date(byAdding: minimumRentingHours, to: earliestPickupDate)!
+        
+        search = RentSearchQuery( pickupDate: earliestPickupDate, dropDate: earliestDropDate )
+    }
+    
+    init(forSearch: RentSearchQuery) {
+        search = forSearch
+    }
+    
+    
+    func getRentSearchQuery() -> RentSearchQuery {
+        search
+    }
+    
+    var duration: Measurement<UnitDuration> {
+        Measurement(value: pickupDate.distance(to: dropDate), unit: .seconds)
+    }
     
     var durationFormatted: String {
-        let duration = searchQuery.pickupDate.distance(to: searchQuery.dropoffDate)
         if #available(iOS 16.0, *) {
             return Duration
-                .seconds(duration)
-                .formatted(
-                    .units(
-                        allowed: [.days, .hours, .minutes]
-                    )
-                )
+                .seconds(duration.value)
+                .formatted(.units(allowed: [.days, .hours, .minutes]))
+                .capitalized
         } else {
             let dateFormatter = DateComponentsFormatter()
             dateFormatter.unitsStyle = .full
             dateFormatter.allowedUnits = [.day, .hour, .minute]
             
-            return dateFormatter.string(from: duration)!
+            return dateFormatter.string(from: duration.value)!.capitalized
+        }
+    }
+    
+}
+
+
+struct RentingTab: View {
+    @State var searchState = RentSearchState()
+    
+    var pickupTimePicker: some View {
+        VStack(spacing: 10){
+            Text("Pickup Time")
+                .font(.title3)
+                .fontWeight(.semibold)
+            Text(searchState.pickupDate, format: .dateTime.day().month().year())
+            DatePicker(
+                "Pickup Time",
+                selection: $searchState.pickupDate,
+                in: searchState.pickupDateValidRange,
+                displayedComponents: .hourAndMinute
+            )
+            .setDatePickerInterval(30)
+        }
+    }
+    
+    var dropTimePicker: some View {
+        VStack(spacing: 10){
+            Text("Drop Time")
+                .font(.title3)
+                .fontWeight(.semibold)
+            Text(searchState.dropDate, format: .dateTime.day().month().year())
+            DatePicker(
+                "Drop Time",
+                selection: $searchState.dropDate,
+                in: searchState.dropDateValidRange,
+                displayedComponents: .hourAndMinute
+            )
+            .setDatePickerInterval(30)
+        }
+    }
+    
+    var duration: some View {
+        HStack( spacing: 10) {
+            Image(systemName: "hourglass")
+                .imageScale(.large)
+            Text(searchState.durationFormatted)
         }
     }
     
     var body: some View {
         Form {
-            TextField("Pickup Location", text: $searchQuery.pickupLocation)
-            DatePicker("Pickup Date",
-                       selection: $searchQuery.pickupDate,
-                       in: Date()...Date().advanced(by: 90.day),
-                       displayedComponents: .date
+            TextField("Pickup Location", text: $searchState.pickupLocation)
+            
+            DatePicker(
+                "Pickup Date",
+                selection: $searchState.pickupDate,
+                in: searchState.pickupDateValidRange,
+                displayedComponents: .date
             )
-            DatePicker("Drop Date",
-                       selection: $searchQuery.dropoffDate,
-                       in: max(searchQuery.pickupDate,Date())...Date().advanced(by: 90.day),
-                       displayedComponents: .date
+            
+            DatePicker(
+                "Drop Date",
+                selection: $searchState.dropDate,
+                in: searchState.dropDateValidRange,
+                displayedComponents: .date
             )
-            Text("Duration: \(searchQuery.durationFormatted)")
+            
+            
+            Section {
+                VStack {
+                    HStack(spacing: 20) {
+                        pickupTimePicker
+                            .frame(maxWidth: .infinity)
+                        
+                        dropTimePicker
+                            .frame(maxWidth: .infinity)
+                        
+                    }
+                    .labelsHidden()
+                    
+                    Divider()
+                    
+                    duration
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            
+            Section {
+                HStack(spacing: 20) {
+                    Toggle("Self Driving", isOn: $searchState.isSelfDrive)
+                    Toggle("Delivery", isOn: $searchState.isRequiredDelivery)
+                }
+                
+            }
+            
+            Button("Search", action: {print(searchState)})
+                .frame(maxWidth: .infinity)
         }
+        .tint(.orange)
     }
 }
 
