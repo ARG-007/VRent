@@ -18,6 +18,11 @@
 		F3368C382C50D3660023A1FD /* BookingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C372C50D3660023A1FD /* BookingsTab.swift */; };
 		F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C392C50D3910023A1FD /* AccountTab.swift */; };
 		F3D3BD4F2C575FBC004DB3E1 /* RentSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */; };
+		F3D3BD552C5A062C004DB3E1 /* RentTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */; };
+		F3D3BD572C5A07A7004DB3E1 /* RentDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */; };
+		F3D3BD592C5A0860004DB3E1 /* RentSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD582C5A0860004DB3E1 /* RentSearchState.swift */; };
+		F3D3BD5B2C5A0D71004DB3E1 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD5A2C5A0D71004DB3E1 /* View+Extensions.swift */; };
+		F3D3BD5E2C5A0DAA004DB3E1 /* RentingSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD5D2C5A0DAA004DB3E1 /* RentingSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,11 @@
 		F3368C372C50D3660023A1FD /* BookingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsTab.swift; sourceTree = "<group>"; };
 		F3368C392C50D3910023A1FD /* AccountTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTab.swift; sourceTree = "<group>"; };
 		F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentSearchQuery.swift; sourceTree = "<group>"; };
+		F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTimePicker.swift; sourceTree = "<group>"; };
+		F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentDatePicker.swift; sourceTree = "<group>"; };
+		F3D3BD582C5A0860004DB3E1 /* RentSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentSearchState.swift; sourceTree = "<group>"; };
+		F3D3BD5A2C5A0D71004DB3E1 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		F3D3BD5D2C5A0DAA004DB3E1 /* RentingSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentingSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +75,7 @@
 		F3368C1C2C4FBE050023A1FD /* CarHub */ = {
 			isa = PBXGroup;
 			children = (
+				F3D3BD522C5A0611004DB3E1 /* components */,
 				F3D3BD4D2C575F8E004DB3E1 /* models */,
 				F3368C302C50D2FA0023A1FD /* UserTabs */,
 				F3368C1D2C4FBE050023A1FD /* CarHubApp.swift */,
@@ -102,6 +113,26 @@
 				F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		F3D3BD522C5A0611004DB3E1 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3BD532C5A0617004DB3E1 /* Renting */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		F3D3BD532C5A0617004DB3E1 /* Renting */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3BD5A2C5A0D71004DB3E1 /* View+Extensions.swift */,
+				F3D3BD582C5A0860004DB3E1 /* RentSearchState.swift */,
+				F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */,
+				F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */,
+				F3D3BD5D2C5A0DAA004DB3E1 /* RentingSearchView.swift */,
+			);
+			path = Renting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,11 +206,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3368C2A2C4FBE060023A1FD /* CarHub.xcdatamodeld in Sources */,
+				F3D3BD552C5A062C004DB3E1 /* RentTimePicker.swift in Sources */,
 				F3368C342C50D34C0023A1FD /* TaxiTab.swift in Sources */,
 				F3368C322C50D33D0023A1FD /* RentingTab.swift in Sources */,
+				F3D3BD592C5A0860004DB3E1 /* RentSearchState.swift in Sources */,
 				F3D3BD4F2C575FBC004DB3E1 /* RentSearchQuery.swift in Sources */,
+				F3D3BD572C5A07A7004DB3E1 /* RentDatePicker.swift in Sources */,
+				F3D3BD5E2C5A0DAA004DB3E1 /* RentingSearchView.swift in Sources */,
 				F3368C202C4FBE050023A1FD /* ContentView.swift in Sources */,
 				F3368C1E2C4FBE050023A1FD /* CarHubApp.swift in Sources */,
+				F3D3BD5B2C5A0D71004DB3E1 /* View+Extensions.swift in Sources */,
 				F3368C382C50D3660023A1FD /* BookingsTab.swift in Sources */,
 				F3368C362C50D3570023A1FD /* ExploreTab.swift in Sources */,
 				F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */,
@@ -326,7 +362,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,7 +398,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

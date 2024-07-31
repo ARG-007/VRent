@@ -66,8 +66,6 @@ extension View {
 struct ContentView: View {
     @State var currentTab: Tab = .renting
     
-    
-    
     var body: some View {
         TabView(selection: $currentTab) {
             RentingTab()
@@ -92,7 +90,7 @@ struct ContentView: View {
         }
         .transition(.slide)
         .animation(.easeIn, value: currentTab)
-        .background(.orange)
+        .tint(.orange)
     }
 
     
