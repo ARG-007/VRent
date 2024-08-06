@@ -28,7 +28,7 @@ struct RentSearchState {
     
     var lastRentDate: Date {
         let lastValidDate = calendar.date(byAdding: maximumRentDuration, to: earliestRentDate)!
-        return calendar.date(bySetting: .hour, value: 23, of: lastValidDate)!
+        return calendar.date(bySetting: .hour, value: 0, of: lastValidDate)!
     }
     
     var earliestDropDate: Date { calendar.date(byAdding: minimumRentingHours, to: search.pickupDate)! }
@@ -52,7 +52,7 @@ struct RentSearchState {
         set { search.dropDate = newValue }
     }
     
-    var pickupLocation: String {
+    var pickupLocation: SearchLocation? {
         get {search.pickupLocation}
         set {search.pickupLocation = newValue}
     }

@@ -16,7 +16,19 @@
 		F3368C362C50D3570023A1FD /* ExploreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C352C50D3570023A1FD /* ExploreTab.swift */; };
 		F3368C382C50D3660023A1FD /* BookingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C372C50D3660023A1FD /* BookingsTab.swift */; };
 		F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C392C50D3910023A1FD /* AccountTab.swift */; };
+		F3627E7E2C60ADA60047198B /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E7D2C60ADA60047198B /* Vehicle.swift */; };
+		F3627E802C60AF3D0047198B /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E7F2C60AF3D0047198B /* Owner.swift */; };
+		F3627E822C60AF7D0047198B /* VehicleSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E812C60AF7D0047198B /* VehicleSpecs.swift */; };
+		F3627E842C60D4730047198B /* vehicles.json in Resources */ = {isa = PBXBuildFile; fileRef = F3627E832C60D4730047198B /* vehicles.json */; };
+		F3627E862C60D9140047198B /* VehicleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E852C60D9140047198B /* VehicleBackground.swift */; };
+		F3627E882C60E20C0047198B /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E872C60E20C0047198B /* ImageCarousel.swift */; };
+		F3627E8B2C61FC000047198B /* VehicleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8A2C61FC000047198B /* VehicleCard.swift */; };
+		F3627E8E2C624ECB0047198B /* VehicleSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8D2C624ECB0047198B /* VehicleSearchView.swift */; };
 		F38C43202C5A5F5C003D84B2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F38C431E2C5A5F5C003D84B2 /* Model.xcdatamodeld */; };
+		F38C43242C5A683E003D84B2 /* LocationSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38C43232C5A683E003D84B2 /* LocationSelector.swift */; };
+		F3D2BADC2C5B9A6C000BBE6E /* SearchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2BADB2C5B9A6C000BBE6E /* SearchLocation.swift */; };
+		F3D2BADE2C5B9F2A000BBE6E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2BADD2C5B9F2A000BBE6E /* Model.swift */; };
+		F3D2BAE02C5BB941000BBE6E /* places.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D2BADF2C5BB941000BBE6E /* places.json */; };
 		F3D3BD4F2C575FBC004DB3E1 /* RentSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */; };
 		F3D3BD552C5A062C004DB3E1 /* RentTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */; };
 		F3D3BD572C5A07A7004DB3E1 /* RentDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */; };
@@ -36,7 +48,19 @@
 		F3368C352C50D3570023A1FD /* ExploreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTab.swift; sourceTree = "<group>"; };
 		F3368C372C50D3660023A1FD /* BookingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsTab.swift; sourceTree = "<group>"; };
 		F3368C392C50D3910023A1FD /* AccountTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTab.swift; sourceTree = "<group>"; };
+		F3627E7D2C60ADA60047198B /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		F3627E7F2C60AF3D0047198B /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		F3627E812C60AF7D0047198B /* VehicleSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleSpecs.swift; sourceTree = "<group>"; };
+		F3627E832C60D4730047198B /* vehicles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vehicles.json; sourceTree = "<group>"; };
+		F3627E852C60D9140047198B /* VehicleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleBackground.swift; sourceTree = "<group>"; };
+		F3627E872C60E20C0047198B /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
+		F3627E8A2C61FC000047198B /* VehicleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCard.swift; sourceTree = "<group>"; };
+		F3627E8D2C624ECB0047198B /* VehicleSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleSearchView.swift; sourceTree = "<group>"; };
 		F38C431F2C5A5F5C003D84B2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F38C43232C5A683E003D84B2 /* LocationSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelector.swift; sourceTree = "<group>"; };
+		F3D2BADB2C5B9A6C000BBE6E /* SearchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocation.swift; sourceTree = "<group>"; };
+		F3D2BADD2C5B9F2A000BBE6E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F3D2BADF2C5BB941000BBE6E /* places.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = places.json; path = VRent/resources/places.json; sourceTree = SOURCE_ROOT; };
 		F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentSearchQuery.swift; sourceTree = "<group>"; };
 		F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTimePicker.swift; sourceTree = "<group>"; };
 		F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentDatePicker.swift; sourceTree = "<group>"; };
@@ -75,7 +99,8 @@
 		F3368C1C2C4FBE050023A1FD /* VRent */ = {
 			isa = PBXGroup;
 			children = (
-				F3D3BD522C5A0611004DB3E1 /* components */,
+				F3627E722C6099F60047198B /* resources */,
+				F3D3BD522C5A0611004DB3E1 /* views */,
 				F3D3BD4D2C575F8E004DB3E1 /* models */,
 				F3368C302C50D2FA0023A1FD /* UserTabs */,
 				F3368C1D2C4FBE050023A1FD /* VRentApp.swift */,
@@ -107,32 +132,67 @@
 			path = UserTabs;
 			sourceTree = "<group>";
 		};
+		F3627E722C6099F60047198B /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				F3627E832C60D4730047198B /* vehicles.json */,
+				F3D2BADF2C5BB941000BBE6E /* places.json */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		F3627E892C61FBF40047198B /* Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				F3627E8A2C61FC000047198B /* VehicleCard.swift */,
+				F3627E8D2C624ECB0047198B /* VehicleSearchView.swift */,
+			);
+			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		F3627E8C2C61FC4B0047198B /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				F3627E852C60D9140047198B /* VehicleBackground.swift */,
+				F3627E872C60E20C0047198B /* ImageCarousel.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		F3D3BD4D2C575F8E004DB3E1 /* models */ = {
 			isa = PBXGroup;
 			children = (
 				F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */,
+				F3D2BADB2C5B9A6C000BBE6E /* SearchLocation.swift */,
+				F3D2BADD2C5B9F2A000BBE6E /* Model.swift */,
+				F3627E7D2C60ADA60047198B /* Vehicle.swift */,
+				F3627E7F2C60AF3D0047198B /* Owner.swift */,
+				F3627E812C60AF7D0047198B /* VehicleSpecs.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
 		};
-		F3D3BD522C5A0611004DB3E1 /* components */ = {
+		F3D3BD522C5A0611004DB3E1 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				F3D3BD532C5A0617004DB3E1 /* Renting */,
+				F3627E8C2C61FC4B0047198B /* Misc */,
+				F3627E892C61FBF40047198B /* Vehicle */,
+				F3D3BD532C5A0617004DB3E1 /* RentSearch */,
 			);
-			path = components;
+			path = views;
 			sourceTree = "<group>";
 		};
-		F3D3BD532C5A0617004DB3E1 /* Renting */ = {
+		F3D3BD532C5A0617004DB3E1 /* RentSearch */ = {
 			isa = PBXGroup;
 			children = (
 				F3D3BD5A2C5A0D71004DB3E1 /* View+Extensions.swift */,
 				F3D3BD582C5A0860004DB3E1 /* RentSearchState.swift */,
 				F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */,
 				F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */,
+				F38C43232C5A683E003D84B2 /* LocationSelector.swift */,
 				F3D3BD5D2C5A0DAA004DB3E1 /* RentingSearchView.swift */,
 			);
-			path = Renting;
+			path = RentSearch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +253,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3627E842C60D4730047198B /* vehicles.json in Resources */,
+				F3D2BAE02C5BB941000BBE6E /* places.json in Resources */,
 				F3368C252C4FBE060023A1FD /* Preview Assets.xcassets in Resources */,
 				F3368C222C4FBE060023A1FD /* Assets.xcassets in Resources */,
 			);
@@ -205,19 +267,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3627E802C60AF3D0047198B /* Owner.swift in Sources */,
+				F3627E862C60D9140047198B /* VehicleBackground.swift in Sources */,
+				F3627E7E2C60ADA60047198B /* Vehicle.swift in Sources */,
+				F3627E8E2C624ECB0047198B /* VehicleSearchView.swift in Sources */,
+				F38C43242C5A683E003D84B2 /* LocationSelector.swift in Sources */,
 				F3D3BD552C5A062C004DB3E1 /* RentTimePicker.swift in Sources */,
 				F38C43202C5A5F5C003D84B2 /* Model.xcdatamodeld in Sources */,
 				F3368C342C50D34C0023A1FD /* TaxiTab.swift in Sources */,
 				F3368C322C50D33D0023A1FD /* RentingTab.swift in Sources */,
+				F3627E822C60AF7D0047198B /* VehicleSpecs.swift in Sources */,
 				F3D3BD592C5A0860004DB3E1 /* RentSearchState.swift in Sources */,
 				F3D3BD4F2C575FBC004DB3E1 /* RentSearchQuery.swift in Sources */,
 				F3D3BD572C5A07A7004DB3E1 /* RentDatePicker.swift in Sources */,
+				F3D2BADE2C5B9F2A000BBE6E /* Model.swift in Sources */,
 				F3D3BD5E2C5A0DAA004DB3E1 /* RentingSearchView.swift in Sources */,
 				F3368C202C4FBE050023A1FD /* ContentView.swift in Sources */,
+				F3627E882C60E20C0047198B /* ImageCarousel.swift in Sources */,
 				F3368C1E2C4FBE050023A1FD /* VRentApp.swift in Sources */,
 				F3D3BD5B2C5A0D71004DB3E1 /* View+Extensions.swift in Sources */,
 				F3368C382C50D3660023A1FD /* BookingsTab.swift in Sources */,
+				F3627E8B2C61FC000047198B /* VehicleCard.swift in Sources */,
 				F3368C362C50D3570023A1FD /* ExploreTab.swift in Sources */,
+				F3D2BADC2C5B9A6C000BBE6E /* SearchLocation.swift in Sources */,
 				F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

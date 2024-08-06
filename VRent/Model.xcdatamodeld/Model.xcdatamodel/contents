@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Owner" representedClassName="Owner" syncable="YES" codeGenerationType="class">
+    <entity name="Owner_temp" representedClassName="Owner_temp" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="joinedOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="fleet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle"/>
+        <relationship name="fleet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle_temp"/>
     </entity>
-    <entity name="Vehicle" representedClassName="Vehicle" syncable="YES" codeGenerationType="class">
+    <entity name="Vehicle_temp" representedClassName="Vehicle_temp" syncable="YES" codeGenerationType="class">
         <attribute name="addedOn" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="boughtOnYear" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="images" attributeType="Transformable" customClassName="[URL]"/>
         <attribute name="location" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="pricePerHR" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="Owner"/>
-        <relationship name="spec" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleSpecs"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="Owner_temp"/>
+        <relationship name="spec" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleSpecs_temp"/>
     </entity>
-    <entity name="VehicleSpecs" representedClassName="VehicleSpecs" syncable="YES" codeGenerationType="class">
+    <entity name="VehicleSpecs_temp" representedClassName="VehicleSpecs_temp" syncable="YES" codeGenerationType="class">
         <attribute name="capacity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="driveTrain" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="fuelCapacity" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -29,6 +29,6 @@
         <attribute name="transmission" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="year" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="vehiclesOfSpec" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle"/>
+        <relationship name="vehiclesOfSpec" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle_temp"/>
     </entity>
 </model>

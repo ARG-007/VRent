@@ -9,7 +9,7 @@ import Foundation
 
 
 struct RentSearchQuery: Codable {
-    var pickupLocation: String = ""
+    var pickupLocation: SearchLocation?
     var pickupDate: Date
     var dropDate: Date
     var isSelfDrive: Bool = false

@@ -10,17 +10,22 @@ import SwiftUI
 
 struct RentingTab: View {
     @State var searchState = RentSearchState()
+    @State private var path = NavigationPath()
     
     var body: some View {
-        RentingSearchView(searchState: $searchState)
-            
+        NavigationStack(path: $path){
+            RentingSearchView(searchState: $searchState) {
+                path.append(1)
+            }
+            .frame(maxHeight: .infinity)
+            .navigationDestination(for: Int.self) { _ in
+                VehicleSearchView(search: $searchState)
+            }
+        }
     }
-}
-
-struct VehicleSearchView {
-    
 }
 
 #Preview {
     RentingTab()
+        .environmentObject(Model())
 }

@@ -47,20 +47,6 @@ enum Tab: String {
             self.tabIcon
         }
     }
-    
-    
-    
-    
-}
-
-extension View {
-    func tabBarBackground(_ visibility: Visibility) -> some View {
-        if #available(iOS 16.0, *) {
-            return self.toolbarBackground(visibility, for: .tabBar)
-        } else {
-            return self
-        }
-    }
 }
 
 struct ContentView: View {
@@ -88,8 +74,6 @@ struct ContentView: View {
                 .tabItem { Tab.account.label }
                 .tag(Tab.account)
         }
-        .transition(.slide)
-        .animation(.easeIn, value: currentTab)
         .tint(.orange)
     }
 
@@ -98,4 +82,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(Model())
 }

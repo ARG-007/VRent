@@ -24,6 +24,7 @@ struct RentDatePicker: View {
             selection: $selection,
             in: range,
             displayedComponents: .date
+            
         )
     }
 }
