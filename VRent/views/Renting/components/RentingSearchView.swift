@@ -21,75 +21,13 @@ struct RentingSearchView: View {
         self.onSubmit = onSubmit
     }
     
-    
-    var duration: some View {
-        HStack( spacing: 10) {
-            Image(systemName: "hourglass")
-                .imageScale(.large)
-                
-            Text(searchState.durationFormatted)
-        }
-    }
-    
-    
-    var TimePickers: some View {
-        VStack {
-            HStack(spacing: 20) {
-                
-                RentTimePicker(
-                    "Pickup Time",
-                    selection: $searchState.pickupDate,
-                    range: searchState.pickupDateValidRange
-                )
-                .frame(maxWidth: .infinity)
-                
-                RentTimePicker(
-                    "Drop Time",
-                    selection: $searchState.dropDate,
-                    range: searchState.dropDateValidRange
-                )
-                .frame(maxWidth: .infinity)
-            }
-            .labelsHidden()
-            .padding()
-            
-            duration
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background() {
-                    RoundedRectangle(cornerRadius: 25.0)
-                        .fill(.tint.opacity(0.1))
-                    
-                }
-                .padding(.top, 5)
-        }
-    }
-    
-    var locationSelector: some View {
-        Button {
-            showLocationSelectionSheet = true
-        } label: {
-            HStack {
-                Image(systemName: "location.magnifyingglass")
-                    .imageScale(.medium)
-                Text(searchState.pickupLocation?.name ?? "Pickup Location")
-                    .font(.callout)
-                Spacer()
-            }
-            .foregroundStyle(.foreground.opacity(0.7))
-            .padding()
-        }
-        .border(RoundedRectangle(cornerRadius: 15.0), style: .tint, lineWidth: 1.5)
-        
-        
-    }
-    
-    
     var body: some View {
             VStack(spacing: 20) {
                 VStack {
                     
-                    locationSelector
+                    LocationField(prompt: searchState.pickupLocation?.name ?? "Pickup Location") {
+                        showLocationSelectionSheet = true
+                    }
                         .padding(.bottom)
                         .sheet(isPresented: $showLocationSelectionSheet) {
                             LocationFinder(selection: $searchState.pickupLocation) {
@@ -152,6 +90,53 @@ struct RentingSearchView: View {
             }
             .padding(.horizontal)
     }
+    
+    var duration: some View {
+        HStack( spacing: 10) {
+            Image(systemName: "hourglass")
+                .imageScale(.large)
+                
+            Text(searchState.durationFormatted)
+        }
+    }
+    
+    
+    var TimePickers: some View {
+        VStack {
+            HStack(spacing: 20) {
+                
+                RentTimePicker(
+                    "Pickup Time",
+                    selection: $searchState.pickupDate,
+                    range: searchState.pickupDateValidRange
+                )
+                .frame(maxWidth: .infinity)
+                
+                RentTimePicker(
+                    "Drop Time",
+                    selection: $searchState.dropDate,
+                    range: searchState.dropDateValidRange
+                )
+                .frame(maxWidth: .infinity)
+            }
+            .labelsHidden()
+            .padding()
+            
+            duration
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background() {
+                    RoundedRectangle(cornerRadius: 25.0)
+                        .fill(.tint.opacity(0.1))
+                    
+                }
+                .padding(.top, 5)
+        }
+    }
+
+    
+    
+    
 }
 
 #Preview {

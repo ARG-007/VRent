@@ -15,7 +15,7 @@ enum Tab: String {
     case bookings = "Bookings"
     case account = "Account"
     
-    var tabIcon: Image {
+    var tabIcon: some View {
         switch(self) {
             case .renting:
                 Image(systemName: "key")

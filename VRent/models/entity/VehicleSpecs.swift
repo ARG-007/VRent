@@ -25,12 +25,36 @@ enum Fuel: String, Codable {
 }
 
 enum VehicleType: String, Codable {
+    
+    
     case HatchBack
-    case SUV
     case Sedan
-    case Maxicab
+    case SUV
     case MUV
+    case Maxicab
+    
+    var capacity: Int {
+        switch(self) {
+            case .HatchBack: 4
+            case .Sedan: 5
+            case .SUV: 6
+            case .MUV: 7
+            case .Maxicab : 13
+        }
+    }
+    
+    static func typeWithCapacity(_ capacity: Int) -> VehicleType {
+        switch(capacity) {
+            case 0...4 : .HatchBack
+            case 5: .Sedan
+            case 6: .SUV
+            case 7: .MUV
+            default: .Maxicab
+        }
+    }
+
 }
+
 
 enum Transmission: String, Codable {
     case Manual

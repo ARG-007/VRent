@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftUI
 
 class Vehicle: Codable, Identifiable {
     let id: Int
@@ -15,17 +16,23 @@ class Vehicle: Codable, Identifiable {
     
     let addedOn: Date
     let broughtOnYear: Int16
-    let pricePerHR: Double
+    let pricePerHR: Decimal
     let images: [URL]
     
     let latitude: Double
     let longitude: Double
     
-    let ratings: Double
-    let tripsCompleted: Int
+    let ratings: Rating
     
     
     var location: CLLocation {
         CLLocation(latitude: latitude, longitude: longitude)
+    }
+
+}
+
+extension Vehicle {
+    var yearFormatted: String { 
+        spec.year.formatted(.number.grouping(.never))
     }
 }

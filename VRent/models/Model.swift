@@ -15,6 +15,8 @@ fileprivate extension Collection {
 class Model: ObservableObject {
     private let places: [SearchLocation]
     private let vehicles: [Vehicle]
+    private var rentalBookings =  [RentalBooking]()
+    private var favorites = [Vehicle]()
     
     var popularPlaces: [SearchLocation] {
         Array(places.randomPick(7))
@@ -31,6 +33,34 @@ class Model: ObservableObject {
     
     func getVehicles()->[Vehicle] {
         vehicles
+    }
+    
+    func bookRental(context: Rentable) {
+        rentalBookings.append(RentalBooking(for: context))
+    }
+    
+    func hadFavorited(vehicle: Vehicle) -> Bool {
+        favorites.contains { $0 === vehicle }
+    }
+    
+    func favorite(vehicle: Vehicle) {
+        guard !hadFavorited(vehicle: vehicle) else {
+            return
+        }
+        
+        print("Favn: ")
+        print(favorites.debugDescription)
+        
+        favorites.append(vehicle)
+    }
+    
+    func unFavorite(vehicle: Vehicle) {
+        guard hadFavorited(vehicle: vehicle) else {
+            return
+        }
+        print("UnFav")
+        print(favorites.debugDescription)
+        favorites.removeAll { $0 === vehicle}
     }
 }
 

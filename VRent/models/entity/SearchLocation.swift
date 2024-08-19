@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-struct SearchLocation: Codable, Identifiable {
+struct SearchLocation: Codable, Identifiable{
     let id = UUID()
     let name: String
     let latitude: Double
@@ -34,9 +34,11 @@ struct SearchLocation: Codable, Identifiable {
     }
 }
 
+extension SearchLocation: Equatable {
+    static func == (lhs: SearchLocation, rhs: SearchLocation) -> Bool {
+        return (lhs.latitude == rhs.latitude) && (lhs.longitude == rhs.longitude)
+    }
+}
 
-var locations: [SearchLocation] = [
-    SearchLocation(name: "Salem", latitude: 120, longitude: 130)
-]
 
 

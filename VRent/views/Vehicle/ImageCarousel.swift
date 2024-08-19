@@ -28,7 +28,7 @@ struct ImageCarousel: View {
                 }
             }
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
+        .tabViewStyle(.page/*(indexDisplayMode: .never)*/)
         .transition(.slide)
     }
 }

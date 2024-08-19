@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+extension ShapeStyle where Self==Color{
+    static var OffWhite: Color { Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255) }
+    static var offBlack: Color { Color(red: 0.1, green: 0.1, blue: 0.2) }
+}
+
 extension View {
     func setDatePickerInterval(_ interval: Int) -> some View {
         self
@@ -17,33 +22,57 @@ extension View {
     
     func applyBoxShadowEffect(
         shape: some Shape = RoundedRectangle(cornerRadius: 15.0),
+        background: some ShapeStyle = .background,
         color: Color = .black,
         intensity: CGFloat = 0.5,
         blurRadius: CGFloat = 3,
-        xOffset: CGFloat = 0,
-        yOffset: CGFloat = 2
+        x: CGFloat = 0,
+        y: CGFloat = 2
     ) -> some View {
         self
             .background() {
                 if #available(iOS 16.0, *) {
                     shape
-                        .fill(
-                            .background
-                                .shadow(.drop(
-                                    color: color.opacity(intensity),
-                                    radius: blurRadius,
-                                    x: xOffset,
-                                    y: yOffset)
-                                ))
+                    .fill(background.shadow(
+                        .drop(
+                            color: color.opacity(intensity),
+                            radius: blurRadius,
+                            x: x,
+                            y: y
+                        ))
+                    )
                 } else {
                     shape
                         .fill(color.opacity(intensity))
-                        .shadow(color: color, radius: blurRadius, x: xOffset, y: yOffset)
+                        .shadow(color: color, radius: blurRadius, x: x, y: y)
                     shape
-                        .fill(.background)
+                        .fill(background)
                 }
                 
                 
+            }
+    }
+    
+    func applyInnerShadowEffect(
+        shape: some Shape = RoundedRectangle(cornerRadius: 15.0),
+        background: some ShapeStyle = .background,
+        color: Color = .black,
+        intensity: CGFloat = 0.5,
+        blurRadius: CGFloat = 3,
+        x: CGFloat = 0,
+        y: CGFloat = 2
+    ) -> some View {
+        return self
+            .background() {
+                shape
+                    .fill(background.shadow(
+                        .inner(
+                            color: color.opacity(intensity),
+                            radius: blurRadius,
+                            x: x,
+                            y: y
+                        ))
+                    )
             }
     }
     
@@ -69,4 +98,5 @@ extension View {
                     .strokeBorder(style, lineWidth: lineWidth)
             }
     }
+
 }

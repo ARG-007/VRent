@@ -12,7 +12,6 @@
 		F3368C222C4FBE060023A1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3368C212C4FBE060023A1FD /* Assets.xcassets */; };
 		F3368C252C4FBE060023A1FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3368C242C4FBE060023A1FD /* Preview Assets.xcassets */; };
 		F3368C322C50D33D0023A1FD /* RentingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C312C50D33D0023A1FD /* RentingTab.swift */; };
-		F3368C342C50D34C0023A1FD /* TaxiTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C332C50D34C0023A1FD /* TaxiTab.swift */; };
 		F3368C362C50D3570023A1FD /* ExploreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C352C50D3570023A1FD /* ExploreTab.swift */; };
 		F3368C382C50D3660023A1FD /* BookingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C372C50D3660023A1FD /* BookingsTab.swift */; };
 		F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C392C50D3910023A1FD /* AccountTab.swift */; };
@@ -20,16 +19,35 @@
 		F3627E802C60AF3D0047198B /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E7F2C60AF3D0047198B /* Owner.swift */; };
 		F3627E822C60AF7D0047198B /* VehicleSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E812C60AF7D0047198B /* VehicleSpecs.swift */; };
 		F3627E842C60D4730047198B /* vehicles.json in Resources */ = {isa = PBXBuildFile; fileRef = F3627E832C60D4730047198B /* vehicles.json */; };
-		F3627E862C60D9140047198B /* VehicleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E852C60D9140047198B /* VehicleBackground.swift */; };
 		F3627E882C60E20C0047198B /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E872C60E20C0047198B /* ImageCarousel.swift */; };
 		F3627E8B2C61FC000047198B /* VehicleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8A2C61FC000047198B /* VehicleCard.swift */; };
-		F3627E8E2C624ECB0047198B /* VehicleSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8D2C624ECB0047198B /* VehicleSearchView.swift */; };
+		F3627E8E2C624ECB0047198B /* AvailableVehiclesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8D2C624ECB0047198B /* AvailableVehiclesList.swift */; };
+		F3627E902C628B800047198B /* VehicleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8F2C628B800047198B /* VehicleDetails.swift */; };
+		F3627E972C63708E0047198B /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E962C63708E0047198B /* Rating.swift */; };
+		F3627E992C64F50D0047198B /* Rentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E982C64F50D0047198B /* Rentable.swift */; };
+		F3627E9B2C65EBDC0047198B /* RentalBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E9A2C65EBDC0047198B /* RentalBooking.swift */; };
+		F3627E9D2C65F1690047198B /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E9C2C65F1690047198B /* FavoriteButton.swift */; };
+		F3627E9F2C6611D90047198B /* RentingVehicleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E9E2C6611D90047198B /* RentingVehicleDetails.swift */; };
+		F3627EA12C6614C40047198B /* RentalBookingOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EA02C6614C40047198B /* RentalBookingOverview.swift */; };
+		F3627EA32C6617B90047198B /* PriceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EA22C6617B90047198B /* PriceRow.swift */; };
+		F3627EA52C6618A50047198B /* SwipeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EA42C6618A50047198B /* SwipeControl.swift */; };
+		F3627EAD2C69E8A40047198B /* PinkSlipMarkerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EAC2C69E8A40047198B /* PinkSlipMarkerIcon.swift */; };
+		F3627EAF2C6A02B30047198B /* PinkSlipIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EAE2C6A02B30047198B /* PinkSlipIcon.swift */; };
+		F3627EB12C6A05DA0047198B /* SuccessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EB02C6A05DA0047198B /* SuccessScreen.swift */; };
+		F3627EB42C6B611C0047198B /* RentingScreenPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EB32C6B611C0047198B /* RentingScreenPages.swift */; };
+		F3627EB62C6B63B70047198B /* RentingNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EB52C6B63B70047198B /* RentingNavigation.swift */; };
+		F3627EBB2C6F82160047198B /* TaxiTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EBA2C6F82160047198B /* TaxiTab.swift */; };
+		F3627EBD2C6F84C60047198B /* TaxiBookingAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EBC2C6F84C60047198B /* TaxiBookingAttributes.swift */; };
+		F3627EC02C730D200047198B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EBF2C730D200047198B /* Helpers.swift */; };
+		F3627EC42C7349C20047198B /* TaxiBookingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EC32C7349C20047198B /* TaxiBookingState.swift */; };
+		F3627EC62C7368530047198B /* LocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EC52C7368530047198B /* LocationField.swift */; };
+		F3627EC82C73687F0047198B /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EC72C73687F0047198B /* FieldState.swift */; };
 		F38C43202C5A5F5C003D84B2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F38C431E2C5A5F5C003D84B2 /* Model.xcdatamodeld */; };
 		F38C43242C5A683E003D84B2 /* LocationSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38C43232C5A683E003D84B2 /* LocationSelector.swift */; };
 		F3D2BADC2C5B9A6C000BBE6E /* SearchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2BADB2C5B9A6C000BBE6E /* SearchLocation.swift */; };
 		F3D2BADE2C5B9F2A000BBE6E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2BADD2C5B9F2A000BBE6E /* Model.swift */; };
 		F3D2BAE02C5BB941000BBE6E /* places.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D2BADF2C5BB941000BBE6E /* places.json */; };
-		F3D3BD4F2C575FBC004DB3E1 /* RentSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */; };
+		F3D3BD4F2C575FBC004DB3E1 /* RentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD4E2C575FBC004DB3E1 /* RentDetails.swift */; };
 		F3D3BD552C5A062C004DB3E1 /* RentTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */; };
 		F3D3BD572C5A07A7004DB3E1 /* RentDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */; };
 		F3D3BD592C5A0860004DB3E1 /* RentSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD582C5A0860004DB3E1 /* RentSearchState.swift */; };
@@ -44,7 +62,6 @@
 		F3368C212C4FBE060023A1FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3368C242C4FBE060023A1FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F3368C312C50D33D0023A1FD /* RentingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentingTab.swift; sourceTree = "<group>"; };
-		F3368C332C50D34C0023A1FD /* TaxiTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiTab.swift; sourceTree = "<group>"; };
 		F3368C352C50D3570023A1FD /* ExploreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTab.swift; sourceTree = "<group>"; };
 		F3368C372C50D3660023A1FD /* BookingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsTab.swift; sourceTree = "<group>"; };
 		F3368C392C50D3910023A1FD /* AccountTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTab.swift; sourceTree = "<group>"; };
@@ -52,16 +69,35 @@
 		F3627E7F2C60AF3D0047198B /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		F3627E812C60AF7D0047198B /* VehicleSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleSpecs.swift; sourceTree = "<group>"; };
 		F3627E832C60D4730047198B /* vehicles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vehicles.json; sourceTree = "<group>"; };
-		F3627E852C60D9140047198B /* VehicleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleBackground.swift; sourceTree = "<group>"; };
 		F3627E872C60E20C0047198B /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		F3627E8A2C61FC000047198B /* VehicleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCard.swift; sourceTree = "<group>"; };
-		F3627E8D2C624ECB0047198B /* VehicleSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleSearchView.swift; sourceTree = "<group>"; };
+		F3627E8D2C624ECB0047198B /* AvailableVehiclesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableVehiclesList.swift; sourceTree = "<group>"; };
+		F3627E8F2C628B800047198B /* VehicleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetails.swift; sourceTree = "<group>"; };
+		F3627E962C63708E0047198B /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		F3627E982C64F50D0047198B /* Rentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rentable.swift; sourceTree = "<group>"; };
+		F3627E9A2C65EBDC0047198B /* RentalBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalBooking.swift; sourceTree = "<group>"; };
+		F3627E9C2C65F1690047198B /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		F3627E9E2C6611D90047198B /* RentingVehicleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentingVehicleDetails.swift; sourceTree = "<group>"; };
+		F3627EA02C6614C40047198B /* RentalBookingOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalBookingOverview.swift; sourceTree = "<group>"; };
+		F3627EA22C6617B90047198B /* PriceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRow.swift; sourceTree = "<group>"; };
+		F3627EA42C6618A50047198B /* SwipeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeControl.swift; sourceTree = "<group>"; };
+		F3627EAC2C69E8A40047198B /* PinkSlipMarkerIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinkSlipMarkerIcon.swift; sourceTree = "<group>"; };
+		F3627EAE2C6A02B30047198B /* PinkSlipIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinkSlipIcon.swift; sourceTree = "<group>"; };
+		F3627EB02C6A05DA0047198B /* SuccessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScreen.swift; sourceTree = "<group>"; };
+		F3627EB32C6B611C0047198B /* RentingScreenPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentingScreenPages.swift; sourceTree = "<group>"; };
+		F3627EB52C6B63B70047198B /* RentingNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentingNavigation.swift; sourceTree = "<group>"; };
+		F3627EBA2C6F82160047198B /* TaxiTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiTab.swift; sourceTree = "<group>"; };
+		F3627EBC2C6F84C60047198B /* TaxiBookingAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiBookingAttributes.swift; sourceTree = "<group>"; };
+		F3627EBF2C730D200047198B /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		F3627EC32C7349C20047198B /* TaxiBookingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiBookingState.swift; sourceTree = "<group>"; };
+		F3627EC52C7368530047198B /* LocationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationField.swift; sourceTree = "<group>"; };
+		F3627EC72C73687F0047198B /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
 		F38C431F2C5A5F5C003D84B2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F38C43232C5A683E003D84B2 /* LocationSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelector.swift; sourceTree = "<group>"; };
 		F3D2BADB2C5B9A6C000BBE6E /* SearchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocation.swift; sourceTree = "<group>"; };
 		F3D2BADD2C5B9F2A000BBE6E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F3D2BADF2C5BB941000BBE6E /* places.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = places.json; path = VRent/resources/places.json; sourceTree = SOURCE_ROOT; };
-		F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentSearchQuery.swift; sourceTree = "<group>"; };
+		F3D3BD4E2C575FBC004DB3E1 /* RentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentDetails.swift; sourceTree = "<group>"; };
 		F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTimePicker.swift; sourceTree = "<group>"; };
 		F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentDatePicker.swift; sourceTree = "<group>"; };
 		F3D3BD582C5A0860004DB3E1 /* RentSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentSearchState.swift; sourceTree = "<group>"; };
@@ -100,11 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				F3627E722C6099F60047198B /* resources */,
-				F3D3BD522C5A0611004DB3E1 /* views */,
 				F3D3BD4D2C575F8E004DB3E1 /* models */,
-				F3368C302C50D2FA0023A1FD /* UserTabs */,
+				F3D3BD522C5A0611004DB3E1 /* views */,
 				F3368C1D2C4FBE050023A1FD /* VRentApp.swift */,
-				F3368C1F2C4FBE050023A1FD /* ContentView.swift */,
 				F38C431E2C5A5F5C003D84B2 /* Model.xcdatamodeld */,
 				F3368C212C4FBE060023A1FD /* Assets.xcassets */,
 				F3368C232C4FBE060023A1FD /* Preview Content */,
@@ -123,8 +157,6 @@
 		F3368C302C50D2FA0023A1FD /* UserTabs */ = {
 			isa = PBXGroup;
 			children = (
-				F3368C312C50D33D0023A1FD /* RentingTab.swift */,
-				F3368C332C50D34C0023A1FD /* TaxiTab.swift */,
 				F3368C352C50D3570023A1FD /* ExploreTab.swift */,
 				F3368C372C50D3660023A1FD /* BookingsTab.swift */,
 				F3368C392C50D3910023A1FD /* AccountTab.swift */,
@@ -144,8 +176,10 @@
 		F3627E892C61FBF40047198B /* Vehicle */ = {
 			isa = PBXGroup;
 			children = (
+				F3627E872C60E20C0047198B /* ImageCarousel.swift */,
 				F3627E8A2C61FC000047198B /* VehicleCard.swift */,
-				F3627E8D2C624ECB0047198B /* VehicleSearchView.swift */,
+				F3627E8F2C628B800047198B /* VehicleDetails.swift */,
+				F3627E9C2C65F1690047198B /* FavoriteButton.swift */,
 			);
 			path = Vehicle;
 			sourceTree = "<group>";
@@ -153,21 +187,97 @@
 		F3627E8C2C61FC4B0047198B /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				F3627E852C60D9140047198B /* VehicleBackground.swift */,
-				F3627E872C60E20C0047198B /* ImageCarousel.swift */,
+				F3627EA42C6618A50047198B /* SwipeControl.swift */,
+				F3627EAC2C69E8A40047198B /* PinkSlipMarkerIcon.swift */,
+				F3627EAE2C6A02B30047198B /* PinkSlipIcon.swift */,
+				F3627EB02C6A05DA0047198B /* SuccessScreen.swift */,
+				F3627EC72C73687F0047198B /* FieldState.swift */,
+				F3627EC52C7368530047198B /* LocationField.swift */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		F3627E912C62918C0047198B /* Renting */ = {
+			isa = PBXGroup;
+			children = (
+				F3627E922C6291A50047198B /* data */,
+				F3627EB22C6B5F100047198B /* pages */,
+				F3627E932C62921E0047198B /* components */,
+				F3368C312C50D33D0023A1FD /* RentingTab.swift */,
+			);
+			path = Renting;
+			sourceTree = "<group>";
+		};
+		F3627E922C6291A50047198B /* data */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3BD582C5A0860004DB3E1 /* RentSearchState.swift */,
+				F3627EB32C6B611C0047198B /* RentingScreenPages.swift */,
+				F3627EB52C6B63B70047198B /* RentingNavigation.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		F3627E932C62921E0047198B /* components */ = {
+			isa = PBXGroup;
+			children = (
+				F38C43232C5A683E003D84B2 /* LocationSelector.swift */,
+				F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */,
+				F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */,
+				F3627EA22C6617B90047198B /* PriceRow.swift */,
+				F3D3BD5D2C5A0DAA004DB3E1 /* RentingSearchView.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		F3627EB22C6B5F100047198B /* pages */ = {
+			isa = PBXGroup;
+			children = (
+				F3627E8D2C624ECB0047198B /* AvailableVehiclesList.swift */,
+				F3627E9E2C6611D90047198B /* RentingVehicleDetails.swift */,
+				F3627EA02C6614C40047198B /* RentalBookingOverview.swift */,
+			);
+			path = pages;
+			sourceTree = "<group>";
+		};
+		F3627EB92C6F81A10047198B /* Taxi */ = {
+			isa = PBXGroup;
+			children = (
+				F3627EBA2C6F82160047198B /* TaxiTab.swift */,
+				F3627EBC2C6F84C60047198B /* TaxiBookingAttributes.swift */,
+				F3627EC32C7349C20047198B /* TaxiBookingState.swift */,
+			);
+			path = Taxi;
+			sourceTree = "<group>";
+		};
+		F3627EC12C731DF30047198B /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F3D2BADB2C5B9A6C000BBE6E /* SearchLocation.swift */,
+				F3627EC22C731E090047198B /* rent */,
+				F3627E7F2C60AF3D0047198B /* Owner.swift */,
+				F3627E7D2C60ADA60047198B /* Vehicle.swift */,
+				F3627E812C60AF7D0047198B /* VehicleSpecs.swift */,
+				F3627E962C63708E0047198B /* Rating.swift */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F3627EC22C731E090047198B /* rent */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3BD4E2C575FBC004DB3E1 /* RentDetails.swift */,
+				F3627E982C64F50D0047198B /* Rentable.swift */,
+				F3627E9A2C65EBDC0047198B /* RentalBooking.swift */,
+			);
+			path = rent;
 			sourceTree = "<group>";
 		};
 		F3D3BD4D2C575F8E004DB3E1 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				F3D3BD4E2C575FBC004DB3E1 /* RentSearchQuery.swift */,
-				F3D2BADB2C5B9A6C000BBE6E /* SearchLocation.swift */,
+				F3627EC12C731DF30047198B /* entity */,
 				F3D2BADD2C5B9F2A000BBE6E /* Model.swift */,
-				F3627E7D2C60ADA60047198B /* Vehicle.swift */,
-				F3627E7F2C60AF3D0047198B /* Owner.swift */,
-				F3627E812C60AF7D0047198B /* VehicleSpecs.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -175,24 +285,16 @@
 		F3D3BD522C5A0611004DB3E1 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				F3627E8C2C61FC4B0047198B /* Misc */,
+				F3D3BD5A2C5A0D71004DB3E1 /* View+Extensions.swift */,
 				F3627E892C61FBF40047198B /* Vehicle */,
-				F3D3BD532C5A0617004DB3E1 /* RentSearch */,
+				F3368C302C50D2FA0023A1FD /* UserTabs */,
+				F3627E912C62918C0047198B /* Renting */,
+				F3627EB92C6F81A10047198B /* Taxi */,
+				F3627E8C2C61FC4B0047198B /* Misc */,
+				F3368C1F2C4FBE050023A1FD /* ContentView.swift */,
+				F3627EBF2C730D200047198B /* Helpers.swift */,
 			);
 			path = views;
-			sourceTree = "<group>";
-		};
-		F3D3BD532C5A0617004DB3E1 /* RentSearch */ = {
-			isa = PBXGroup;
-			children = (
-				F3D3BD5A2C5A0D71004DB3E1 /* View+Extensions.swift */,
-				F3D3BD582C5A0860004DB3E1 /* RentSearchState.swift */,
-				F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */,
-				F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */,
-				F38C43232C5A683E003D84B2 /* LocationSelector.swift */,
-				F3D3BD5D2C5A0DAA004DB3E1 /* RentingSearchView.swift */,
-			);
-			path = RentSearch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,29 +370,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3627E802C60AF3D0047198B /* Owner.swift in Sources */,
-				F3627E862C60D9140047198B /* VehicleBackground.swift in Sources */,
 				F3627E7E2C60ADA60047198B /* Vehicle.swift in Sources */,
-				F3627E8E2C624ECB0047198B /* VehicleSearchView.swift in Sources */,
+				F3627E8E2C624ECB0047198B /* AvailableVehiclesList.swift in Sources */,
 				F38C43242C5A683E003D84B2 /* LocationSelector.swift in Sources */,
 				F3D3BD552C5A062C004DB3E1 /* RentTimePicker.swift in Sources */,
+				F3627EA32C6617B90047198B /* PriceRow.swift in Sources */,
+				F3627EAF2C6A02B30047198B /* PinkSlipIcon.swift in Sources */,
+				F3627E992C64F50D0047198B /* Rentable.swift in Sources */,
 				F38C43202C5A5F5C003D84B2 /* Model.xcdatamodeld in Sources */,
-				F3368C342C50D34C0023A1FD /* TaxiTab.swift in Sources */,
+				F3627EC42C7349C20047198B /* TaxiBookingState.swift in Sources */,
+				F3627EA12C6614C40047198B /* RentalBookingOverview.swift in Sources */,
+				F3627EC02C730D200047198B /* Helpers.swift in Sources */,
+				F3627EB42C6B611C0047198B /* RentingScreenPages.swift in Sources */,
+				F3627EBB2C6F82160047198B /* TaxiTab.swift in Sources */,
 				F3368C322C50D33D0023A1FD /* RentingTab.swift in Sources */,
+				F3627E9F2C6611D90047198B /* RentingVehicleDetails.swift in Sources */,
 				F3627E822C60AF7D0047198B /* VehicleSpecs.swift in Sources */,
 				F3D3BD592C5A0860004DB3E1 /* RentSearchState.swift in Sources */,
-				F3D3BD4F2C575FBC004DB3E1 /* RentSearchQuery.swift in Sources */,
+				F3627E9D2C65F1690047198B /* FavoriteButton.swift in Sources */,
+				F3627EBD2C6F84C60047198B /* TaxiBookingAttributes.swift in Sources */,
+				F3D3BD4F2C575FBC004DB3E1 /* RentDetails.swift in Sources */,
+				F3627EC62C7368530047198B /* LocationField.swift in Sources */,
+				F3627E972C63708E0047198B /* Rating.swift in Sources */,
 				F3D3BD572C5A07A7004DB3E1 /* RentDatePicker.swift in Sources */,
 				F3D2BADE2C5B9F2A000BBE6E /* Model.swift in Sources */,
 				F3D3BD5E2C5A0DAA004DB3E1 /* RentingSearchView.swift in Sources */,
+				F3627EC82C73687F0047198B /* FieldState.swift in Sources */,
+				F3627EA52C6618A50047198B /* SwipeControl.swift in Sources */,
 				F3368C202C4FBE050023A1FD /* ContentView.swift in Sources */,
+				F3627EB62C6B63B70047198B /* RentingNavigation.swift in Sources */,
 				F3627E882C60E20C0047198B /* ImageCarousel.swift in Sources */,
 				F3368C1E2C4FBE050023A1FD /* VRentApp.swift in Sources */,
+				F3627E9B2C65EBDC0047198B /* RentalBooking.swift in Sources */,
 				F3D3BD5B2C5A0D71004DB3E1 /* View+Extensions.swift in Sources */,
 				F3368C382C50D3660023A1FD /* BookingsTab.swift in Sources */,
 				F3627E8B2C61FC000047198B /* VehicleCard.swift in Sources */,
 				F3368C362C50D3570023A1FD /* ExploreTab.swift in Sources */,
+				F3627EB12C6A05DA0047198B /* SuccessScreen.swift in Sources */,
 				F3D2BADC2C5B9A6C000BBE6E /* SearchLocation.swift in Sources */,
+				F3627EAD2C69E8A40047198B /* PinkSlipMarkerIcon.swift in Sources */,
 				F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */,
+				F3627E902C628B800047198B /* VehicleDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

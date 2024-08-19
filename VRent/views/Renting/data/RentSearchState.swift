@@ -8,7 +8,7 @@
 import Foundation
 
 struct RentSearchState {
-    private var search: RentSearchQuery
+    private var search: RentDetails
     
     private let calendar = Calendar.current
     private let postponeRentStartBy = DateComponents(hour: 1)
@@ -76,26 +76,28 @@ struct RentSearchState {
         let earliestPickupDate = calendar.date(from: components)!
         let earliestDropDate = calendar.date(byAdding: minimumRentingHours, to: earliestPickupDate)!
         
-        search = RentSearchQuery( pickupDate: earliestPickupDate, dropDate: earliestDropDate )
+        search = RentDetails( pickupDate: earliestPickupDate, dropDate: earliestDropDate )
     }
     
-    init(forSearch: RentSearchQuery) {
+    init(forSearch: RentDetails) {
         search = forSearch
     }
     
     
-    func getRentSearchQuery() -> RentSearchQuery {
+    func getRentSearchQuery() -> RentDetails {
         search
     }
     
     var duration: Measurement<UnitDuration> {
-        Measurement(value: pickupDate.distance(to: dropDate), unit: .seconds)
+        search.duration
     }
     
     var durationFormatted: String {
         return Duration
-            .seconds(duration.value)
+            .seconds(search.duration.value)
             .formatted(.units(allowed: [.days, .hours, .minutes]))
             .capitalized
     }
+    
+    
 }

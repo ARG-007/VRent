@@ -22,11 +22,16 @@ struct LocationFinder: View {
     var locationSearchBar: some View {
         HStack{
             Image(systemName: "location.magnifyingglass")
-            TextField("Pickup Location", text: $locationSearchText, prompt: ((selectedLocation != nil) ? Text(selectedLocation!.name) :  nil))
-            Button(
-                role: .destructive,
-                action: { locationSearchText = "" },
-                label: { Image(systemName: "xmark.circle").foregroundStyle(.foreground) })
+            TextField("Pickup Location", text: $locationSearchText, prompt: ((selectedLocation != nil) ? Text(selectedLocation!.name) : nil))
+            Button(role: .destructive) {
+                if(locationSearchText.isEmpty) {
+                    selectedLocation = nil
+                } else {
+                    locationSearchText = ""
+                }
+            } label: {
+                Image(systemName: "xmark.circle").foregroundStyle(.foreground)
+            }
         }
         .padding()
         .applyBoxShadowEffect()
