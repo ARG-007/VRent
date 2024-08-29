@@ -34,6 +34,8 @@ struct SuccessScreen: View {
             
             markerIcon
                 .foregroundStyle(statusColor)
+//                .border(Color.black)
+                
                 .rotation3DEffect(
                     .degrees(rotation),
                     axis: (x: 0.0, y: 1.0, z: 0.0)
@@ -48,7 +50,7 @@ struct SuccessScreen: View {
                 
             
             Spacer()
-            
+
             Text(statusString)
                 .foregroundStyle(statusColor)
                 .font(.largeTitle.lowercaseSmallCaps().monospaced().bold())
@@ -81,17 +83,18 @@ struct SuccessScreen: View {
                 rotation += 360
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.30) {
                 withAnimation(.snappy) {
                     taskState = taskIsSuccessful ? .completed : .failed
                 }
             }
             let _ = timer.connect()
         }
-        .onReceive(timer) { _ in
+        .onReceive(timer) { update in
             redirectionTime -= 1
             if(redirectionTime<=0) {
                 onCompletion()
+                
             }
         }
         
@@ -162,7 +165,7 @@ struct SuccessScreen: View {
     }
     
     return SuccessScreen {
-        try await Task.sleep(for: .seconds(2))
+        try await Task.sleep(for: .seconds(8))
 //        throw CustomError.BullShit
     } onCompletion: {
         

@@ -35,4 +35,18 @@ extension Vehicle {
     var yearFormatted: String { 
         spec.year.formatted(.number.grouping(.never))
     }
+    
+    var name: String {
+        "\(spec.make) \(spec.model) \(yearFormatted)"
+    }
+}
+
+extension Vehicle: Hashable {
+    static func == (_ lhs: Vehicle, _ rhs: Vehicle) -> Bool{
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

@@ -24,7 +24,7 @@ enum Fuel: String, Codable {
     case Nuclear
 }
 
-enum VehicleType: String, Codable {
+enum VehicleType: String, Codable, CaseIterable, Identifiable {
     
     
     case HatchBack
@@ -52,7 +52,21 @@ enum VehicleType: String, Codable {
             default: .Maxicab
         }
     }
+    
+    var id: Self {
+        self
+    }
 
+    
+    var standardChargePerKm: Decimal {
+        switch(self) {
+            case .HatchBack: 10.0
+            case .Sedan: 13.0
+            case .SUV: 16.0
+            case .MUV: 20.0
+            case .Maxicab: 25.0
+        }
+    }
 }
 
 

@@ -11,7 +11,7 @@ import CoreData
 enum Tab: String {
     case renting = "Renting"
     case taxi = "Taxi"
-    case explore = "Explore"
+    case favorite = "Favorites"
     case bookings = "Bookings"
     case account = "Account"
     
@@ -26,8 +26,8 @@ enum Tab: String {
             else {
                 Image(systemName: "car")
             }
-            case .explore:
-                Image(systemName: "safari")
+            case .favorite:
+                Image(systemName: "heart")
             case .bookings:
             if #available(iOS 17.0, *) {
                 Image(systemName: "book.pages")
@@ -52,20 +52,22 @@ enum Tab: String {
 struct ContentView: View {
     @State var currentTab: Tab = .renting
     
+    
     var body: some View {
         TabView(selection: $currentTab) {
+            
             RentingTab()
                 .tabItem { Tab.renting.label }
                 .tag(Tab.renting)
-                
+            
             TaxiTab()
                 .tabItem { Tab.taxi.label }
                 .tag(Tab.taxi)
-
-            ExploreTab()
-                .tabItem { Tab.explore.label }
-                .tag(Tab.explore)
-
+            
+            FavoritesTab()
+                .tabItem { Tab.favorite.label }
+                .tag(Tab.favorite)
+            
             BookingsTab()
                 .tabItem { Tab.bookings.label }
                 .tag(Tab.bookings)
@@ -73,8 +75,10 @@ struct ContentView: View {
             AccountTab()
                 .tabItem { Tab.account.label }
                 .tag(Tab.account)
+            
         }
         .tint(.orange)
+        
     }
 
     

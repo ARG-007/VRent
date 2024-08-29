@@ -52,7 +52,7 @@ struct RentSearchState {
         set { search.dropDate = newValue }
     }
     
-    var pickupLocation: SearchLocation? {
+    var pickupLocation: Location? {
         get {search.pickupLocation}
         set {search.pickupLocation = newValue}
     }

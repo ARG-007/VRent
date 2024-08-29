@@ -34,12 +34,13 @@ struct AvailableVehiclesList: View {
     
     func createVehicleCard(for vehicle: Vehicle) -> some View {
         VStack(spacing: 0) {
-            VehicleCard(vehicle: vehicle)
+            VehicleCard(for: vehicle)
             
             
             HStack(alignment: .top) {
                 
-                Label(getDistance(vehicle.location), systemImage: "ruler")
+                Label(search.pickupLocation?.distance(from: vehicle.location).formatted(.measurement(width: .abbreviated, usage: .road)) ?? "0 KM", systemImage: "ruler")
+//                Label(getDistance(vehicle.location), systemImage: "ruler")
                 
                 Spacer()
                 

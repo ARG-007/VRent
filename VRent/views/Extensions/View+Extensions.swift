@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension ShapeStyle where Self==Color{
+extension ShapeStyle where Self == Color {
     static var OffWhite: Color { Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255) }
     static var offBlack: Color { Color(red: 0.1, green: 0.1, blue: 0.2) }
 }
@@ -21,10 +21,10 @@ extension View {
     }
     
     func applyBoxShadowEffect(
-        shape: some Shape = RoundedRectangle(cornerRadius: 15.0),
+        shape: some Shape = .rect(cornerRadius: 15.0),
         background: some ShapeStyle = .background,
         color: Color = .black,
-        intensity: CGFloat = 0.5,
+        intensity: CGFloat = 0.33,
         blurRadius: CGFloat = 3,
         x: CGFloat = 0,
         y: CGFloat = 2
@@ -54,10 +54,10 @@ extension View {
     }
     
     func applyInnerShadowEffect(
-        shape: some Shape = RoundedRectangle(cornerRadius: 15.0),
+        shape: some Shape = .rect(cornerRadius: 15.0),
         background: some ShapeStyle = .background,
         color: Color = .black,
-        intensity: CGFloat = 0.5,
+        intensity: CGFloat = 0.33,
         blurRadius: CGFloat = 3,
         x: CGFloat = 0,
         y: CGFloat = 2
@@ -74,6 +74,9 @@ extension View {
                         ))
                     )
             }
+            
+        
+        
     }
     
     func onClick(_ onStart: @escaping ()->Void, onEnded: @escaping ()->Void) -> some View {
@@ -97,6 +100,18 @@ extension View {
                 shape
                     .strokeBorder(style, lineWidth: lineWidth)
             }
+    }
+    
+    
+    /**
+     `Custom Extension`: Hides this view conditionally
+     */
+    @ViewBuilder func hidden(_ condition: Bool) -> some View {
+        if(condition) {
+            self.hidden()
+        } else {
+            self
+        }
     }
 
 }

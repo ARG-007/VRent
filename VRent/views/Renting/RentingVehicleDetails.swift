@@ -53,6 +53,7 @@ struct RentingVehicleDetails: View {
             VStack(alignment: .leading) {
                 Text(tempBooking.totalCost.formatted(.currency(code:Locale.current.currency?.identifier ?? "INR")))
                     .fontWeight(.bold)
+                    .font(.title3)
                     
                 
                 Button {
@@ -60,6 +61,7 @@ struct RentingVehicleDetails: View {
                 } label: {
                      Text("Price Breakup ")
                         .textCase(.uppercase)
+                        .font(.caption)
                         .fontWeight(.bold)
                         .foregroundStyle(.tint)
                 }
@@ -98,15 +100,21 @@ struct RentingVehicleDetails: View {
         VStack {
             List {
                 PriceRow("Base Cost: ", tempBooking.baseCost)
-                VStack(alignment: .leading) {
-                    PriceRow("Driver Rent: ", tempBooking.driverCost)
-                    Text("* \(localizedCurrency(100)) for 1 Hour, Total Hours: \(tempBooking.rentDetails.duration.converted(to: .hours).value.formatted()) Hours")
-                        .font(.footnote)
+                
+                if(!rentDetails.isSelfDrive) {
+                    VStack(alignment: .leading) {
+                        PriceRow("Driver Rent: ", tempBooking.driverCost)
+                        Text("* \(localizedCurrency(Charges.driverChargePerHr)) for 1 Hour, Total Hours: \(tempBooking.rentDetails.duration.converted(to: .hours).value.formatted()) Hours")
+                            .font(.footnote)
+                    }
                 }
-                VStack(alignment: .leading) {
-                    PriceRow("Delivery Cost: ", tempBooking.deliveryCost)
-                    (Text("* \(localizedCurrency(10)) for Each KM, Total KM: ") + Text(Measurement<UnitLength>(value: tempBooking.distance, unit: .kilometers), format: .measurement(width: .abbreviated, usage: .road) ))
-                        .font(.footnote)
+                
+                if(rentDetails.isRequiredDeliver) {
+                    VStack(alignment: .leading) {
+                        PriceRow("Delivery Cost: ", tempBooking.deliveryCost)
+                        (Text("* \(localizedCurrency(Charges.vehicleDeliveryChargePerKm)) for Each KM, Total KM: ") + Text(tempBooking.distance, format: .measurement(width: .abbreviated, usage: .road)))
+                            .font(.footnote)
+                    }
                 }
                 PriceRow("Total Cost: ", tempBooking.totalCost)
                 

@@ -34,7 +34,7 @@ struct ImageCarousel: View {
 }
 
 #Preview {
-    let imagesUrl = Model().getVehicles()[0].images
+    let imagesUrl = previewModel.getVehicles()[0].images
     
     return ImageCarousel(imageURLs: imagesUrl)
         .aspectRatio(3/2, contentMode: .fit)

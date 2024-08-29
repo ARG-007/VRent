@@ -8,26 +8,29 @@
 import Foundation
 
 
-fileprivate extension Collection {
-    func randomPick(_ n: Int) -> ArraySlice<Element> { shuffled().prefix(n) }
+extension Collection {
+    func randomPick(_ n: Int) -> ArraySlice<Element> { shuffled().prefix(Swift.min(n, count-1)) }
 }
 
 class Model: ObservableObject {
-    private let places: [SearchLocation]
+    private let places: [Location]
     private let vehicles: [Vehicle]
-    private var rentalBookings =  [RentalBooking]()
-    private var favorites = [Vehicle]()
+    private var drivers: [Driver] = []
+    @Published private(set) var rentalBookings: [RentalBooking] = []
+    @Published private(set) var taxiBookings: [TaxiBookingData] = []
+    @Published private(set) var favorites: [Vehicle] = []
     
-    var popularPlaces: [SearchLocation] {
+    var popularPlaces: [Location] {
         Array(places.randomPick(7))
     }
     
     init() {
         places = load("places.json")
         vehicles = load("vehicles.json")
+        drivers = load("drivers.json")
     }
     
-    func fuzzyPlaceSearch(_ name: String)->[SearchLocation] {
+    func fuzzyPlaceSearch(_ name: String)->[Location] {
         places.filter { $0.name.contains(name) }
     }
     
@@ -36,32 +39,87 @@ class Model: ObservableObject {
     }
     
     func bookRental(context: Rentable) {
-        rentalBookings.append(RentalBooking(for: context))
+        rentalBookings.append(RentalBooking(id: rentalBookings.count, for: context))
     }
     
-    func hadFavorited(vehicle: Vehicle) -> Bool {
-        favorites.contains { $0 === vehicle }
+    /**
+     Checks whether the given vehicle is an Favorite,
+     Returns `true` if the vehicle is favorite
+     `false` if the vehilce is not an favorite
+     */
+    func isFavorite(_ vehicle: Vehicle) -> Bool {
+        getIndexInFavorites(of: vehicle) != nil
     }
     
-    func favorite(vehicle: Vehicle) {
-        guard !hadFavorited(vehicle: vehicle) else {
-            return
+    /**
+     Favorites the vehicle for user in the model,
+     Returns `true` if the vehicle is registered as favorite
+     `false` if the vehilce is already an favorite
+     */
+    @discardableResult
+    func favorite(_ vehicle: Vehicle) -> Bool {
+        guard !isFavorite(vehicle) else {
+            return false
         }
-        
-        print("Favn: ")
-        print(favorites.debugDescription)
         
         favorites.append(vehicle)
+        return true
     }
     
-    func unFavorite(vehicle: Vehicle) {
-        guard hadFavorited(vehicle: vehicle) else {
-            return
+    /**
+     Unfavorites the vehicle for user in the model,
+     Returns `true` if the vehicle is unfavorited or,
+     `false` if the vehicle is already unfavorited
+     */
+    func unFavorite(_ vehicle: Vehicle) -> Bool {
+        guard let index =  favorites.firstIndex(where: { $0.id == vehicle.id } ) else {
+            return false
         }
-        print("UnFav")
-        print(favorites.debugDescription)
-        favorites.removeAll { $0 === vehicle}
+        
+        favorites.remove(at: index)
+        
+        return true
     }
+
+    /**
+     Toggles the favorite status of vehicle, returns the updated favorite status of the vehicle:
+     `true` if the vehicle is now an favorite
+     `false` if the vehicle is now not an favorite
+     */
+    func toggleFavorite(for vehicle: Vehicle) -> Bool {
+        if let index = getIndexInFavorites(of: vehicle) {
+            favorites.remove(at: index)
+            return false
+        } else {
+            favorites.append(vehicle)
+            return true
+        }
+    }
+    
+    private func getIndexInFavorites(of vehicle: Vehicle) -> Int? {
+        favorites.firstIndex(where: { $0.id == vehicle.id } )
+    }
+    
+    func getFavorites() -> [Vehicle] {
+        favorites
+    }
+    
+    func bookTaxi(for attributes: TaxiBookingAttributes) -> Bool {
+        guard let booking = TaxiBookingData(id: taxiBookings.count,for: attributes) else {
+            return false
+        }
+        
+        let vehicle = vehicles.filter { $0.spec.type == booking.requestedVehicleType || $0.spec.type.capacity > booking.passengerCount }.randomElement()!
+        let driver = drivers.randomElement()!
+        
+        booking.assignedVehicle = vehicle
+        booking.assignedDriver = driver
+            
+        taxiBookings.append(booking)
+        
+        return true
+    }
+
 }
 
 
@@ -78,7 +136,7 @@ func load<T: Decodable>(_ filename: String) -> T {
     do {
         data = try Data(contentsOf: file)
     } catch {
-        fatalError("The data cannot read fooliosh mortal")
+        fatalError("The data cannot be read foolish mortal")
     }
     
     do {
@@ -90,4 +148,6 @@ func load<T: Decodable>(_ filename: String) -> T {
     }
     
 }
+
+
 

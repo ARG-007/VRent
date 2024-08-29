@@ -30,7 +30,7 @@ struct RentingSearchView: View {
                     }
                         .padding(.bottom)
                         .sheet(isPresented: $showLocationSelectionSheet) {
-                            LocationFinder(selection: $searchState.pickupLocation) {
+                            LocationFinder("Pickup Location", selection: $searchState.pickupLocation) {
                                 showLocationSelectionSheet = false
                             }
                         }
@@ -143,5 +143,5 @@ struct RentingSearchView: View {
     @State var search = RentSearchState()
     
     return RentingSearchView(searchState: $search)
-        .environmentObject(Model())
+        .environmentObject(previewModel)
 }

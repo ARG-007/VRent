@@ -12,6 +12,7 @@ struct LocationField: View {
     let prompt: String
     let onClick: ()->Void
 
+
     var body: some View {
         Button {
             onClick()
@@ -21,13 +22,16 @@ struct LocationField: View {
                     .imageScale(.medium)
                 Text(prompt)
                     .font(.callout)
+                    .bold()
                 Spacer()
             }
-            .foregroundStyle(.foreground.opacity(0.7))
+            .foregroundStyle(.foreground.opacity(0.8))
             .padding()
         }
-        .border(RoundedRectangle(cornerRadius: 15.0), style: .tint, lineWidth: 1.5)
+        .applyInnerShadowEffect(blurRadius: 2, y: 1)
     }
+    
+    
 }
 
 #Preview {

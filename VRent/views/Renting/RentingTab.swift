@@ -14,22 +14,23 @@ struct RentingTab: View {
     
     
     var body: some View {
+            
         NavigationStack(path: $navigationManager.path){
-            RentingSearchView(searchState: $searchState) {
-                navigationManager.path.append(RentingScreenPages.searchResults)
-            }
-            .frame(maxHeight: .infinity)
-            .navigationTitle("Search Page")
-            .navigationDestination(for: RentingScreenPages.self) { page in
-                switch(page) {
-                case .searchResults:
-                    AvailableVehiclesList(search: $searchState)
-                default:
-                    Text("Shit")
+            ScrollView {
+                RentingSearchView(searchState: $searchState) {
+                    navigationManager.path.append(RentingScreenPages.searchResults)
+                }
+                .frame(maxHeight: .infinity)
+                .navigationTitle("Rent a Vehicle")
+                .navigationDestination(for: RentingScreenPages.self) { page in
+                    switch(page) {
+                    case .searchResults:
+                        AvailableVehiclesList(search: $searchState)
+                    default:
+                        Text("Shit")
+                    }
                 }
             }
-            
-            
         }
         .environmentObject(navigationManager)
         
@@ -38,5 +39,5 @@ struct RentingTab: View {
 
 #Preview {
     RentingTab()
-        .environmentObject(Model())
+        .environmentObject(previewModel)
 }

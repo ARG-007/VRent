@@ -11,4 +11,8 @@ enum FieldState: Equatable {
     case valid
     case invalid(String)
     case unset
+    
+    var isValid: Bool {
+        self == .valid
+    }
 }

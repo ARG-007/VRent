@@ -9,20 +9,53 @@ import SwiftUI
 
 struct LocationFinder: View {
     @EnvironmentObject var model: Model
-    @Binding var selectedLocation: SearchLocation?
+    @Binding var selectedLocation: Location?
     @State private var locationSearchText: String = ""
+    
+    let prompt: String
     private let onSubmit: ()->Void
     
-    init(selection: Binding<SearchLocation?>, onSubmit: @escaping ()->Void = {}) {
+    init(_ prompt: String, selection: Binding<Location?>, onSubmit: @escaping ()->Void = {}) {
         self._selectedLocation = selection
         self.onSubmit = onSubmit
+        self.prompt = prompt
+    }
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text(prompt)
+                    .font(.title2.bold())
+                    
+                    
+                locationSearchBar
+                    .padding(.bottom)
+                
+                if(locationSearchText.isEmpty){
+                    Section {
+                        popularPlaces
+                    } header: {
+                        Text("Popular Places")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                    }
+                    .animation(.snappy, value: locationSearchText)
+                } else {
+                    searchingLocations
+                        .animation(.snappy, value: locationSearchText)
+                }
+                
+                Spacer()
+            }
+            .padding()
+        }
     }
 
     
     var locationSearchBar: some View {
         HStack{
             Image(systemName: "location.magnifyingglass")
-            TextField("Pickup Location", text: $locationSearchText, prompt: ((selectedLocation != nil) ? Text(selectedLocation!.name) : nil))
+            TextField(prompt, text: $locationSearchText, prompt: ((selectedLocation != nil) ? Text(selectedLocation!.name) : nil))
             Button(role: .destructive) {
                 if(locationSearchText.isEmpty) {
                     selectedLocation = nil
@@ -53,34 +86,9 @@ struct LocationFinder: View {
             Divider()
         }
     }
-
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            locationSearchBar
-                .padding(.bottom)
-            
-            if(locationSearchText.isEmpty){
-                Section {
-                    popularPlaces
-                } header: {
-                    Text("Popular Places")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                }
-                .animation(.snappy, value: locationSearchText)
-            } else {
-                searchingLocations
-                    .animation(.snappy, value: locationSearchText)
-            }
-            
-            Spacer()
-        }
-        .padding()
-    }
     
     @ViewBuilder
-    private func makeLocationButton(_ place: SearchLocation) -> some View {
+    private func makeLocationButton(_ place: Location) -> some View {
         Button {
             selectedLocation = place
             onSubmit()
@@ -97,6 +105,6 @@ struct LocationFinder: View {
 
 #Preview {
 
-    LocationFinder(selection: .constant(nil))
-        .environmentObject(Model())
+    LocationFinder("Location", selection: .constant(nil))
+        .environmentObject(previewModel)
 }

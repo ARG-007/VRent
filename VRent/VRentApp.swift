@@ -13,7 +13,8 @@ struct VRentApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(Model())
+                .backgroundStyle(Color(.systemGray6))
+                .environmentObject(previewModel)
         }
     }
 }

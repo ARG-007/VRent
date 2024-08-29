@@ -149,7 +149,7 @@ struct VehicleDetails: View {
 
 #Preview {
     NavigationStack {
-        VehicleDetails(vehicle: Model().getVehicles()[0])
+        VehicleDetails(vehicle: previewModel.getVehicles()[0])
 
     }
 }

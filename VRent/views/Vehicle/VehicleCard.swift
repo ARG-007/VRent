@@ -9,10 +9,14 @@ import SwiftUI
 
 struct VehicleCard: View {
     let vehicle: Vehicle
-    @State var isFavirote: Bool = false
     
     
+    @ScaledMetric(relativeTo: .subheadline) private var topBarContentPadding = 10
     
+    init(for vehicle: Vehicle) {
+        self.vehicle = vehicle
+    }
+
     var body: some View {
         VStack(alignment: .leading) {
             ZStack(alignment: .topLeading) {
@@ -49,7 +53,7 @@ struct VehicleCard: View {
     var ratingCard: some View {
         HStack {
             Label(vehicle.ratings.average.formatted(), systemImage: "star.fill")
-                .padding(6)
+                .padding(topBarContentPadding/2)
                 .background() {
                     RoundedRectangle(cornerRadius: 6)
                         .fill (vehicle.ratings.color)
@@ -60,21 +64,25 @@ struct VehicleCard: View {
 
         }
         .fontWeight(.semibold)
-        .padding(4)
-        .background(in: .rect(cornerRadius: 6))
+        .padding(topBarContentPadding/2)
+        .background(.background.opacity(0.8), in: .rect(cornerRadius: 6))
     }
     
     var topInfo: some View {
         HStack {
             
             ratingCard
-                .font(.caption)
             
             Spacer()
             
             FavoriteButton(vehicle: vehicle)
-            
+                .controlSize(.large)
+                .foregroundStyle(.foreground)
+                .font(.subheadline)
+                .padding(topBarContentPadding)
+                .background(.background.opacity(0.8), in: .rect(cornerRadius: 6))
         }
+        .font(.caption)
     }
     
     var bottomInfo: some View {
@@ -110,8 +118,6 @@ struct VehicleCard: View {
 
 
 #Preview {
-    let model = Model()
-    let vehicle = model.getVehicles()[0]
-    
-    return VehicleCard(vehicle: vehicle)
+    VehicleCard(for: previewModel.getVehicles()[0])
+        .environmentObject(previewModel)
 }

@@ -11,24 +11,24 @@ struct Rentable {
     let vehicle: Vehicle
     let rentDetails: RentDetails
     
-    var distance: Double {
-        rentDetails.pickupLocation!.location.distance(from: vehicle.location)/1000
+    var distance: Measurement<UnitLength> {
+        rentDetails.pickupLocation!.distance(from: vehicle.location)
     }
     
     var baseCost: Decimal {
         vehicle.pricePerHR * Decimal(rentDetails.duration.converted(to: .hours).value)
     }
     
-    var deliveryCost: Double {
-        (rentDetails.isRequiredDeliver ? 10 : 0) * distance
+    var deliveryCost: Decimal {
+        (rentDetails.isRequiredDeliver ? Charges.driverChargePerKm : 0) * Decimal(distance.value)
     }
     
-    var driverCost: Double {
-        (rentDetails.isSelfDrive ? 0 : 100) * rentDetails.duration.converted(to: .hours).value
+    var driverCost: Decimal {
+        (rentDetails.isSelfDrive ? 0 : Charges.vehicleDeliveryChargePerKm) * Decimal(rentDetails.duration.converted(to: .hours).value)
     }
     
     var totalCost: Decimal {
-        baseCost + Decimal(deliveryCost + driverCost)
+        baseCost + deliveryCost + driverCost
     }
     
     

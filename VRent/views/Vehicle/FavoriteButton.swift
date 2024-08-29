@@ -7,27 +7,103 @@
 
 import SwiftUI
 
-struct FavoriteButton: View {
-    @EnvironmentObject var model: Model
-    let vehicle: Vehicle
-    @State private var isFavorite: Bool
+/**
+ Impacts the favorite button behaviour and appearence
+ */
+enum FavoriteButtonBehaviour {
     
-    init(vehicle: Vehicle) {
-        self.vehicle = vehicle
-        self.isFavorite = false
-    }
+    /**
+    Make `FavoriteButton` present an Heart Toggle, with fill
+     */
+    case toggle
     
-    var body: some View {
-        Button {
-            isFavorite ? model.unFavorite(vehicle: vehicle) : model.favorite(vehicle: vehicle)
-            isFavorite = model.hadFavorited(vehicle: vehicle)
-        } label: {
-            Image(systemName: isFavorite ? "heart.fill" : "heart")
-                .foregroundStyle(isFavorite ? AnyShapeStyle(.pink) : AnyShapeStyle(.foreground))
-                .imageScale(.large)
-        }
-        .onAppear {isFavorite = model.hadFavorited(vehicle: vehicle) }
-        .controlSize(.large)
+    /**
+    Make `FavoriteButton` present an Dustbin Symbol and exposes only untoggle behaviour. The button hides itself if the vehicle is already not an favorite.
+     */
+    case delete
+}
+
+/**
+ Environment Key for Favorite Button Behaviour
+ */
+struct FavoriteButtonBehaviourKey: EnvironmentKey {
+    static var defaultValue: FavoriteButtonBehaviour = .toggle
+}
+
+extension EnvironmentValues {
+    var favoriteButtonBehaviour: FavoriteButtonBehaviour {
+        get {self[FavoriteButtonBehaviourKey.self]}
+        set {self[FavoriteButtonBehaviourKey.self] = newValue}
     }
 }
 
+extension View {
+    func favoriteButtonBehaviour(_ newBehaviour: FavoriteButtonBehaviour) -> some View {
+        return self
+            .environment(\.favoriteButtonBehaviour, newBehaviour)
+    }
+}
+
+struct FavoriteButton: View {
+    @EnvironmentObject var model: Model
+    @Environment(\.favoriteButtonBehaviour) var behaviour
+    
+    let vehicle: Vehicle
+    @State private var isFavorite = false
+    
+    var body: some View {
+        
+        Button (action: toggleFavorite) {
+            if(behaviour == .toggle ) {
+                toggleFavoriteButton
+            } else {
+                deleteButton
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
+        .onAppear { isFavorite = model.isFavorite(vehicle) }
+    }
+    
+    var toggleFavoriteButton: some View {
+        Image(systemName: isFavorite ? "heart.fill" : "heart")
+            .foregroundStyle( isFavorite ? AnyShapeStyle(.pink) : AnyShapeStyle(.primary))
+            
+    }
+    
+    @ViewBuilder var deleteButton: some View {
+        Button(action: toggleFavorite) {
+            if (isFavorite) {
+                Image(systemName: "xmark.bin")
+                    .foregroundStyle(.primary)
+            } else {
+                EmptyView()
+            }
+        }
+            
+    }
+    
+    private func toggleFavorite() {
+        isFavorite = model.toggleFavorite(for: vehicle)
+    }
+    
+    private func readFavorite() {
+        isFavorite = model.isFavorite(vehicle)
+    }
+    
+}
+
+#Preview {
+    @State var favorite = previewModel.getFavorites()[0]
+//    @StateObject var model = previewModel
+    
+    return HStack {
+        FavoriteButton(vehicle: favorite)
+            
+        
+        FavoriteButton(vehicle: favorite)
+            .favoriteButtonBehaviour(.delete)
+    }
+    .foregroundStyle(.foreground.blendMode(.colorDodge))
+//    .background(.black.opacity(0.5), in: .rect(cornerRadius: 10))
+    .environmentObject(previewModel)
+}

@@ -13,7 +13,9 @@ struct SwipeControl: View {
     
     let thumbWidth = 70.0
     
+    @State private var completion: CGFloat = .zero
     @State private var thumbState: CGFloat = .zero
+    
 
     init(prompt: String, onSubmit: @escaping () -> Void) {
         self.prompt = prompt
@@ -24,6 +26,9 @@ struct SwipeControl: View {
     var body: some View {
         VStack {
             track
+                .overlay(alignment: .leading) {
+                    trail
+                }
                 .overlay {
                     GeometryReader { proxy in
                         let maxOffset = proxy.size.width - thumbWidth
@@ -40,11 +45,13 @@ struct SwipeControl: View {
                                         if(x < 0) { return }
                                         
                                         if(x >= maxOffset) {
-                                            // onSubmit()
                                             x = maxOffset
                                         }
-                                       
-                                        thumbState = x
+                                        
+                                        withAnimation {
+                                            thumbState = x
+                                            completion = (thumbState / maxOffset)*100
+                                        }
                                         
                                     }
                                     .onEnded { pos in
@@ -53,14 +60,16 @@ struct SwipeControl: View {
                                         } else {
                                             withAnimation(.spring) {
                                                 thumbState = .zero
+                                                completion = .zero
                                             }
                                         }
                                     }
                             )
+                            
                     }
                     .padding(5)
-                    
                 }
+                
         }
         
     }
@@ -81,6 +90,21 @@ struct SwipeControl: View {
         .fill(.white.shadow(.drop(radius: 2, y: 3)))
         .frame(width: thumbWidth)
             
+    }
+    
+    var trail: some View {
+        Capsule()
+            .fill(
+                .linearGradient(colors:
+                    [
+                     .yellow.opacity(0.4),
+                     .red.opacity(completion/100),
+                    ],
+                startPoint: .leading, endPoint: .trailing))
+            .hueRotation(.degrees(completion))
+            .frame(width: ((thumbState != .zero) ? thumbState+thumbWidth : thumbWidth)+10)
+            
+            .padding(1)
     }
     
 }

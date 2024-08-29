@@ -10,13 +10,32 @@ import Foundation
 
 
 struct TaxiBookingAttributes {
-    var pickupLocation: SearchLocation?
-    var dropOffLocation: SearchLocation?
+    
+    var pickupLocation: Location?
+    var dropOffLocation: Location?
     
     var pickupTime: Date
     
     var passengerCount: Int 
     var requestedVehicleType: VehicleType
+    
+    
+    var estimatedDistance: Measurement<UnitLength> {
+        pickupLocation?.distance(from: dropOffLocation) ?? .zeroKilometer
+    }
+    
+    var driverCost: Decimal {
+        Decimal(estimatedDistance.value) * Charges.driverChargePerKm
+    }
+    
+    var vehicleCost: Decimal {
+        Decimal(estimatedDistance.value) * requestedVehicleType.standardChargePerKm
+    }
+    
+    var totalFare: Decimal {
+        driverCost + vehicleCost + Charges.convinenceCharge
+    }
+    
     
     init() {
         pickupTime = Calendar.current.date(byAdding: .minute, value: 10, to: Date.now)!

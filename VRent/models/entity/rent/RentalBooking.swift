@@ -9,7 +9,9 @@ import Foundation
 import CoreLocation
 
 
-class RentalBooking {
+
+class RentalBooking: Identifiable {
+    let id: Int
     let details: RentDetails
     let selectedVehicle: Vehicle
     
@@ -18,38 +20,43 @@ class RentalBooking {
     let driverCost: Decimal
     let totalCost: Decimal
     
-    var status: RentalStatus
+    private var currentStatus: BookingStatus
+    private var statusHistory: BookingHistory = [:]
     
     
-    enum RentalStatus {
-        case InComplete
-        case Booked
-        case Active(Date)
-        case Completed(Date)
-        case Cancelled(Date)
-    }
-
     
-    var vehiclePosition: CLLocation
-    
-    let rentedOn: Date
-    var endedOn: Date?
-    
-    init(for rent: Rentable) {
+    init(id: Int, for rent: Rentable) {
+        self.id = id
         details = rent.rentDetails
         selectedVehicle = rent.vehicle
         
         baseCost = rent.baseCost
-        deliveryCost = Decimal(rent.deliveryCost)
-        driverCost = Decimal(rent.driverCost)
+        deliveryCost = rent.deliveryCost
+        driverCost = rent.driverCost
         totalCost = rent.totalCost
         
-        rentedOn = .now
-        
-        status = .Booked
-        
-        vehiclePosition = rent.vehicle.location
-        
+        currentStatus = .Booked
+        statusHistory.transition(to: currentStatus)
     }
+    
+    @discardableResult
+    func setStatus(newStatus: BookingStatus) -> Bool {
+        if (statusHistory.transition(to: newStatus)) {
+            currentStatus = newStatus
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func getStatus() -> BookingStatus {
+        currentStatus
+    }
+    
+    func getBookingHistory() -> BookingHistory {
+        statusHistory
+    }
+    
+    
     
 }

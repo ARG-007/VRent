@@ -61,12 +61,12 @@ struct RentalBookingOverview: View {
                 PriceRow("Base Cost: ", rental.baseCost)
                 VStack(alignment: .leading) {
                     PriceRow("Driver Rent: ", rental.driverCost)
-                    Text("* \(localizedCurrency(100)) for 1 Hour, Total Hours: \(rental.rentDetails.duration.converted(to: .hours).value.formatted()) Hours")
+                    Text("* \(localizedCurrency(Charges.driverChargePerHr)) for 1 Hour, Total Hours: \(rental.rentDetails.duration.converted(to: .hours).value.formatted()) Hours")
                         .font(.footnote)
                 }
                 VStack(alignment: .leading) {
                     PriceRow("Delivery Cost: ", rental.deliveryCost)
-                    (Text("* \(localizedCurrency(10)) for Each KM, Total KM: ") + Text(Measurement<UnitLength>(value: rental.distance, unit: .kilometers), format: .measurement(width: .abbreviated, usage: .road) ))
+                    (Text("* \(localizedCurrency(Charges.vehicleDeliveryChargePerKm)) for Each KM, Total KM: ") + Text(rental.distance, format: .measurement(width: .abbreviated, usage: .road) ))
                         .font(.footnote)
                 }
                 PriceRow("Total Cost: ", rental.totalCost)
@@ -75,7 +75,7 @@ struct RentalBookingOverview: View {
     }
     
     var swipeButton: some View {
-        SwipeControl(prompt: "Swipe To Pay") {
+        SwipeControl(prompt: "Swipe To Book") {
             navigationManager.path.append(1)
         }
         .navigationDestination(for: Int.self) { _ in
@@ -118,6 +118,7 @@ struct RentalBookingOverview: View {
                 Text(info)
                 Spacer()
                 Text(value)
+                    .bold()
             }
         }
     }

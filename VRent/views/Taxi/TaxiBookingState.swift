@@ -28,12 +28,12 @@ struct TaxiBookingState {
     
     private var taxiBookingAttributes: TaxiBookingAttributes
     
-    var pickupLocation: SearchLocation? {
+    var pickupLocation: Location? {
         get { taxiBookingAttributes.pickupLocation }
         set {
             if(newValue == dropOffLocation) {
                 pickupLocationField = .invalid("Pickup Location Must Be Different From Drop Location")
-            }else if newValue == nil {
+            } else if newValue == nil {
                 pickupLocationField = .unset
             } else {
                 pickupLocationField = .valid
@@ -42,7 +42,7 @@ struct TaxiBookingState {
         }
     }
     
-    var dropOffLocation: SearchLocation? {
+    var dropOffLocation: Location? {
         get { taxiBookingAttributes.dropOffLocation }
         set {
             if(newValue == pickupLocation) {
@@ -63,15 +63,30 @@ struct TaxiBookingState {
     
     var passengerCount: Int {
         get { taxiBookingAttributes.passengerCount }
-        set { taxiBookingAttributes.passengerCount = newValue }
+        set {
+            
+            guard newValue>0 else {
+                return
+            }
+            
+            if(vehicleType.capacity < newValue) {
+                taxiBookingAttributes.requestedVehicleType = VehicleType.typeWithCapacity(newValue)
+            }
+            taxiBookingAttributes.passengerCount = newValue
+        }
     }
     
     var vehicleType: VehicleType {
         get { taxiBookingAttributes.requestedVehicleType }
-        set { taxiBookingAttributes.requestedVehicleType = newValue }
+        set {
+            if(newValue.capacity < passengerCount) {
+                taxiBookingAttributes.passengerCount = newValue.capacity
+            }
+            taxiBookingAttributes.requestedVehicleType = newValue
+        }
     }
     
-    
+    var estimatedPrice: Decimal { taxiBookingAttributes.totalFare }
     
     private(set) var pickupLocationField: FieldState = .unset
     private(set) var dropOffLocationField: FieldState = .unset
@@ -81,6 +96,10 @@ struct TaxiBookingState {
     var allFieldsValid: Bool {
         pickupLocationField == .valid
         && dropOffLocationField == .valid
+    }
+    
+    func getAttributes() -> TaxiBookingAttributes {
+        taxiBookingAttributes
     }
     
     init() {

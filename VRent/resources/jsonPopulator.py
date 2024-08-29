@@ -20,11 +20,22 @@ for vehicle in fileContents:
     vehicle["owner"] = vehicle["owner"]["id"]
     vehicle["spec"] = vehicle["spec"]["id"]
 
-owners = list(set(owners))
-vehicleModels = list(set(vehicleModels))
 
 pprint(len(owners))
 pprint(len(vehicleModels))
 
+from faker import Faker
+from datetime import datetime
+drivers = []
 
+for i in range(40):
+    name = Faker().name()
+    date = datetime.today().isoformat()
+
+    drivers.append({"id": i, "name": name, "joinedOn": date})
+
+print(len(drivers))
+
+with open("drivers.json", 'w') as file:
+    json.dump(drivers, file)
 
