@@ -9,7 +9,7 @@ import SwiftUI
 import CoreLocation
 
 struct AvailableVehiclesList: View {
-    @Binding var search: RentSearchState
+    @EnvironmentObject var search: RentSearchViewModel
     @EnvironmentObject var model: Model
     @Environment(\.colorScheme) var colorScheme
 
@@ -17,11 +17,11 @@ struct AvailableVehiclesList: View {
         ScrollView {
             LazyVStack {
                 ForEach(model.getVehicles()){ vehicle in
-                    NavigationLink {
-                        RentingVehicleDetails(rentDetails: search.getRentSearchQuery(), vehicle: vehicle)
-                    } label: {
+                    NavigationLink(value: RentingScreenPages.vehicleDetails(vehicle))
+                    {
                         createVehicleCard(for: vehicle)
                     }
+                   
 
                 }
             }
@@ -54,7 +54,7 @@ struct AvailableVehiclesList: View {
             .padding(16)
             
         }
-        .applyBoxShadowEffect(background: (colorScheme == .light ? .white : .offBlack))
+        .applyBoxShadowEffect()
         .padding()
     }
     
@@ -71,17 +71,17 @@ struct AvailableVehiclesList: View {
 
 #Preview {
     struct PreviewVehicleSearch: View {
-        let model = Model()
-        @State var state = RentSearchState()
+        @StateObject var state = RentSearchViewModel()
         
         init() {
-            state.pickupLocation = model.popularPlaces[0]
+            state.pickupLocation = previewModel.popularPlaces[0]
         }
         
         
         var body: some View {
-            AvailableVehiclesList(search: $state)
-                .environmentObject(model)
+            AvailableVehiclesList()
+                .initiateServices(of: previewModel)
+                .environmentObject(state)
         }
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Rentable {
+struct Rentable: Hashable {
     let vehicle: Vehicle
     let rentDetails: RentDetails
     
@@ -30,7 +30,6 @@ struct Rentable {
     var totalCost: Decimal {
         baseCost + deliveryCost + driverCost
     }
-    
-    
-    
 }
+
+

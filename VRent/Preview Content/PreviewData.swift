@@ -34,9 +34,11 @@ struct PreviewData {
     
     
     private func markFavorites() {
+        let favoriteService = ModelFavoriteService(model)
+        
         for _ in 1...10 {
             if let randomVehicle = model.getVehicles().randomElement() {
-                model.favorite(randomVehicle)
+                favoriteService.favorite(randomVehicle)
             }
         }
     }
@@ -71,7 +73,7 @@ struct PreviewData {
             let passengerCount = Int.random(in: 1...3)
             let vehicleType = VehicleType.typeWithCapacity(passengerCount)
             taxiBookings.append(TaxiBookingAttributes(pickup: locations[0], drop: locations[1], pickupTime: pickupTime, passengerCount: passengerCount, requestedVehicleType: vehicleType))
-            print(taxiBookings[i-1])
+            
         }
         
         

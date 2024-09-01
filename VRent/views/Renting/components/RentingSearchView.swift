@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct RentingSearchView: View {
-    @Binding var searchState: RentSearchState
+    @EnvironmentObject var searchState: RentSearchViewModel
     @State private var showLocationSelectionSheet: Bool = false
     let onSubmit: ()->Void
     
-    init(searchState: Binding<RentSearchState>) {
-        self.init(searchState: searchState) {}
-    }
     
-    init(searchState: Binding<RentSearchState>, onSubmit: @escaping ()->Void) {
-        self._searchState = searchState
+    init(onSubmit: @escaping ()->Void = {}) {
         self.onSubmit = onSubmit
     }
     
@@ -140,8 +136,9 @@ struct RentingSearchView: View {
 }
 
 #Preview {
-    @State var search = RentSearchState()
+    @StateObject var search = RentSearchViewModel()
     
-    return RentingSearchView(searchState: $search)
-        .environmentObject(previewModel)
+    return RentingSearchView()
+        .initiateServices(of: previewModel)
+        .environmentObject(search)
 }

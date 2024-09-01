@@ -9,12 +9,14 @@ import SwiftUI
 
 @main
 struct VRentApp: App {
+    let model = previewModel
    
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
                 .backgroundStyle(Color(.systemGray6))
-                .environmentObject(previewModel)
+                .initiateServices(of: previewModel)
         }
     }
 }

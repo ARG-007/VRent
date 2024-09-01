@@ -80,7 +80,7 @@ struct VehicleCard: View {
                 .foregroundStyle(.foreground)
                 .font(.subheadline)
                 .padding(topBarContentPadding)
-                .background(.background.opacity(0.8), in: .rect(cornerRadius: 6))
+                .background(.background.opacity(0.4), in: .rect(cornerRadius: 6))
         }
         .font(.caption)
     }
@@ -119,5 +119,5 @@ struct VehicleCard: View {
 
 #Preview {
     VehicleCard(for: previewModel.getVehicles()[0])
-        .environmentObject(previewModel)
+        .initiateServices(of: previewModel)
 }

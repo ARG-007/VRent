@@ -51,6 +51,7 @@ enum Tab: String {
 
 struct ContentView: View {
     @State var currentTab: Tab = .renting
+    @Environment(\.colorScheme) var colorScheme
     
     
     var body: some View {
@@ -78,6 +79,7 @@ struct ContentView: View {
             
         }
         .tint(.orange)
+        .backgroundStyle( colorScheme == .light ? AnyShapeStyle(.background) : AnyShapeStyle(.offBlack))
         
     }
 
@@ -86,5 +88,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(Model())
+        .initiateServices(of: previewModel)
 }

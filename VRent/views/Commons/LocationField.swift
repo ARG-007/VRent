@@ -25,7 +25,7 @@ struct LocationField: View {
                     .bold()
                 Spacer()
             }
-            .foregroundStyle(.foreground.opacity(0.8))
+            .foregroundStyle(.foreground)
             .padding()
         }
         .applyInnerShadowEffect(blurRadius: 2, y: 1)

@@ -26,8 +26,10 @@ struct RentalBookingOverview: View {
             priceSection
         }
         .navigationTitle("Booking")
-        .safeAreaInset(edge: .bottom) {
+        .bottomSticky(cornerRadius: 45) {
             swipeButton
+                .padding(.horizontal, 10)
+                .padding(.top, 10)
         }
         
     }
@@ -46,8 +48,14 @@ struct RentalBookingOverview: View {
                 ListRow("Total Duration", rentalDetails.duration.converted(to: .hours).value.formatted() + " Hrs")
                 
                 
-                
-                Text("Renting Starts ")
+                if(rentalDetails.pickupDate < Calendar.current.date(byAdding: .day, value: 2, to: .now)!) {
+                    HStack(alignment: .center) {
+                        Text("Renting Starts ")
+                        + Text(rentalDetails.pickupDate, format: .relative(presentation: .named, unitsStyle: .wide))
+                            .bold()
+                    }
+                    .frame(maxWidth: .infinity)
+                }
             }
             
             Section("Rented Vehicle") {
@@ -76,52 +84,28 @@ struct RentalBookingOverview: View {
     
     var swipeButton: some View {
         SwipeControl(prompt: "Swipe To Book") {
-            navigationManager.path.append(1)
+            navigationManager.path.append(RentingScreenPages.success(rental))
         }
-        .navigationDestination(for: Int.self) { _ in
-            SuccessScreen {
-                try await Task.sleep(for: .seconds(3))
-                model.bookRental(context: rental)
-            } onCompletion: {
-                navigationManager.path = NavigationPath()
-            }
-            .toolbar(.hidden, for: .navigationBar)
-        }
-        .padding(.horizontal, 10)
-        .padding(.top, 10)
-        .background {
-            let radius: CGFloat = 45.0
-            let shape: some Shape = .rect(
-                topLeadingRadius: radius,
-                topTrailingRadius: radius
-            )
-            let backgroundColor: Color = colorScheme == .light ? .white : .offBlack
-            
-            backgroundColor
-                .clipShape(shape)
-                .ignoresSafeArea()
-                .applyBoxShadowEffect(shape: shape, y: -1)
-        }
+//        .navigationDestination(for: Int.self) { _ in
+//            
+//        }
+        
+//        .background {
+//            let radius: CGFloat = 45.0
+//            let shape: some Shape = .rect(
+//                topLeadingRadius: radius,
+//                topTrailingRadius: radius
+//            )
+//            let backgroundColor: Color = colorScheme == .light ? .white : .offBlack
+//            
+//            backgroundColor
+//                .clipShape(shape)
+//                .ignoresSafeArea()
+//                .applyBoxShadowEffect(shape: shape, y: -1)
+//        }
     }
     
-    struct ListRow: View {
-        let info: String
-        let value: String
-        
-        init( _ info: String, _ value: String) {
-            self.info = info
-            self.value = value
-        }
-        
-        var body: some View {
-            HStack {
-                Text(info)
-                Spacer()
-                Text(value)
-                    .bold()
-            }
-        }
-    }
+    
     
     
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SuccessScreen: View {
     
@@ -22,8 +23,10 @@ struct SuccessScreen: View {
     @State private var redirectionTime = 5
     
     private let timer = Timer.publish(every: 1, on: .main, in: .common)
+    @State private var timerCanceller: (any Cancellable)?
     
     let task: () async throws -> Void
+    
     let onCompletion: () -> Void
     
     
@@ -88,13 +91,14 @@ struct SuccessScreen: View {
                     taskState = taskIsSuccessful ? .completed : .failed
                 }
             }
-            let _ = timer.connect()
+            
+            timerCanceller = timer.connect()
         }
         .onReceive(timer) { update in
             redirectionTime -= 1
             if(redirectionTime<=0) {
+                timerCanceller?.cancel()
                 onCompletion()
-                
             }
         }
         

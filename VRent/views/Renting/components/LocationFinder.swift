@@ -106,5 +106,5 @@ struct LocationFinder: View {
 #Preview {
 
     LocationFinder("Location", selection: .constant(nil))
-        .environmentObject(previewModel)
+        .initiateServices(of: previewModel)
 }

@@ -10,7 +10,7 @@ import CoreLocation
 
 
 
-class RentalBooking: Identifiable {
+class RentalBooking: Identifiable, Hashable {
     let id: Int
     let details: RentDetails
     let selectedVehicle: Vehicle
@@ -57,6 +57,12 @@ class RentalBooking: Identifiable {
         statusHistory
     }
     
+    static func == (lhs: RentalBooking, rhs: RentalBooking) -> Bool {
+        lhs.id == rhs.id
+    }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
 }

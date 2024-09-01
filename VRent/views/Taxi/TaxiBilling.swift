@@ -8,11 +8,63 @@
 import SwiftUI
 
 struct TaxiBilling: View {
+    @EnvironmentObject var model: Model
+    let attributes: TaxiBookingAttributes
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            List {
+                Section("Booking Details") {
+                    ListRow("Pickup Location", attributes.pickupLocation!.name)
+                    ListRow("Drop Location", attributes.dropOffLocation!.name)
+                    ListRow("Pickup Time", attributes.pickupTime.formatted(date: .abbreviated, time: .shortened))
+                    ListRow("Vehicle Category", attributes.requestedVehicleType.rawValue)
+                    ListRow("Passenger Count", attributes.passengerCount.formatted())
+                }
+                .listStyle(.inset)
+                
+                Section("Billing Details") {
+                    
+                    HStack(alignment: .center) {
+                        Text("Estimated Distance ")
+                        Text(attributes.estimatedDistance.formatted()).bold()
+                    }
+                    .italic()
+                    .frame(maxWidth: .infinity)
+                    .alignmentGuide(.listRowSeparatorLeading) {d in d[.leading]}
+                    
+                    VStack(alignment: .leading) {
+                        PriceRow("Driver Fee", attributes.driverCost)
+                        Text("\(localizedCurrency(Charges.driverChargePerKm))/km")
+                            .font(.caption)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        PriceRow("Vehicle Fee", attributes.vehicleCost)
+                        Text("\(localizedCurrency(attributes.requestedVehicleType.standardChargePerKm))/km")
+                            .font(.caption)
+                    }
+                    PriceRow("Total Fare", attributes.totalFare)
+                }
+            }
+        }
+        .bottomSticky(cornerRadius: 45.0) {
+            SwipeControl(prompt: "Swipe To Book") {
+                model.bookTaxi(for: attributes)
+            }
+            .padding(10)
+        }
+    
     }
 }
 
 #Preview {
-    TaxiBilling()
+    
+    var att = TaxiBookingAttributes()
+    
+    att.pickupLocation = previewModel.popularPlaces[0]
+    att.dropOffLocation = previewModel.popularPlaces[1]
+    
+    return TaxiBilling(attributes: att)
+        .environmentObject(previewModel)
 }

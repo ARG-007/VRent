@@ -7,18 +7,13 @@
 
 import Foundation
 
-
-extension Collection {
-    func randomPick(_ n: Int) -> ArraySlice<Element> { shuffled().prefix(Swift.min(n, count-1)) }
-}
-
 class Model: ObservableObject {
     private let places: [Location]
     private let vehicles: [Vehicle]
     private var drivers: [Driver] = []
-    @Published private(set) var rentalBookings: [RentalBooking] = []
-    @Published private(set) var taxiBookings: [TaxiBookingData] = []
-    @Published private(set) var favorites: [Vehicle] = []
+    @Published var rentalBookings: [RentalBooking] = []
+    @Published var taxiBookings: [TaxiBookingData] = []
+    @Published var favorites: [Vehicle] = []
     
     var popularPlaces: [Location] {
         Array(places.randomPick(7))
@@ -41,6 +36,7 @@ class Model: ObservableObject {
     func bookRental(context: Rentable) {
         rentalBookings.append(RentalBooking(id: rentalBookings.count, for: context))
     }
+    
     
     /**
      Checks whether the given vehicle is an Favorite,
@@ -121,6 +117,11 @@ class Model: ObservableObject {
     }
 
 }
+
+
+
+
+
 
 
 /**

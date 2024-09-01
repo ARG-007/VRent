@@ -23,15 +23,18 @@ struct BookingsTab: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 20) {
                     if (selection == .Rental) {
+//                        Text("Bookings")
                         ForEach(model.rentalBookings) { booking in
                             RentOverviewCard(rentDetails: booking)
                         }
                     } else {
+//                        Text("Taxi")
                         ForEach(model.taxiBookings) { booking in
                             TaxiOverviewCard(taxiDetails: booking)
                         }
                     }
                 }
+                .id(UUID())
                 .padding()
             }
             .toolbar {
@@ -55,6 +58,6 @@ struct BookingsTab: View {
 #Preview {
     NavigationStack {
         BookingsTab()
-            .environmentObject(previewModel)
+            .initiateServices(of: previewModel)
     }
 }

@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct FavoritesTab: View {
-    @EnvironmentObject var model: Model
+    @EnvironmentObject var favoriteService: ModelFavoriteService
+    
     
     var body: some View {
         ScrollView {
-            
             LazyVStack(spacing: 20) {
-                ForEach(model.getFavorites()) { vehicle in
+                ForEach(favoriteService.favorites) { vehicle in
                     VehicleCard(for: vehicle)
                         .applyBoxShadowEffect()
                         .favoriteButtonBehaviour(.delete)
                 }
                 .padding(.horizontal)
-                .animation(.easeInOut, value: model.favorites)
             }
         }
+        .animation(.easeInOut, value: favoriteService.favorites)
     }
 }
 
 #Preview {
    FavoritesTab()
-        .environmentObject(previewModel)
+        .initiateServices(of: previewModel)
 }

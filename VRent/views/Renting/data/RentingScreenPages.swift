@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum RentingScreenPages: Equatable, Hashable {
+enum RentingScreenPages: Hashable {
     case searchResults
-    case vehicleDetails
-    case bookingDetails
-    case success
+    case vehicleDetails(Vehicle)
+    case bookingDetails(Rentable)
+    case success(Rentable)
 }

@@ -8,15 +8,16 @@
 import Foundation
 import SwiftUI
 
-extension ShapeStyle where Self == Color {
-    static var OffWhite: Color { Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255) }
-    static var offBlack: Color { Color(red: 0.1, green: 0.1, blue: 0.2) }
-}
+
 
 extension View {
+    /**
+     [Custom Extension]
+     Sets Time Interval of UIDatePicker Object `onAppear` and reset `onDisappear`. Interval can be between 1 to 30.
+     */
     func setDatePickerInterval(_ interval: Int) -> some View {
         self
-            .onAppear() { UIDatePicker.appearance().minuteInterval = 30 }
+            .onAppear() { UIDatePicker.appearance().minuteInterval = interval }
             .onDisappear() { UIDatePicker.appearance().minuteInterval = 1 }
     }
     
@@ -79,6 +80,10 @@ extension View {
         
     }
     
+    /**
+     [Custom Extension]
+     Executes `onStart` closure when user clicks on the view, and `onEnded` after precisely '0.1' secs.
+     */
     func onClick(_ onStart: @escaping ()->Void, onEnded: @escaping ()->Void) -> some View {
         self
             .onTapGesture {
@@ -90,6 +95,10 @@ extension View {
             }
     }
     
+    /**
+     [Custom Extension]
+     Overlays view with shape for appearance of an border of same shape.
+     */
     func border(
         _ shape: some InsettableShape,
         style: some ShapeStyle,
@@ -104,7 +113,8 @@ extension View {
     
     
     /**
-     `Custom Extension`: Hides this view conditionally
+     [Custom Extension]
+     Hides this view conditionally
      */
     @ViewBuilder func hidden(_ condition: Bool) -> some View {
         if(condition) {

@@ -12,7 +12,7 @@ struct RentingVehicleDetails: View {
     let rentDetails: RentDetails
     let tempBooking: Rentable
     
-    @State var presentPriceBreakUpSheet = false
+    @State private var presentPriceBreakUpSheet = false
     @Environment(\.colorScheme) var colorScheme
     
     
@@ -32,13 +32,14 @@ struct RentingVehicleDetails: View {
                 }
                 .padding()
         }
-        .safeAreaInset(edge: .bottom, spacing: 0) {
+        .bottomSticky(cornerRadius: 25) {
             bottomBar
         }
-        .sheet(isPresented: $presentPriceBreakUpSheet, content: {
+
+        .sheet(isPresented: $presentPriceBreakUpSheet) {
             priceBreakSheet
-                .presentationDetents([.fraction(0.35)])
-        })
+                .presentationDetents([.fraction(0.5)])
+        }
         .navigationTitle("Details")
         .navigationBarTitleDisplayMode(.inline)
         
@@ -69,9 +70,7 @@ struct RentingVehicleDetails: View {
             }
             .padding(.horizontal, 20)
             
-            NavigationLink {
-              RentalBookingOverview(rent: tempBooking)
-            } label: {
+            NavigationLink (value: RentingScreenPages.bookingDetails(tempBooking)) {
                 Text("Book This Car")
                     .padding()
                     .fontWeight(.bold)
@@ -84,21 +83,20 @@ struct RentingVehicleDetails: View {
             }
         }
         .padding(.top, 10)
-        .background {
-            let radius: CGFloat = 25.0
-            let shape: some Shape = .rect(topLeadingRadius: radius, topTrailingRadius: radius)
-            let backgroundColor: Color = colorScheme == .light ? .white : .offBlack
-            
-            backgroundColor
-                .clipShape(shape)
-                .ignoresSafeArea()
-                .applyBoxShadowEffect(shape: shape, y: 0)
-        }
     }
     
     var priceBreakSheet: some View {
-        VStack {
+        VStack(alignment: .trailing) {
+            
+            
             List {
+                Button(role: .cancel) {
+                    presentPriceBreakUpSheet = false
+                } label: {
+                    Text("Close")
+                }
+                
+
                 PriceRow("Base Cost: ", tempBooking.baseCost)
                 
                 if(!rentDetails.isSelfDrive) {
@@ -137,6 +135,6 @@ struct RentingVehicleDetails: View {
         )
         
         RentingVehicleDetails( rentDetails: rentQuery, vehicle: vehicle)
-            .environmentObject(model)
+            .initiateServices(of: previewModel)
     }
 }

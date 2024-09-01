@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct RentingTab: View {
+    @EnvironmentObject var model: Model
     @StateObject private var navigationManager = RentingNavigation()
-    @State private var searchState = RentSearchState()
+    @StateObject private var searchState = RentSearchViewModel()
     @State private var path = NavigationPath()
     
     
@@ -17,7 +18,7 @@ struct RentingTab: View {
             
         NavigationStack(path: $navigationManager.path){
             ScrollView {
-                RentingSearchView(searchState: $searchState) {
+                RentingSearchView() {
                     navigationManager.path.append(RentingScreenPages.searchResults)
                 }
                 .frame(maxHeight: .infinity)
@@ -25,13 +26,24 @@ struct RentingTab: View {
                 .navigationDestination(for: RentingScreenPages.self) { page in
                     switch(page) {
                     case .searchResults:
-                        AvailableVehiclesList(search: $searchState)
-                    default:
-                        Text("Shit")
+                        AvailableVehiclesList()
+                    case .vehicleDetails(let vehicle):
+                        RentingVehicleDetails(rentDetails: searchState.getRentSearchQuery(), vehicle: vehicle)
+                    case .bookingDetails(let rental):
+                        RentalBookingOverview(rent: rental)
+                    case .success(let rental):
+                        SuccessScreen {
+                            try await Task.sleep(for: .seconds(3))
+                            model.bookRental(context: rental)
+                        } onCompletion: {
+                            navigationManager.path = NavigationPath()
+                        }
+                        .toolbar(.hidden, for: .navigationBar)
                     }
                 }
             }
         }
+        .environmentObject(searchState)
         .environmentObject(navigationManager)
         
     }
@@ -39,5 +51,5 @@ struct RentingTab: View {
 
 #Preview {
     RentingTab()
-        .environmentObject(previewModel)
+        .initiateServices(of: previewModel)
 }

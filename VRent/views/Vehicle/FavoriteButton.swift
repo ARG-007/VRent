@@ -45,7 +45,7 @@ extension View {
 }
 
 struct FavoriteButton: View {
-    @EnvironmentObject var model: Model
+    @EnvironmentObject var favoriteService: ModelFavoriteService
     @Environment(\.favoriteButtonBehaviour) var behaviour
     
     let vehicle: Vehicle
@@ -61,7 +61,7 @@ struct FavoriteButton: View {
             }
         }
         .buttonStyle(PlainButtonStyle())
-        .onAppear { isFavorite = model.isFavorite(vehicle) }
+        .onAppear { isFavorite = favoriteService.isFavorite(vehicle) }
     }
     
     var toggleFavoriteButton: some View {
@@ -73,7 +73,7 @@ struct FavoriteButton: View {
     @ViewBuilder var deleteButton: some View {
         Button(action: toggleFavorite) {
             if (isFavorite) {
-                Image(systemName: "xmark.bin")
+                Image(systemName: "xmark")
                     .foregroundStyle(.primary)
             } else {
                 EmptyView()
@@ -83,11 +83,11 @@ struct FavoriteButton: View {
     }
     
     private func toggleFavorite() {
-        isFavorite = model.toggleFavorite(for: vehicle)
+        isFavorite = favoriteService.toggleFavorite(for: vehicle)
     }
     
     private func readFavorite() {
-        isFavorite = model.isFavorite(vehicle)
+        isFavorite = favoriteService.isFavorite(vehicle)
     }
     
 }
@@ -103,7 +103,6 @@ struct FavoriteButton: View {
         FavoriteButton(vehicle: favorite)
             .favoriteButtonBehaviour(.delete)
     }
-    .foregroundStyle(.foreground.blendMode(.colorDodge))
-//    .background(.black.opacity(0.5), in: .rect(cornerRadius: 10))
-    .environmentObject(previewModel)
+    .foregroundStyle(.foreground)
+    .initiateServices(of: previewModel)
 }

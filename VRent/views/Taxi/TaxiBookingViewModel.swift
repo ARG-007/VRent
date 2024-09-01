@@ -1,11 +1,12 @@
 //
-//  TaxiBookingState.swift
+//  TaxiBookingViewModel.swift
 //  VRent
 //
 //  Created by Arun R G on 19/08/24.
 //
 
 import Foundation
+import SwiftUI
 
 @propertyWrapper struct InputField<Value> {
     
@@ -24,9 +25,9 @@ import Foundation
 }
 
 
-struct TaxiBookingState {
+class TaxiBookingViewModel: ObservableObject {
     
-    private var taxiBookingAttributes: TaxiBookingAttributes
+    @Published private var taxiBookingAttributes: TaxiBookingAttributes
     
     var pickupLocation: Location? {
         get { taxiBookingAttributes.pickupLocation }
@@ -100,6 +101,17 @@ struct TaxiBookingState {
     
     func getAttributes() -> TaxiBookingAttributes {
         taxiBookingAttributes
+    }
+    
+    func swapLocation() {
+        let dropOff = taxiBookingAttributes.dropOffLocation
+        taxiBookingAttributes.dropOffLocation = taxiBookingAttributes.pickupLocation
+        taxiBookingAttributes.pickupLocation = dropOff
+        
+        
+//        if let pickup = taxiBookingAttributes.pickupLocation,
+//           let dropOff = taxiBookingAttributes.dropOffLocation {
+//           }
     }
     
     init() {

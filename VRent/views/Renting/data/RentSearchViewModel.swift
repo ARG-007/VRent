@@ -1,5 +1,5 @@
 //
-//  RentSearchState.swift
+//  RentSearchViewModel.swift
 //  VRent
 //
 //  Created by Arun R G on 31/07/24.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct RentSearchState {
-    private var search: RentDetails
+class RentSearchViewModel: ObservableObject {
+    @Published private var search: RentDetails
     
     private let calendar = Calendar.current
     private let postponeRentStartBy = DateComponents(hour: 1)

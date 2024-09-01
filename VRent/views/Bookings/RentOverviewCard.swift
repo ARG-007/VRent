@@ -12,7 +12,7 @@ struct RentOverviewCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("**Rented On:**  \(rentDetails.statusHistory[.Booked]!.formatted())")
+            Text("**Rented On:**  \(rentDetails.getBookingHistory()[.Booked]!.formatted())")
             Text("**Rent Durtation:** \(rentDetails.details.duration.converted(to: .hours).value.formatted()) Hrs")
             Text("**Pickup Date:**  \(rentDetails.details.pickupDate.formatted(date: .abbreviated, time: .shortened))")
             Text("**Drop Date:** \(rentDetails.details.dropDate.formatted(date: .abbreviated, time: .shortened))")

@@ -19,3 +19,21 @@ struct RentDetails: Codable {
         Measurement(value: pickupDate.distance(to: dropDate), unit: .seconds)
     }
 }
+
+extension RentDetails: Hashable {
+    static func == (lhs: RentDetails, rhs: RentDetails) -> Bool{
+        (lhs.pickupLocation?.name == rhs.pickupLocation?.name)
+        && (lhs.pickupDate == rhs.pickupDate)
+        && (lhs.dropDate == rhs.dropDate)
+        && (lhs.isSelfDrive == rhs.isSelfDrive)
+        && (lhs.isRequiredDeliver == rhs.isRequiredDeliver)
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(pickupLocation?.name)
+        hasher.combine(pickupDate)
+        hasher.combine(dropDate)
+        hasher.combine(isSelfDrive)
+        hasher.combine(isRequiredDeliver)
+    }
+}
