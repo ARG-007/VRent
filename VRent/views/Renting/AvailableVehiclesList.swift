@@ -12,24 +12,34 @@ struct AvailableVehiclesList: View {
     @EnvironmentObject var search: RentSearchViewModel
     @EnvironmentObject var model: Model
     @Environment(\.colorScheme) var colorScheme
+    
+    @Orientation var orientation
 
     var body: some View {
         ScrollView {
-            LazyVStack {
-                ForEach(model.getVehicles()){ vehicle in
-                    NavigationLink(value: RentingScreenPages.vehicleDetails(vehicle))
-                    {
-                        createVehicleCard(for: vehicle)
-                    }
-                   
-
+            if(orientation == .portrait || orientation == .portraitUpsideDown) {
+                LazyVStack {
+                    results
+                }
+            } else {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                    results
                 }
             }
-            .toolbar(.hidden, for: .tabBar)
-            .navigationTitle("Available Cars")
-            .navigationBarTitleDisplayMode(.inline)
         }
+        .toolbar(.hidden, for: .tabBar)
+        .navigationTitle("Available Cars")
+        .navigationBarTitleDisplayMode(.inline)
         
+    }
+    
+    var results: some View {
+        ForEach(model.getVehicles()){ vehicle in
+            NavigationLink(value: RentingScreenPages.vehicleDetails(vehicle))
+            {
+                createVehicleCard(for: vehicle)
+            }
+        }
     }
     
     func createVehicleCard(for vehicle: Vehicle) -> some View {

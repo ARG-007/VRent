@@ -11,7 +11,7 @@ struct RentalBookingOverview: View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var model: Model
-    @EnvironmentObject var navigationManager: RentingNavigation
+    @EnvironmentObject var navigationManager: NavigationManager
 
     let rental: Rentable
     
@@ -119,18 +119,31 @@ struct RentalBookingOverview: View {
         
         let model = Model()
         let vehicle = Model().getVehicles()[0]
+        let offset = 16.0
         
         let rentQuery = RentDetails(
             pickupLocation: model.popularPlaces[0],
-            pickupDate: .now.advanced(by: 2*3600),
-            dropDate: .now.advanced(by: 6*3600),
+            pickupDate: .now.advanced(by: offset*3600),
+            dropDate: .now.advanced(by: (offset+6)*3600),
             isSelfDrive: false,
             isRequiredDeliver: true
         )
         
         RentalBookingOverview(rent: Rentable(vehicle: vehicle, rentDetails: rentQuery))
             .environmentObject(model)
-            .environmentObject(RentingNavigation())
+            .environmentObject(NavigationManager())
+            .navigationDestination(for: RentingScreenPages.self) { page in
+                switch(page) {
+                case .success(let rental): SuccessScreen {
+                    try await Task.sleep(for: .seconds(3))
+                    previewModel.bookRental(context: rental)
+                } onCompletion: {
+                    
+                }
+                default: Text("Shit")
+                    
+                }
+            }
         
     }
 }

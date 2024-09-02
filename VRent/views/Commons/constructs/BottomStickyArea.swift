@@ -31,7 +31,7 @@ struct BottomStickyArea<Child: View>: ViewModifier {
                     .background {
                        shape
                             .fill(.background)
-                            .ignoresSafeArea()
+                            .ignoresSafeArea(edges: .bottom)
                             .applyBoxShadowEffect(shape: shape, y: -1)
                         
                     }

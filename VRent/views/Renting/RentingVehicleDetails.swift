@@ -25,14 +25,8 @@ struct RentingVehicleDetails: View {
     
     var body: some View {
         
-        ScrollView {
-            VehicleDetails(vehicle: vehicle)
-                .toolbar {
-                    FavoriteButton(vehicle: vehicle)
-                }
-                .padding()
-        }
-        .bottomSticky(cornerRadius: 25) {
+        
+        VehicleDetails(vehicle: vehicle) {
             bottomBar
         }
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum DriveTrain: String, Codable {
     case FWD
@@ -22,6 +23,8 @@ enum Fuel: String, Codable {
     case Hydrogen
     case Hybrid
     case Nuclear
+    
+    
 }
 
 enum VehicleType: String, Codable, CaseIterable, Identifiable {
@@ -67,6 +70,18 @@ enum VehicleType: String, Codable, CaseIterable, Identifiable {
             case .Maxicab: 250.0
         }
     }
+    
+    var image: Image {
+        switch(self) {
+            case .HatchBack: Image("vehicleIcons/Hatchback")
+            case .Sedan: Image("vehicleIcons/Sedan")
+            case .SUV: Image("vehicleIcons/SUV")
+            case .MUV: Image("vehicleIcons/MUV")
+            case .Maxicab: Image("vehicleIcons/Maxicab")
+        }
+    }
+    
+    
 }
 
 

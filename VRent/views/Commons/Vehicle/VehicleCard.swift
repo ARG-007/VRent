@@ -30,6 +30,7 @@ struct VehicleCard: View {
                     Spacer()
                     
                     bottomInfo
+//                        .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                     
                     
                 }
@@ -52,7 +53,15 @@ struct VehicleCard: View {
     
     var ratingCard: some View {
         HStack {
-            Label(vehicle.ratings.average.formatted(), systemImage: "star.fill")
+            ViewThatFits {
+                Label(vehicle.ratings.average.formatted(), systemImage: "star.fill")
+                
+                VStack {
+                    Image(systemName: "star.fill")
+                    Text(vehicle.ratings.average.formatted())
+                }
+            }
+                
                 .padding(topBarContentPadding/2)
                 .background() {
                     RoundedRectangle(cornerRadius: 6)
@@ -86,27 +95,31 @@ struct VehicleCard: View {
     }
     
     var bottomInfo: some View {
-        HStack(alignment: .bottom) {
+        HStack(alignment: .lastTextBaseline) {
             VStack(alignment: .leading, spacing: 2) {
+                let spec = vehicle.spec
                 
-                
-                Text(vehicle.spec.make)
+                Text(spec.make)
                     .font(.callout)
                 HStack {
-                    Text(vehicle.spec.model)
-                    Text(vehicle.spec.year, format: .number.grouping(.never))
+                    Text(spec.model)
+                    Text(spec.year, format: .number.grouping(.never))
                 }
                 .font(.title2)
                 .fontWeight(.semibold)
                 
-                HStack{
-                    Text(vehicle.spec.transmission.rawValue)
-                    Text("|")
-                    Text(vehicle.spec.fuelType.rawValue)
-                    Text("|")
-                    Text(vehicle.spec.capacity, format: .number) + Text(" Seats")
-                }
-                .font(.subheadline)
+                Text("\(spec.transmission) | \(spec.fuelType) | \(spec.capacity) Seats")
+                    .font(.caption)
+                
+                
+//                HStack{
+//                    Text(spec.transmission.rawValue)
+//                    Text("|")
+//                    Text(spec.fuelType.rawValue)
+//                    Text("|")
+//                    Text(spec.capacity, format: .number) + Text(" Seats")
+//                }
+//                .font(.subheadline)
             }
             Spacer()
             

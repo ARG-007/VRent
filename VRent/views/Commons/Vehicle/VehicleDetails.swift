@@ -8,24 +8,56 @@
 import SwiftUI
 
 
-struct VehicleDetails: View {
+struct VehicleDetails<BottomBar: View>: View {
     var vehicle: Vehicle
 
+    let bottomBar: () -> BottomBar
     
     @Environment(\.colorScheme) var colorScheme
     @State var presentPriceBreakUpSheet = false
     
     
+    @Orientation var orientation
+    
    
     var body: some View {
-        VStack {
+        
+        if (orientation.isPortrait ){
+            ScrollView {
+                overallView
+                    .padding()
+            }
+            .bottomSticky(cornerRadius: 45.0) {
+                bottomBar()
+            }
+        } else {
+            overallView
+                
+        }
+        
+    }
+    
+    @ViewBuilder private var overallView: some View {
+        let layout: AnyLayout = (orientation.isPortrait) ? AnyLayout(VStackLayout()): AnyLayout(HStackLayout())
+        layout {
             
             carousel
             
-            infoBar
+            if(orientation.isPortrait) {
+                detailsCard
+            } else {
+                ScrollView {
+                    detailsCard
+                }
+                .bottomSticky(cornerRadius: 45.0) {
+                    bottomBar()
+                }
+            }
             
-            specs
-            
+        }
+        
+        .toolbar {
+            FavoriteButton(vehicle: vehicle)
         }
         
     }
@@ -34,7 +66,13 @@ struct VehicleDetails: View {
         ImageCarousel(imageURLs: vehicle.images)
             .clipShape(RoundedRectangle(cornerRadius: 25.0))
             .applyInnerShadowEffect(shape: .rect(cornerRadius: 25.0))
-            .frame(height: 400)
+            .frame(minHeight: 300, maxHeight: 400)
+    }
+    
+    @ViewBuilder private var detailsCard: some View {
+        infoBar
+        
+        specs
     }
     
     private var infoBar: some View {
@@ -103,6 +141,9 @@ struct VehicleDetails: View {
     }
    
     
+    }
+
+extension VehicleDetails {
     struct SpecCard: View {
         @Environment(\.colorScheme) var colorScheme
         let specValue: String
@@ -138,18 +179,19 @@ struct VehicleDetails: View {
         
         
     }
-    
-    
-    
-    
-    
 
 }
 
 
 #Preview {
     NavigationStack {
-        VehicleDetails(vehicle: previewModel.getVehicles()[0])
+        VehicleDetails(vehicle: previewModel.getVehicles()[0]) {
+            SwipeControl(prompt: "DSAJNDKJN") {
+                
+            }
+            .padding([.horizontal, .top])
+        }
+            .initiateServices(of: previewModel)
 
     }
 }

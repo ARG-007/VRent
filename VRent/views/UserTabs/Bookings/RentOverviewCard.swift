@@ -21,6 +21,7 @@ struct RentOverviewCard: View {
             Text("**Vehicle Selected:** \(rentDetails.selectedVehicle.name)")
             Text("**Total Price:** \(localizedCurrency(rentDetails.totalCost))")
         }
+        
     }
 }
 

@@ -93,7 +93,7 @@ struct FavoriteButton: View {
 }
 
 #Preview {
-    @State var favorite = previewModel.getFavorites()[0]
+    @State var favorite = previewModel.favorites[0]
 //    @StateObject var model = previewModel
     
     return HStack {

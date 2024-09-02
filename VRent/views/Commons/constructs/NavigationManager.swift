@@ -9,6 +9,6 @@ import Foundation
 import SwiftUI
 
 
-class RentingNavigation: ObservableObject {
+class NavigationManager: ObservableObject {
     @Published var path = NavigationPath()
 }

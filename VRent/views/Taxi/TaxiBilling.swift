@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct TaxiBilling: View {
+    
     @EnvironmentObject var model: Model
+
+    @EnvironmentObject var navMan: NavigationManager
+    @EnvironmentObject var taxiVM: TaxiBookingViewModel
+    
+    @State private var naivgateToSuccessPage = false
+    
     let attributes: TaxiBookingAttributes
     
     var body: some View {
@@ -50,7 +57,16 @@ struct TaxiBilling: View {
         }
         .bottomSticky(cornerRadius: 45.0) {
             SwipeControl(prompt: "Swipe To Book") {
-                model.bookTaxi(for: attributes)
+                naivgateToSuccessPage=true
+            }
+            .navigationDestination(isPresented: $naivgateToSuccessPage) {
+                SuccessScreen {
+                    try await Task.sleep(for: .seconds(2))
+                    let _ = model.bookTaxi(for: attributes)
+                } onCompletion: {
+                    taxiVM.navigateToDetails = false
+                }
+
             }
             .padding(10)
         }

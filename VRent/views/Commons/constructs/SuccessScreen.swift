@@ -22,7 +22,7 @@ struct SuccessScreen: View {
     @State private var rotation: CGFloat = 0
     @State private var redirectionTime = 5
     
-    private let timer = Timer.publish(every: 1, on: .main, in: .common)
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var timerCanceller: (any Cancellable)?
     
     let task: () async throws -> Void
@@ -68,6 +68,17 @@ struct SuccessScreen: View {
             Spacer()
             Spacer()
         }
+        .onAppear() {
+            timer.upstream.connect().cancel()
+        }
+        .onReceive(timer) { update in
+            print("Timer Fired")
+            redirectionTime -= 1
+            if(redirectionTime<=0) {
+                timer.upstream.connect().cancel()
+                onCompletion()
+            }
+        }
         .task {
             taskState = .inProgress
             
@@ -92,15 +103,12 @@ struct SuccessScreen: View {
                 }
             }
             
-            timerCanceller = timer.connect()
+            
+            // Unfortunately the timer doesn't fire when navigated through navigationDestination, so this workaround autoconnect method is written
+            self.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
         }
-        .onReceive(timer) { update in
-            redirectionTime -= 1
-            if(redirectionTime<=0) {
-                timerCanceller?.cancel()
-                onCompletion()
-            }
-        }
+        
         
             
     }
@@ -168,11 +176,13 @@ struct SuccessScreen: View {
         case BullShit
     }
     
-    return SuccessScreen {
-        try await Task.sleep(for: .seconds(8))
-//        throw CustomError.BullShit
-    } onCompletion: {
-        
+    return NavigationStack {
+        SuccessScreen {
+            try await Task.sleep(for: .seconds(8))
+            //        throw CustomError.BullShit
+        } onCompletion: {
+            
+        }
     }
     
     

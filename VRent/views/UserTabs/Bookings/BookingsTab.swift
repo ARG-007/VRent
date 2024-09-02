@@ -23,14 +23,19 @@ struct BookingsTab: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 20) {
                     if (selection == .Rental) {
-//                        Text("Bookings")
+
                         ForEach(model.rentalBookings) { booking in
                             RentOverviewCard(rentDetails: booking)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .applyBoxShadowEffect()
                         }
                     } else {
-//                        Text("Taxi")
                         ForEach(model.taxiBookings) { booking in
                             TaxiOverviewCard(taxiDetails: booking)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .applyBoxShadowEffect()
                         }
                     }
                 }
