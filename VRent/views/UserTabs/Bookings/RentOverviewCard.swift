@@ -27,5 +27,5 @@ struct RentOverviewCard: View {
 
 #Preview {
     
-    RentOverviewCard(rentDetails: previewModel.rentalBookings[0])
+    RentOverviewCard(rentDetails: ModelBookingService.shared.getBookings()![0])
 }

@@ -90,7 +90,7 @@ struct AvailableVehiclesList: View {
         
         var body: some View {
             AvailableVehiclesList()
-                .initiateServices(of: previewModel)
+                .initiateServices()
                 .environmentObject(state)
         }
     }

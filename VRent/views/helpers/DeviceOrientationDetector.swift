@@ -43,7 +43,7 @@ class DeviceOrientationDetector: ObservableObject {
 }
 
 @propertyWrapper struct Orientation: DynamicProperty {
-    @StateObject private var orientationDetector: DeviceOrientationDetector = .shared
+    @ObservedObject private var orientationDetector: DeviceOrientationDetector = .shared
     
     var wrappedValue: UIDeviceOrientation {
         orientationDetector.current

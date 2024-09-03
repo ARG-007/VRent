@@ -18,12 +18,15 @@ struct TaxiTab: View {
     @EnvironmentObject var model: Model
     
     @StateObject private var taxiDetails = TaxiBookingViewModel()
+    @EnvironmentObject var navMan: NavigationManager
     
     @State private var showPopover = false
     
+    @GuestMode var guestMode
+    
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navMan.path) {
             ScrollView {
                 
                 VStack(alignment: .leading, spacing: 20) {
@@ -59,14 +62,27 @@ struct TaxiTab: View {
                     .padding()
                     .applyInnerShadowEffect(blurRadius: 2,y: 0)
                     
-                    Button (action: taxiDetails.continueToBook ) {
-                        Text("Book Vehicle")
-                            .foregroundStyle(.white)
-                            .bold()
-                            .font(.title3)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .applyInnerShadowEffect(shape:.rect(cornerRadius: 10),background: .tint)
+                    
+                    if(!guestMode) {
+                        Button (action: taxiDetails.continueToBook ) {
+                            Text("Book Vehicle")
+                                .foregroundStyle(.white)
+                                .bold()
+                                .font(.title3)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .applyInnerShadowEffect(shape:.rect(cornerRadius: 10),background: .tint)
+                        }
+                    } else {
+                        Button (action: {navMan.showLogin = true}) {
+                            Text("Sign In To Continue")
+                                .foregroundStyle(.white)
+                                .bold()
+                                .font(.title3)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .applyInnerShadowEffect(shape:.rect(cornerRadius: 10),background: .tint)
+                        }
                     }
                     
                     
@@ -85,6 +101,7 @@ struct TaxiTab: View {
                 .navigationTitle("Intercity Taxi")
                 .navigationDestination(isPresented: $taxiDetails.navigateToDetails){
                     TaxiBilling(attributes: taxiDetails.getAttributes())
+                        .toolbar(.hidden, for: .tabBar)
                 }
             }
         }

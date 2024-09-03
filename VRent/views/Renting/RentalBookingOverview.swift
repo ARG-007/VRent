@@ -32,6 +32,7 @@ struct RentalBookingOverview: View {
                 .padding(.top, 10)
         }
         
+        
     }
     
     @ViewBuilder
@@ -117,8 +118,8 @@ struct RentalBookingOverview: View {
     NavigationStack {
         
         
-        let model = Model()
-        let vehicle = Model().getVehicles()[0]
+        let model = Model.shared
+        let vehicle = model.getVehicles()[0]
         let offset = 16.0
         
         let rentQuery = RentDetails(
@@ -136,7 +137,7 @@ struct RentalBookingOverview: View {
                 switch(page) {
                 case .success(let rental): SuccessScreen {
                     try await Task.sleep(for: .seconds(3))
-                    previewModel.bookRental(context: rental)
+                    let _ = ModelBookingService.shared.registerBooking(for: rental)
                 } onCompletion: {
                     
                 }

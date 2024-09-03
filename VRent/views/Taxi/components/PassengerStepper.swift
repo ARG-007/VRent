@@ -23,7 +23,8 @@ struct PassengerStepper: View {
         VStack(alignment: .center) {
             Image(systemName: "person.fill")
             
-            TextField("Passenger Count", value: $passenger, format: .number)
+//            TextField("Passenger Count", value: $passenger, format: .number)
+            Text(passenger.formatted())
             //                            .padding(.leading)
                 .contentTransition(.identity)
                 .multilineTextAlignment(.center)
@@ -31,7 +32,7 @@ struct PassengerStepper: View {
                 .keyboardType(.numberPad)
                 
             
-            Stepper("Passenger Count",value: $passenger)
+            Stepper("Passenger Count",value: $passenger, in: 1...23)
                 .labelsHidden()
         }
         

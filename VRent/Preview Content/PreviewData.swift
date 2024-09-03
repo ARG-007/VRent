@@ -20,21 +20,30 @@ fileprivate extension TaxiBookingAttributes {
 struct PreviewData {
     static var data = PreviewData()
     
-    private(set) var model = Model()
+    private(set) var model = Model.shared
     
     private init() {
         initModel()
     }
     
     private func initModel() {
+        createUser()
         makeRentalBooking()
         markFavorites()
         makeTaxiBookings()
     }
     
+    func createUser() {
+        let name = "Bond"
+        let nickname = "007"
+        let phone = "0070070070"
+        
+        UserService.shared.signUp(name: name, phone: phone, nickname: nickname)
+    }
+    
     
     private func markFavorites() {
-        let favoriteService = ModelFavoriteService(model)
+        let favoriteService = ModelFavoriteService.shared
         
         for _ in 1...10 {
             if let randomVehicle = model.getVehicles().randomElement() {
@@ -44,6 +53,7 @@ struct PreviewData {
     }
     
     private func makeRentalBooking() {
+        
         var rentDetails: [Rentable] = []
         
         for i in 1...10 {
@@ -60,7 +70,7 @@ struct PreviewData {
         }
         
         for booking in  rentDetails {
-            model.bookRental(context: booking)
+            let _ = ModelBookingService.shared.registerBooking(for: booking)
         }
     }
     
@@ -80,9 +90,11 @@ struct PreviewData {
         
         for taxiBooking in taxiBookings {
             
-            let _ = model.bookTaxi(for: taxiBooking)
+            let _ = ModelTaxiService.shared.registerBooking(for: taxiBooking)
         }
     }
 }
+
+
 
 var previewModel = PreviewData.data.model

@@ -139,6 +139,6 @@ struct RentingSearchView: View {
     @StateObject var search = RentSearchViewModel()
     
     return RentingSearchView()
-        .initiateServices(of: previewModel)
+        .initiateServices()
         .environmentObject(search)
 }

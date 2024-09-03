@@ -7,4 +7,10 @@
 
 import Foundation
 
-// Todo
+protocol TaxiService: ObservableObject {
+    
+    func getBookings() -> [BookingStatus: TaxiBookingData]
+    func registerBooking(for context: TaxiBookingData) -> Bool
+    func rescheduleBooking(_ booking: TaxiBookingData, to nextDate: Date) -> Bool
+    func cancelBooking(_ booking: TaxiBookingData) -> Bool
+}

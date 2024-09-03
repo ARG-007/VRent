@@ -9,17 +9,25 @@ import Foundation
 import Combine
 
 
-class ModelFavoriteService: FavoriteService {
+class ModelFavoriteService: ObservableObject {
+    static let shared = ModelFavoriteService()
+    
     private var model: Model
     
     private var anyCancellable: AnyCancellable?
     
+    
+    @CurrentUser var currentUser
+    
     var favorites: [Vehicle] {
-        model.favorites
+        if let currentUser {
+            return model.favorites[currentUser]!
+        }
+        return []
     }
     
-    init(_ model: Model) {
-        self.model = model
+    private init() {
+        self.model = Model.shared
         
         anyCancellable = model.$favorites.sink { [weak self] vehicles in
             self?.objectWillChange.send()
@@ -43,11 +51,18 @@ class ModelFavoriteService: FavoriteService {
      */
     @discardableResult
     func favorite(_ vehicle: Vehicle) -> Bool {
+        
+        guard let currentUser else {
+            return false
+        }
+        
         guard !isFavorite(vehicle) else {
             return false
         }
         
-        model.favorites.append(vehicle)
+        
+        
+        model.favorites[currentUser]?.append(vehicle)
         return true
     }
     
@@ -57,11 +72,16 @@ class ModelFavoriteService: FavoriteService {
      `false` if the vehicle is already unfavorited
      */
     func unFavorite(_ vehicle: Vehicle) -> Bool {
+        guard let currentUser else {
+            return false
+        }
+        
         guard let index =  favorites.firstIndex(where: { $0.id == vehicle.id } ) else {
             return false
         }
         
-        model.favorites.remove(at: index)
+        
+        model.favorites[currentUser]?.remove(at: index)
         
         return true
     }
@@ -72,11 +92,15 @@ class ModelFavoriteService: FavoriteService {
      `false` if the vehicle is now not an favorite
      */
     func toggleFavorite(for vehicle: Vehicle) -> Bool {
+        guard let currentUser else {
+            return false
+        }
+        
         if let index = getIndexInFavorites(of: vehicle) {
-            model.favorites.remove(at: index)
+            model.favorites[currentUser]?.remove(at: index)
             return false
         } else {
-            model.favorites.append(vehicle)
+            model.favorites[currentUser]?.append(vehicle)
             return true
         }
     }

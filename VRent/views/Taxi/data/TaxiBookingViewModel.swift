@@ -78,7 +78,7 @@ class TaxiBookingViewModel: ObservableObject {
         get { taxiBookingAttributes.passengerCount }
         set {
             
-            guard newValue>0 else {
+            guard newValue>0 && newValue<24 else {
                 return
             }
             

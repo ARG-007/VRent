@@ -10,6 +10,7 @@ import SwiftUI
 struct TaxiBilling: View {
     
     @EnvironmentObject var model: Model
+    @EnvironmentObject var taxiService: ModelTaxiService
 
     @EnvironmentObject var navMan: NavigationManager
     @EnvironmentObject var taxiVM: TaxiBookingViewModel
@@ -62,14 +63,14 @@ struct TaxiBilling: View {
             .navigationDestination(isPresented: $naivgateToSuccessPage) {
                 SuccessScreen {
                     try await Task.sleep(for: .seconds(2))
-                    let _ = model.bookTaxi(for: attributes)
+                    let _ = taxiService.registerBooking(for: attributes)
                 } onCompletion: {
                     taxiVM.navigateToDetails = false
                 }
-
             }
             .padding(10)
         }
+        
     
     }
 }

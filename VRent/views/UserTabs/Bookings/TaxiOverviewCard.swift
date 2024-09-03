@@ -23,5 +23,5 @@ struct TaxiOverviewCard: View {
 }
 
 #Preview {
-    TaxiOverviewCard(taxiDetails: previewModel.taxiBookings[0])
+    TaxiOverviewCard(taxiDetails: ModelTaxiService.shared.getBookings()![0])
 }

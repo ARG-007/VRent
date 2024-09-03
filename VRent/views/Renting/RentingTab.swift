@@ -9,17 +9,18 @@ import SwiftUI
 
 struct RentingTab: View {
     @EnvironmentObject var model: Model
-    @StateObject private var navigationManager = NavigationManager()
+    @EnvironmentObject var bookingService: ModelBookingService
+    @EnvironmentObject var navMan: NavigationManager
     @StateObject private var searchState = RentSearchViewModel()
     @State private var path = NavigationPath()
     
     
     var body: some View {
             
-        NavigationStack(path: $navigationManager.path){
+        NavigationStack(path: $navMan.path){
             ScrollView {
                 RentingSearchView() {
-                    navigationManager.path.append(RentingScreenPages.searchResults)
+                    navMan.path.append(RentingScreenPages.searchResults)
                 }
                 .frame(maxHeight: .infinity)
                 .navigationTitle("Rent a Vehicle")
@@ -35,10 +36,10 @@ struct RentingTab: View {
                 case .success(let rental):
                     SuccessScreen {
                         try await Task.sleep(for: .seconds(3))
-                        model.bookRental(context: rental)
+                        let _ = bookingService.registerBooking(for: rental)
                     } onCompletion: {
                         withAnimation {
-                            navigationManager.path = NavigationPath()
+                            navMan.path = NavigationPath()
                         }
                     }
                     .toolbar(.hidden, for: .navigationBar)
@@ -46,12 +47,13 @@ struct RentingTab: View {
             }
         }
         .environmentObject(searchState)
-        .environmentObject(navigationManager)
+        
         
     }
 }
 
 #Preview {
     RentingTab()
-        .initiateServices(of: previewModel)
+        .initiateServices()
+        .environmentObject(NavigationManager())
 }

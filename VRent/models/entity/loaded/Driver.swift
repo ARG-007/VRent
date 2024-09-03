@@ -18,3 +18,13 @@ class Driver: Codable, Identifiable {
     }
     
 }
+
+extension Driver: Hashable {
+    static func == (lhs: Driver, rhs: Driver) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}

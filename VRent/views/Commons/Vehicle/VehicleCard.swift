@@ -132,5 +132,5 @@ struct VehicleCard: View {
 
 #Preview {
     VehicleCard(for: previewModel.getVehicles()[0])
-        .initiateServices(of: previewModel)
+        .initiateServices()
 }

@@ -11,8 +11,8 @@ import SwiftUI
 
 class Vehicle: Codable, Identifiable {
     let id: Int
-    let owner: Owner
-    let spec: VehicleSpecs
+    var owner: Owner
+    var spec: VehicleSpecs
     
     let addedOn: Date
     let broughtOnYear: Int16

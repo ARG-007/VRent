@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct VRentApp: App {
+    @Environment(\.colorScheme) var defaultColorScheme
+    @StateObject var themeManager = ThemeManager()
     let model = previewModel
    
     var body: some Scene {
@@ -16,7 +18,10 @@ struct VRentApp: App {
         WindowGroup {
             ContentView()
                 .backgroundStyle(Color(.systemGray6))
-                .initiateServices(of: previewModel)
+                .environmentObject(themeManager)
+                .tint(themeManager.tint)
+                .preferredColorScheme(themeManager.colorScheme != nil ? themeManager.colorScheme : defaultColorScheme)
+                .initiateServices()
         }
     }
 }

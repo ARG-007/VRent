@@ -99,6 +99,7 @@ struct LocationFinder: View {
                     .foregroundStyle(.foreground)
             }
             .padding(.vertical, 5)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
@@ -106,5 +107,5 @@ struct LocationFinder: View {
 #Preview {
 
     LocationFinder("Location", selection: .constant(nil))
-        .initiateServices(of: previewModel)
+        .initiateServices()
 }

@@ -55,7 +55,6 @@ struct VehicleDetails<BottomBar: View>: View {
             }
             
         }
-        
         .toolbar {
             FavoriteButton(vehicle: vehicle)
         }
@@ -191,7 +190,7 @@ extension VehicleDetails {
             }
             .padding([.horizontal, .top])
         }
-            .initiateServices(of: previewModel)
+            .initiateServices()
 
     }
 }

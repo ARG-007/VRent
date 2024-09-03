@@ -9,46 +9,65 @@ import SwiftUI
 
 struct AccountTab: View {
     @Orientation var orientation
-    
+    @GuestMode var guestMode
+    @EnvironmentObject var userService: UserService
+    @EnvironmentObject var navMan: NavigationManager
     
     var body: some View {
-        List {
-            VStack(alignment: .center) {
-                ProfilePicture()
-                    .frame(height: 200)
+        NavigationStack(path: $navMan.path) {
+            List {
+                VStack(alignment: .center) {
+                    ProfilePicture()
+                        .frame(height: 200)
+                        
+                    
+                    Text("Hello "+(guestMode ? "Guest" : userService.nickname!))
+                        .font(.largeTitle)
+                        .bold()
+                }
+                .frame(maxWidth: .infinity)
+                .listRowBackground(Color(uiColor: .systemGroupedBackground))
                 
-                Text("Hello 007")
-                    .font(.largeTitle)
-                    .bold()
-            }
-            .frame(maxWidth: .infinity)
-            .listRowBackground(Color(uiColor: .systemGroupedBackground))
-            
-            Section {
-                NavigationLink("Profile", value: 1)
-                NavigationLink("Theme", value: 2)
-                NavigationLink("Color Scheme", value: 3)
-            }
-            
-            Section("Legals") {
-                NavigationLink("Terms and Condition", value: 4)
-                NavigationLink("Legal Notice", value: 5)
-                NavigationLink("Policies", value: 6)
+                Section {
+                    if !guestMode {
+                        NavigationLink("Profile") {
+                            ProfilePage()
+                        }                        
+                    }
+                    NavigationLink("Theme") {
+                        ThemeChangerPage()
+                    }
+                }
+                
+                Section("Legals") {
+                    NavigationLink("Terms and Condition", value: 4)
+                    NavigationLink("Legal Notice", value: 5)
+                    NavigationLink("Policies", value: 6)
+                    
+                }
+                
+                if guestMode {
+                    Button {
+                        navMan.showLogin = true
+                    } label: {
+                        Text("Sign In")
+                    }
+                 } else {
+                    Button(role: .destructive) {
+                        userService.logOut()
+                    } label: {
+                        Text("Sign Out")
+                    }
+                }
+                
                 
             }
-            
-            Button(role: .destructive) {
-                
-            } label: {
-                Text("Sign Out")
-            }
-
-            
         }
     }
 }
 
 #Preview {
     AccountTab()
+        .initiateServices()
 }
 

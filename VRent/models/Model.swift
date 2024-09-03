@@ -8,21 +8,52 @@
 import Foundation
 
 class Model: ObservableObject {
-    private let places: [Location]
-    private let vehicles: [Vehicle]
-    private var drivers: [Driver]
-    @Published var rentalBookings: [RentalBooking] = []
-    @Published var taxiBookings: [TaxiBookingData] = []
-    @Published var favorites: [Vehicle] = []
+    
+    static let shared = Model()
+    
+    // Loaded from JSON from app Bundle
+    let places: [Location]
+    let vehicles: [Vehicle]
+    private(set) var owner: [Owner] = []
+    private(set) var specs: [VehicleSpecs] = []
+    private(set) var drivers: [Driver]
+    
+    // Generated after loading for either testing or production
+    @Published var users: [User] = []
+    
+    // Each User has list of these
+    @Published var rentalBookings: [ User : [RentalBooking] ] = [:]
+    @Published var taxiBookings: [ User : [TaxiBookingData] ] = [:]
+    @Published var favorites: [ User : [Vehicle] ] = [:]
     
     var popularPlaces: [Location] {
         Array(places.randomPick(7))
     }
     
-    init() {
+    private init() {
         places = load("places.json")
         vehicles = load("vehicles.json")
         drivers = load("drivers.json")
+        
+        resolveVehicleStruct()
+    }
+    
+    private func resolveVehicleStruct() {
+        for vehicle in vehicles {
+            if let owner = owner.first(where: {$0.id == vehicle.owner.id }) {
+                vehicle.owner = owner
+            } else {
+                self.owner.append(vehicle.owner)
+            }
+            
+            if let spec = specs.first(where: {$0.id == vehicle.spec.id }) {
+                vehicle.spec = spec
+            } else {
+                self.specs.append(vehicle.spec)
+            }
+        }
+        
+        
     }
     
     func fuzzyPlaceSearch(_ name: String)->[Location] {
@@ -33,25 +64,7 @@ class Model: ObservableObject {
         vehicles
     }
     
-    func bookRental(context: Rentable) {
-        rentalBookings.append(RentalBooking(id: rentalBookings.count, for: context))
-    }
     
-    func bookTaxi(for attributes: TaxiBookingAttributes) -> Bool {
-        guard let booking = TaxiBookingData(id: taxiBookings.count,for: attributes) else {
-            return false
-        }
-        
-        let vehicle = vehicles.filter { $0.spec.type == booking.requestedVehicleType || $0.spec.type.capacity > booking.passengerCount }.randomElement()!
-        let driver = drivers.randomElement()!
-        
-        booking.assignedVehicle = vehicle
-        booking.assignedDriver = driver
-            
-        taxiBookings.append(booking)
-        
-        return true
-    }
 
 }
 

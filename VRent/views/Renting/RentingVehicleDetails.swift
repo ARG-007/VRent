@@ -12,6 +12,9 @@ struct RentingVehicleDetails: View {
     let rentDetails: RentDetails
     let tempBooking: Rentable
     
+    @GuestMode var guestMode
+    @EnvironmentObject var navMan: NavigationManager
+    
     @State private var presentPriceBreakUpSheet = false
     @Environment(\.colorScheme) var colorScheme
     
@@ -64,16 +67,30 @@ struct RentingVehicleDetails: View {
             }
             .padding(.horizontal, 20)
             
-            NavigationLink (value: RentingScreenPages.bookingDetails(tempBooking)) {
-                Text("Book This Car")
-                    .padding()
-                    .fontWeight(.bold)
-                    .frame(maxWidth: .infinity)
-                    .background(in: .capsule)
-                    .backgroundStyle(.tint)
-                    .padding(.horizontal)
-                    .foregroundStyle(.white)
-                    .ignoresSafeArea(.container, edges: [.bottom])
+            if (!guestMode) {
+                NavigationLink (value: RentingScreenPages.bookingDetails(tempBooking) ) {
+                    Text("Book This Car")
+                        .padding()
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .background(in: .capsule)
+                        .backgroundStyle(.tint)
+                        .padding(.horizontal)
+                        .foregroundStyle(.white)
+                }
+            } else {
+                Button {
+                    navMan.showLogin = true
+                } label: {
+                    Text("Sign In To Continue")
+                        .padding()
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .background(in: .capsule)
+                        .backgroundStyle(.tint)
+                        .padding(.horizontal)
+                        .foregroundStyle(.white)
+                }
             }
         }
         .padding(.top, 10)
@@ -117,8 +134,8 @@ struct RentingVehicleDetails: View {
 
 #Preview {
     NavigationStack {
-        let model = Model()
-        let vehicle = Model().getVehicles()[0]
+        let model = Model.shared
+        let vehicle = model.getVehicles()[0]
         
         let rentQuery = RentDetails(
             pickupLocation: model.popularPlaces[0],
@@ -129,6 +146,6 @@ struct RentingVehicleDetails: View {
         )
         
         RentingVehicleDetails( rentDetails: rentQuery, vehicle: vehicle)
-            .initiateServices(of: previewModel)
+            .initiateServices()
     }
 }

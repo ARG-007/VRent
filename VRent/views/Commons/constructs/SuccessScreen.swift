@@ -9,8 +9,6 @@ import SwiftUI
 import Combine
 
 struct SuccessScreen: View {
-    
-    
     enum TaskState {
         case inactive
         case inProgress
@@ -56,6 +54,7 @@ struct SuccessScreen: View {
 
             Text(statusString)
                 .foregroundStyle(statusColor)
+                .multilineTextAlignment(.center)
                 .font(.largeTitle.lowercaseSmallCaps().monospaced().bold())
                 .transition(.opacity)
             

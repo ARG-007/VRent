@@ -50,12 +50,12 @@ enum Tab: String {
 }
 
 struct ContentView: View {
-    @State var currentTab: Tab = .renting
+    @StateObject var navigationManager = NavigationManager()
     @Environment(\.colorScheme) var colorScheme
     
     
     var body: some View {
-        TabView(selection: $currentTab) {
+        TabView(selection: $navigationManager.currentTab) {
             
             RentingTab()
                 .tabItem { Tab.renting.label }
@@ -78,9 +78,16 @@ struct ContentView: View {
                 .tag(Tab.account)
             
         }
-        .tint(.orange)
         .backgroundStyle( colorScheme == .light ? AnyShapeStyle(.background) : AnyShapeStyle(.offBlack))
-        
+        .environmentObject(navigationManager)
+        .sheet(isPresented: $navigationManager.showLogin) {
+            SignInPage() {
+                navigationManager.showLogin = false
+            }
+                .frame(maxHeight: .infinity, alignment: .top)
+                .presentationDetents([.fraction(0.75)])
+            
+        }
     }
 
     
@@ -88,5 +95,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .initiateServices(of: previewModel)
+        .initiateServices()
 }

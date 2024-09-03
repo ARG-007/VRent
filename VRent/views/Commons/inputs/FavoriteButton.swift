@@ -18,7 +18,7 @@ enum FavoriteButtonBehaviour {
     case toggle
     
     /**
-    Make `FavoriteButton` present an Dustbin Symbol and exposes only untoggle behaviour. The button hides itself if the vehicle is already not an favorite.
+    Make `FavoriteButton` present an Dustbin Symbol and exposes only untoggle behaviour. The button disables itself if the vehicle is already not an favorite.
      */
     case delete
 }
@@ -45,58 +45,64 @@ extension View {
 }
 
 struct FavoriteButton: View {
+    @EnvironmentObject var navMan: NavigationManager
     @EnvironmentObject var favoriteService: ModelFavoriteService
     @Environment(\.favoriteButtonBehaviour) var behaviour
+    
+    @GuestMode var guestMode
     
     let vehicle: Vehicle
     @State private var isFavorite = false
     
     var body: some View {
         
-        Button (action: toggleFavorite) {
-            if(behaviour == .toggle ) {
-                toggleFavoriteButton
-            } else {
-                deleteButton
-            }
-        }
-        .buttonStyle(PlainButtonStyle())
-        .onAppear { isFavorite = favoriteService.isFavorite(vehicle) }
+        appropriateButton
+            .buttonStyle(PlainButtonStyle())
+            .controlSize(.large)
+            .onAppear { isFavorite = favoriteService.isFavorite(vehicle) }
     }
     
     var toggleFavoriteButton: some View {
-        Image(systemName: isFavorite ? "heart.fill" : "heart")
-            .foregroundStyle( isFavorite ? AnyShapeStyle(.pink) : AnyShapeStyle(.primary))
-            
-    }
-    
-    @ViewBuilder var deleteButton: some View {
-        Button(action: toggleFavorite) {
-            if (isFavorite) {
-                Image(systemName: "xmark")
-                    .foregroundStyle(.primary)
-            } else {
-                EmptyView()
-            }
+        Button (action: toggleFavorite) {
+            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                .foregroundStyle( isFavorite ? AnyShapeStyle(.pink) : AnyShapeStyle(.primary))
         }
             
     }
     
-    private func toggleFavorite() {
-        isFavorite = favoriteService.toggleFavorite(for: vehicle)
+    var deleteButton: some View {
+        Button(action: toggleFavorite) {
+            Image(systemName: "xmark")
+                .foregroundStyle(.primary)
+        }
+        .disabled(!isFavorite)
+            
     }
     
-    private func readFavorite() {
-        isFavorite = favoriteService.isFavorite(vehicle)
+    @ViewBuilder var appropriateButton: some View {
+        if(behaviour == .toggle ) {
+            toggleFavoriteButton
+        } else {
+            deleteButton
+        }
+    }
+    
+    private func toggleFavorite() {
+        if(guestMode) {
+            navMan.showLogin = true
+            return
+        }
+        isFavorite = favoriteService.toggleFavorite(for: vehicle)
+        
     }
     
 }
 
 #Preview {
-    @State var favorite = previewModel.favorites[0]
+    @State var favorite = ModelFavoriteService.shared.favorites![0]
 //    @StateObject var model = previewModel
     
-    return HStack {
+    HStack {
         FavoriteButton(vehicle: favorite)
             
         
@@ -104,5 +110,5 @@ struct FavoriteButton: View {
             .favoriteButtonBehaviour(.delete)
     }
     .foregroundStyle(.foreground)
-    .initiateServices(of: previewModel)
+    .initiateServices()
 }

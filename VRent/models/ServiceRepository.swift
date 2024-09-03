@@ -9,20 +9,14 @@ import Foundation
 import SwiftUI
 
 struct ServiceRepository: ViewModifier {
-    private let model: Model
-    
-    let favoriteService: ModelFavoriteService
-    
-    
-    init(with model: Model) {
-        self.model = model
-        favoriteService = ModelFavoriteService(model)
-    }
-    
     func body(content: Content) -> some View {
         content
-            .environmentObject(model)
-            .environmentObject(favoriteService)
+            .environmentObject(Model.shared)
+            .environmentObject(ModelFavoriteService.shared)
+            .environmentObject(ModelBookingService.shared)
+            .environmentObject(ModelTaxiService.shared)
+            .environmentObject(UserService.shared)
+        
     }
 }
 
@@ -35,8 +29,8 @@ extension View {
      [Custom Extension]
      Initiates Services Of Model to be used by SubViews
      */
-    func initiateServices(of model: Model) -> some View {
+    func initiateServices() -> some View {
         self
-            .modifier(ServiceRepository(with: model))
+            .modifier(ServiceRepository())
     }
 }

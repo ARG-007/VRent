@@ -12,7 +12,7 @@ import CoreLocation
 
 class RentalBooking: Identifiable, Hashable {
     let id: Int
-    let details: RentDetails
+    var details: RentDetails
     let selectedVehicle: Vehicle
     
     let baseCost: Decimal
@@ -49,8 +49,13 @@ class RentalBooking: Identifiable, Hashable {
         }
     }
     
+    
     func getStatus() -> BookingStatus {
         currentStatus
+    }
+    
+    func canTransition(to pseudoStatus: BookingStatus) -> Bool {
+        statusHistory.canTransition(to: pseudoStatus)
     }
     
     func getBookingHistory() -> BookingHistory {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BookingStatus: Int {
+enum BookingStatus: Int, Hashable {
     case Booked
     case Active
     case Completed

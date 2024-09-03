@@ -12,10 +12,20 @@ struct FavoriteVehicleDetails: View {
     
     var body: some View {
         VehicleDetails(vehicle: vehicle) {
-            Text("Some JKNHSAKJH")
-                .padding()
-                .frame(maxWidth: .infinity)
+            Button {
+                
+            } label: {
+                Text("Check Availablity")
+                    .foregroundStyle(.white)
+                    .bold()
+                    .font(.title3)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .applyInnerShadowEffect(shape:.rect(cornerRadius: 10),background: .tint)
+                    .padding()
+            }
         }
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 

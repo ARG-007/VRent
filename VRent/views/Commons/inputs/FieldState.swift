@@ -15,4 +15,11 @@ enum FieldState: Equatable {
     var isValid: Bool {
         self == .valid
     }
+    
+    var errorString: String {
+        switch(self) {
+            case .invalid(let error) : error
+            default : "            "
+        }
+    }
 }

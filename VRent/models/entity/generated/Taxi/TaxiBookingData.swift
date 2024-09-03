@@ -15,7 +15,7 @@ class TaxiBookingData: Identifiable {
     let pickupLocation: Location
     let dropOffLcoation: Location
     
-    let pickupTime: Date
+    var pickupTime: Date
     
     let passengerCount: Int
     let requestedVehicleType: VehicleType
@@ -68,12 +68,17 @@ class TaxiBookingData: Identifiable {
         bookingHistory.transition(to: .Booked)
     }
     
+    @discardableResult
     func setStatus(to newStatus: BookingStatus) -> Bool {
         if(bookingHistory.transition(to: newStatus)) {
             currentStatus = newStatus
             return true
         }
         return false
+    }
+    
+    func canTransition(to pseudoStatus: BookingStatus) -> Bool {
+        bookingHistory.canTransition(to: pseudoStatus)
     }
     
     
