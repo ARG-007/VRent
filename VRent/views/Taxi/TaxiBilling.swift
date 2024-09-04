@@ -12,7 +12,7 @@ struct TaxiBilling: View {
     @EnvironmentObject var model: Model
     @EnvironmentObject var taxiService: ModelTaxiService
 
-    @EnvironmentObject var navMan: NavigationManager
+    @EnvironmentObject var navMan: Navigation
     @EnvironmentObject var taxiVM: TaxiBookingViewModel
     
     @State private var naivgateToSuccessPage = false
@@ -67,6 +67,7 @@ struct TaxiBilling: View {
                 } onCompletion: {
                     taxiVM.navigateToDetails = false
                 }
+                .toolbar(.hidden, for: .navigationBar, .bottomBar, .tabBar)
             }
             .padding(10)
         }

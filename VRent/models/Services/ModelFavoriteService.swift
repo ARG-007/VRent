@@ -21,7 +21,7 @@ class ModelFavoriteService: ObservableObject {
     
     var favorites: [Vehicle] {
         if let currentUser {
-            return model.favorites[currentUser]!
+            return model.favorites[currentUser] ?? []
         }
         return []
     }
@@ -63,6 +63,8 @@ class ModelFavoriteService: ObservableObject {
         
         
         model.favorites[currentUser]?.append(vehicle)
+        
+        model.saveModel()
         return true
     }
     
@@ -83,6 +85,8 @@ class ModelFavoriteService: ObservableObject {
         
         model.favorites[currentUser]?.remove(at: index)
         
+        model.saveModel()
+        
         return true
     }
 
@@ -98,11 +102,23 @@ class ModelFavoriteService: ObservableObject {
         
         if let index = getIndexInFavorites(of: vehicle) {
             model.favorites[currentUser]?.remove(at: index)
+            
+            model.saveModel()
             return false
         } else {
             model.favorites[currentUser]?.append(vehicle)
+            
+            model.saveModel()
             return true
         }
+    }
+    
+    func getFavoritesCount() -> Int {
+        if let currentUser {
+            return model.favorites[currentUser]!.count
+        }
+        return 0
+
     }
     
     private func getIndexInFavorites(of vehicle: Vehicle) -> Int? {

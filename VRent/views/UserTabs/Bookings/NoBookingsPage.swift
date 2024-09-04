@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct NoBookingsPage: View {
+    let forCategory: Bookings
+    @EnvironmentObject private var navMan: NavigationManager
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("You Haven't Booked any \(forCategory)!")
+                .font(.title.bold())
+                .multilineTextAlignment(.center)
+            
+            Button {
+                navMan.currentTab = (forCategory == .Rental) ? .renting : .taxi
+            } label: {
+                Text("Book Now !")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .applyBoxShadowEffect(background: .tint)
+            }
+        }
     }
 }
 
 #Preview {
-    NoBookingsPage()
+    NoBookingsPage(forCategory: .Rental)
 }

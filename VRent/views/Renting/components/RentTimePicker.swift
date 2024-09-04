@@ -25,7 +25,13 @@ struct RentTimePicker: View {
             Text(prompt)
                 .font(.title3)
                 .fontWeight(.semibold)
-            Text(selection, format: .dateTime.day().month().year())
+            DatePicker(
+                prompt,
+                selection: $selection,
+                in: range,
+                displayedComponents: .date
+                
+            )
             DatePicker(
                 prompt,
                 selection: $selection,

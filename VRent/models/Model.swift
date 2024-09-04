@@ -6,6 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
+
+typealias UserFavoriteVehicles = [User: [Vehicle]]
+typealias UserRentals = [User: [RentalBooking]]
+typealias UserTaxiBookings = [User: [TaxiBookingData]]
+typealias Users = [User]
 
 class Model: ObservableObject {
     
@@ -19,23 +25,28 @@ class Model: ObservableObject {
     private(set) var drivers: [Driver]
     
     // Generated after loading for either testing or production
-    @Published var users: [User] = []
+    @Published var users: Users = []
     
     // Each User has list of these
-    @Published var rentalBookings: [ User : [RentalBooking] ] = [:]
-    @Published var taxiBookings: [ User : [TaxiBookingData] ] = [:]
-    @Published var favorites: [ User : [Vehicle] ] = [:]
+    @Published var rentalBookings: UserRentals = [:]
+    @Published var taxiBookings: UserTaxiBookings = [:]
+    @Published var favorites: UserFavoriteVehicles = [:]
     
-    var popularPlaces: [Location] {
+    lazy var popularPlaces: [Location] = {
         Array(places.randomPick(7))
-    }
+    }()
     
     private init() {
         places = load("places.json")
         vehicles = load("vehicles.json")
         drivers = load("drivers.json")
         
+        
+        loadModel()
+        
         resolveVehicleStruct()
+        
+    
     }
     
     private func resolveVehicleStruct() {
@@ -52,8 +63,6 @@ class Model: ObservableObject {
                 self.specs.append(vehicle.spec)
             }
         }
-        
-        
     }
     
     func fuzzyPlaceSearch(_ name: String)->[Location] {
@@ -64,11 +73,78 @@ class Model: ObservableObject {
         vehicles
     }
     
+    func loadModel() {
+        let defaults = UserDefaults.standard
+        let jsonDecoder = JSONDecoder()
+        
+        do {
+            if let loadedUsers = defaults.data(forKey: "users"),
+               let decodedUsers = try? jsonDecoder.decode(Users.self, from: loadedUsers) {
+                print(loadedUsers)
+                users = decodedUsers
+            } else {
+                print("No Users Found, Empty List Initialization")
+                users = []
+            }
+            
+            if let loaded = defaults.data(forKey: "userRentals"),
+               let decoded = try? jsonDecoder.decode(UserRentals.self, from: loaded) {
+                print(loaded)
+                rentalBookings = decoded
+            } else {
+                print("No Rentals Found, Empty Dict Initialization")
+                rentalBookings = [:]
+            }
+            
+            if let loaded = defaults.data(forKey: "userTaxi"),
+               let decoded = try? jsonDecoder.decode(UserTaxiBookings.self, from: loaded) {
+                print(loaded)
+                taxiBookings = decoded
+            } else {
+                print("No Taxi's Found, Empty Dict Initialization")
+                taxiBookings = [:]
+            }
+            
+            if let loaded = defaults.data(forKey: "userFavoriteVehicles"),
+               let decoded = try? jsonDecoder.decode(UserFavoriteVehicles.self, from: loaded) {
+                print(loaded)
+                favorites = decoded
+            } else {
+                print("No Favorites Found, Empty Dict Initialization")
+                favorites = [:]
+            }
+        } catch {}
+        
+    }
     
+    func saveModel() {
+        let defaults = UserDefaults.standard
+        let jsonEncoder = JSONEncoder()
+        
+        if let encoded = try? jsonEncoder.encode(users) {
+            print(encoded)
+            defaults.set(encoded, forKey: "users")
+        }
+        
+        if let encoded = try? jsonEncoder.encode(rentalBookings) {
+            print(encoded)
+            defaults.set(encoded, forKey: "userRentals")
+        }
+        
+        if let encoded = try? jsonEncoder.encode(taxiBookings) {
+            print(encoded)
+            defaults.set(encoded, forKey: "userTaxi")
+        }
+        
+        if let encoded = try? jsonEncoder.encode(favorites) {
+            print(encoded)
+            defaults.set(encoded, forKey: "userFavoriteVehicles")
+        }
+        
+        
 
+    }
 }
-
-
 
 
 

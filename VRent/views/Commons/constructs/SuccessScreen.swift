@@ -62,6 +62,12 @@ struct SuccessScreen: View {
                 .contentTransition(.numericText(countsDown: true))
                 .multilineTextAlignment(.center)
                 .font(.callout)
+            
+            if(taskState == .completed || taskState == .failed) {
+                Button (action: onCompletion) {
+                    Text("Go To Home Page \(Image(systemName: "arrow.right"))")
+                }
+            }
 
             
             Spacer()

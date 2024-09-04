@@ -21,25 +21,33 @@ struct TaxiTab: View {
     @EnvironmentObject var navMan: NavigationManager
     
     @State private var showPopover = false
+    @StateObject private var nav = Navigation()
     
     @GuestMode var guestMode
     
     
     var body: some View {
-        NavigationStack(path: $navMan.path) {
+        NavigationStack(path: $nav.path) {
             ScrollView {
                 
                 VStack(alignment: .leading, spacing: 20) {
                     
-                    TaxiLocationSelector(
-                        pickupSelection: $taxiDetails.pickupLocation,
-                        dropSelection: $taxiDetails.dropOffLocation,
-                        locationSelection: $taxiDetails.locationSelectionSheet,
-                        swapActionHandler: taxiDetails.swapLocation)
+                    VStack(spacing: 10) {
+                        TaxiLocationSelector(
+                            pickupSelection: $taxiDetails.pickupLocation,
+                            dropSelection: $taxiDetails.dropOffLocation,
+                            locationSelection: $taxiDetails.locationSelectionSheet,
+                            swapActionHandler: taxiDetails.swapLocation)
+                        
+                        Text("Pickup and Drop Locations Must Be Different")
+                            .opacity(taxiDetails.locationSame ? 1 : 0)
+                            .foregroundStyle(.red)
+                            .font(.caption.bold())
+                    }
                     
                     VStack {
                         Text("Pickup Date and Time")
-                        DatePicker("Pickup Time", selection: $taxiDetails.pickupTime, in: Date.now...)
+                        DatePicker("Pickup Time", selection: $taxiDetails.pickupTime, in: Date.now.advanced(by: 30*60)...Date.now.advanced(by: 3600 * 24 * 10))
                             .frame(maxWidth: .infinity)
                     }
                     .bold()
@@ -51,12 +59,15 @@ struct TaxiTab: View {
                         HStack(alignment: .firstTextBaseline) {
                             vehiclePicker
                             passengerStepper
+                            
+
                         }
                         
                         VStack {
                             vehiclePicker
                             passengerStepper
-                                .frame(maxWidth: .infinity)
+                                
+                                
                         }
                     }
                     .padding()
@@ -106,6 +117,7 @@ struct TaxiTab: View {
             }
         }
         .environmentObject(taxiDetails)
+        .environmentObject(nav)
 
     }
     
@@ -138,7 +150,8 @@ struct TaxiTab: View {
             PassengerStepper(passenger: $taxiDetails.passengerCount)
             .labelsHidden()
             .padding(5)
-            .border(.rect(cornerRadius: 10), style: .black.opacity(0.33))
+            .applyInnerShadowEffect(shape: .rect(cornerRadius: 10), blurRadius: 2, x: 0, y: 1)
+//            .border(.rect(cornerRadius: 10), style: .black.opacity(0.33))
         }
     }
 }

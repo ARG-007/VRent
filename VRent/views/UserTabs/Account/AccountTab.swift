@@ -13,8 +13,10 @@ struct AccountTab: View {
     @EnvironmentObject var userService: UserService
     @EnvironmentObject var navMan: NavigationManager
     
+    @StateObject var nav = Navigation()
+    
     var body: some View {
-        NavigationStack(path: $navMan.path) {
+        NavigationStack(path: $nav.path) {
             List {
                 VStack(alignment: .center) {
                     ProfilePicture()
@@ -34,15 +36,23 @@ struct AccountTab: View {
                             ProfilePage()
                         }                        
                     }
-                    NavigationLink("Theme") {
-                        ThemeChangerPage()
-                    }
+
+                    ThemeChangerPage()
+                        .alignmentGuide(.listRowSeparatorLeading) { d in d[.leading]}
+                    
+                    ColorSchemeChangePage()
                 }
                 
                 Section("Legals") {
-                    NavigationLink("Terms and Condition", value: 4)
-                    NavigationLink("Legal Notice", value: 5)
-                    NavigationLink("Policies", value: 6)
+                    NavigationLink("Terms and Condition") {
+                        TermsAndConditionPage()
+                    }
+                    NavigationLink("Legal Notice") {
+                        PoliciesPage()
+                    }
+                    NavigationLink("Policies") {
+                        LegalNoticePage()
+                    }
                     
                 }
                 

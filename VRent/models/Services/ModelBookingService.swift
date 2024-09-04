@@ -22,7 +22,7 @@ class ModelBookingService: ObservableObject {
     
     func getBookings() -> [RentalBooking] {
         if let currentUser {
-            return model.rentalBookings[currentUser]!
+            return model.rentalBookings[currentUser] ?? []
         }
         return []
     }
@@ -31,11 +31,19 @@ class ModelBookingService: ObservableObject {
         return Dictionary(grouping:  getBookings(), by: {$0.getStatus()})
     }
     
+    func getBookingsCount() -> Int {
+        guard let currentUser else { return 0 }
+        return getBookings().count
+    }
+    
     @discardableResult
     func registerBooking(for context: Rentable) -> Bool {
         if let currentUser {
-            model.rentalBookings[currentUser]!.append(RentalBooking(id: next_booking_id,for: context))
+            model.rentalBookings[currentUser]!.insert(RentalBooking(id: next_booking_id,for: context), at: 0)
             next_booking_id += 1
+            
+            print(next_booking_id)
+            model.saveModel()
             return true
         }
         return false

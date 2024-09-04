@@ -10,11 +10,6 @@ import SwiftUI
 
 
 class NavigationManager: ObservableObject {
-    @Published var path = NavigationPath()
-    @Published var currentTab: Tab = .renting {
-        willSet {
-            path = NavigationPath()
-        }
-    }
-    @Published var showLogin: Bool = true
+    @Published var currentTab: Tab = .renting
+    @Published var showLogin: Bool = false
 }

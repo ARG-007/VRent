@@ -119,15 +119,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "21A38181-78C8-40C1-B729-AF8178B7E5E2"
+            uuid = "DDBA6F06-A872-4CFD-920E-9A6CA159A393"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VRent/views/Taxi/components/PassengerStepper.swift"
+            filePath = "VRent/views/UserTabs/Bookings/UserBookings.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

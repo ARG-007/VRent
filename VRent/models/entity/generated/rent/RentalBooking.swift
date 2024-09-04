@@ -10,7 +10,7 @@ import CoreLocation
 
 
 
-class RentalBooking: Identifiable, Hashable {
+class RentalBooking: Identifiable, Hashable, Codable {
     let id: Int
     var details: RentDetails
     let selectedVehicle: Vehicle

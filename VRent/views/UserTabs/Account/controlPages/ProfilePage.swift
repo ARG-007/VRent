@@ -20,33 +20,40 @@ struct ProfilePage: View {
     
     @State private var showErrors: Bool = false
     
+    @State private var edit: Bool = false
+    
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(spacing: 20) {
                 ProfilePicture()
                     .frame(height: 200)
-                    .overlay(alignment: .bottomTrailing) {
-                        Button("", systemImage: "pencil.circle.fill") {
-                            
-                        }
-                        .font(.largeTitle)
-                        .labelsHidden()
-                        .accessibilityLabel("Change Profile Picture")
-                        
+//                    .overlay(alignment: .bottomTrailing) {
+//                        Button("", systemImage: "pencil.circle.fill") {
+//                            
+//                        }
+//                        .font(.largeTitle)
+//                        .labelsHidden()
+//                        .accessibilityLabel("Change Profile Picture")
+//                        
+//                    }
+//                
+//                Button("Edit", action: {edit.toggle()})
+                
+                if(edit) {
+                    FieldInput("Nickname", value: $nickName, fieldState: $nickNameField, validator: userService.validateNickname)
+                    FieldInput("Fullname", value: $fullName, fieldState: $fullNameField, validator: userService.validateFullName)
+                }
+                
+                Group {
+                    if(!edit) {
+                        Text(userService.fullName!)
+                        Text(userService.nickname!)
                     }
+                    
+                    Text(userService.phone!)
+                }
                 
                 
-                
-                TextField("Nickname", text: $nickName)
-                    .textContentType(.nickname)
-                
-                TextField("Full Name", text: $fullName)
-                    .textContentType(.givenName)
-                
-                
-                Text(userService.phone ?? "")
-                    .textContentType(.telephoneNumber)
-                    .keyboardType(.phonePad)
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

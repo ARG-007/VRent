@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+enum Bookings: String, CaseIterable, Identifiable {
+    case Rental
+    case Taxi
+    
+    var id: Self {self}
+}
+
+
 struct UserBookings: View {
 //    @EnvironmentObject var model: Model
     @EnvironmentObject var rentalService: ModelBookingService
@@ -14,36 +22,18 @@ struct UserBookings: View {
     
     @State private var selection: Bookings = .Rental
     
-    private enum Bookings: String, CaseIterable, Identifiable {
-        case Rental
-        case Taxi
-        
-        var id: Self {self}
-    }
     
     var body: some View {
         NavigationStack{
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 20) {
-                    Group{
-                        if (selection == .Rental) {
-                            ForEach(rentalService.getBookings()) { booking in
-                                RentOverviewCard(rentDetails: booking)
-                            }
-                        } else {
-                            ForEach(taxiService.getBookings()) { booking in
-                                TaxiOverviewCard(taxiDetails: booking)
-                                //                                .frame(maxWidth: .infinity)
-                            }
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                    .applyBoxShadowEffect()
+            Group {
+                if selection == .Rental {
+                    RentalBookingsPage()
+                } else {
+                    TaxiBookingsPage()
                 }
-                .id(UUID())
-                .padding()
             }
+            .navigationTitle("Bookings")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Picker("Show Bookings Of", selection: $selection) {
@@ -56,7 +46,7 @@ struct UserBookings: View {
                     .frame(width: 300)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            
         }
         
     }

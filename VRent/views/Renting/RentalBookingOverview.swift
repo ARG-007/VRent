@@ -11,14 +11,16 @@ struct RentalBookingOverview: View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var model: Model
-    @EnvironmentObject var navigationManager: NavigationManager
+    
 
     let rental: Rentable
+    let onSwipe: () -> Void
     
  
     
-    init(rent: Rentable) {
+    init(rent: Rentable,  onSwipe: @escaping ()->Void) {
         self.rental = rent
+        self.onSwipe = onSwipe
     }
     
     var body: some View {
@@ -85,7 +87,7 @@ struct RentalBookingOverview: View {
     
     var swipeButton: some View {
         SwipeControl(prompt: "Swipe To Book") {
-            navigationManager.path.append(RentingScreenPages.success(rental))
+            onSwipe()
         }
 //        .navigationDestination(for: Int.self) { _ in
 //            
@@ -130,7 +132,7 @@ struct RentalBookingOverview: View {
             isRequiredDeliver: true
         )
         
-        RentalBookingOverview(rent: Rentable(vehicle: vehicle, rentDetails: rentQuery))
+        RentalBookingOverview(rent: Rentable(vehicle: vehicle, rentDetails: rentQuery)) {}
             .environmentObject(model)
             .environmentObject(NavigationManager())
             .navigationDestination(for: RentingScreenPages.self) { page in

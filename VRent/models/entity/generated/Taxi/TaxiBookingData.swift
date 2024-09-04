@@ -10,7 +10,7 @@ import CoreLocation
 
 
 
-class TaxiBookingData: Identifiable {
+class TaxiBookingData: Identifiable, Hashable, Codable {
     let id: Int
     let pickupLocation: Location
     let dropOffLcoation: Location
@@ -81,7 +81,12 @@ class TaxiBookingData: Identifiable {
         bookingHistory.canTransition(to: pseudoStatus)
     }
     
+    static func == (lhs: TaxiBookingData, rhs: TaxiBookingData) -> Bool {
+        lhs.id == rhs.id
+    }
     
-    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
 }

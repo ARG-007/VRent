@@ -52,6 +52,7 @@ enum Tab: String {
 struct ContentView: View {
     @StateObject var navigationManager = NavigationManager()
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var themeManager: ThemeManager
     
     
     var body: some View {
@@ -78,7 +79,6 @@ struct ContentView: View {
                 .tag(Tab.account)
             
         }
-        .backgroundStyle( colorScheme == .light ? AnyShapeStyle(.background) : AnyShapeStyle(.offBlack))
         .environmentObject(navigationManager)
         .sheet(isPresented: $navigationManager.showLogin) {
             SignInPage() {
@@ -88,6 +88,9 @@ struct ContentView: View {
                 .presentationDetents([.fraction(0.75)])
             
         }
+        .transition(.slide)
+        .backgroundStyle( colorScheme == .light ? AnyShapeStyle(.background) : AnyShapeStyle(Color(.systemGray6)))
+//        .preferredColorScheme(themeManager.colorScheme != nil ? themeManager.colorScheme : ColorScheme(.unspecified))
     }
 
     

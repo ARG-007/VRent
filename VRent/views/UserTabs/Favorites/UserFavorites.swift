@@ -13,40 +13,65 @@ struct UserFavorites: View {
     
     @Orientation private var orientation
     
+    @State private var modelSearch = ""
     
     var body: some View {
         NavigationStack {
-            GeometryReader { proxy in
-                ScrollView {
-                    if(orientation == .portrait || orientation == .portraitUpsideDown || orientation == .faceUp) {
-                        LazyVStack(spacing: 20) {
-                            cards
+            Group {
+                
+                if(favoriteService.getFavoritesCount() > 0) {
+                    ScrollView {
+                        if(orientation.isLandscape) {
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                                cards
+                            }
+                        } else {
+                            LazyVStack(spacing: 20) {
+                                cards
+                            }
                         }
-                    } else {
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
-                            cards
-                        }
+                        
                     }
+                    .searchable(text: $modelSearch,placement: .navigationBarDrawer, prompt: Text("Search by Vehicle Model"))
                     
+                } else {
+                    NoFavoritesPage()
                 }
             }
             .animation(.easeInOut(duration: 0.1), value: favoriteService.favorites)
+            .navigationTitle("Favorites")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
-    var cards: some View {
-        
-        ForEach(favoriteService.favorites) { vehicle in
+    @ViewBuilder var cards: some View {
+        ForEach(vehicles) { vehicle in
             NavigationLink {
                 FavoriteVehicleDetails(vehicle: vehicle)
-                    
+                
             } label: {
                 VehicleCard(for: vehicle)
                     .applyBoxShadowEffect()
                     .favoriteButtonBehaviour(.delete)
+                
             }
+            .id(vehicle.id)
         }
         .padding(.horizontal)
+        .animation(.bouncy, value: vehicles)
+    }
+    
+    var vehicles: [Vehicle] {
+        var vehicles = favoriteService.favorites
+        
+        if(!modelSearch.isEmpty) {
+            vehicles = vehicles.filter {
+                $0.name.contains(modelSearch)
+            }
+        }
+        
+        return vehicles
+        
     }
 }
 

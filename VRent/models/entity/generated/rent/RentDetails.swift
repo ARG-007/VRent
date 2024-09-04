@@ -13,7 +13,7 @@ struct RentDetails: Codable {
     var pickupDate: Date
     var dropDate: Date
     var isSelfDrive: Bool = false
-    var isRequiredDeliver: Bool = false
+    var isRequiredDeliver: Bool = true
     
     var duration: Measurement<UnitDuration> {
         Measurement(value: pickupDate.distance(to: dropDate), unit: .seconds)

@@ -10,40 +10,44 @@ import SwiftUI
 struct RentingTab: View {
     @EnvironmentObject var model: Model
     @EnvironmentObject var bookingService: ModelBookingService
-    @EnvironmentObject var navMan: NavigationManager
     @StateObject private var searchState = RentSearchViewModel()
-    @State private var path = NavigationPath()
+    @State private var nav = NavigationPath()
     
     
     var body: some View {
             
-        NavigationStack(path: $navMan.path){
+        NavigationStack(path: $nav){
             ScrollView {
                 RentingSearchView() {
-                    navMan.path.append(RentingScreenPages.searchResults)
+                    
+                    nav.append(RentingScreenPages.searchResults)
                 }
                 .frame(maxHeight: .infinity)
                 .navigationTitle("Rent a Vehicle")
             }
             .navigationDestination(for: RentingScreenPages.self) { page in
+                let _ = print(page)
                 switch(page) {
                 case .searchResults:
                     AvailableVehiclesList()
                 case .vehicleDetails(let vehicle):
                     RentingVehicleDetails(rentDetails: searchState.getRentSearchQuery(), vehicle: vehicle)
                 case .bookingDetails(let rental):
-                    RentalBookingOverview(rent: rental)
+                    RentalBookingOverview(rent: rental) {
+                        nav.append(RentingScreenPages.success(rental))
+                    }
                 case .success(let rental):
                     SuccessScreen {
                         try await Task.sleep(for: .seconds(3))
                         let _ = bookingService.registerBooking(for: rental)
                     } onCompletion: {
                         withAnimation {
-                            navMan.path = NavigationPath()
+                            nav = NavigationPath()
                         }
                     }
                     .toolbar(.hidden, for: .navigationBar)
                 }
+                
             }
         }
         .environmentObject(searchState)

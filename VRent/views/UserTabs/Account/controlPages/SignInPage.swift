@@ -39,12 +39,12 @@ struct SignInPage: View {
 
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 10) {
             
             Text(modeText)
                 .bold()
                 .font(.title)
-                .padding(.top)
+                .padding(.bottom)
                 .contentTransition(.interpolate)
             
             phoneField
@@ -145,36 +145,37 @@ struct SignInPage: View {
     
     
     
-    struct FieldInput: View {
-        let prompt: String
-        @Binding var value: String
-        @Binding var fieldState: FieldState
-        let validator: (String) -> FieldState
-        
-        init(_ prompt: String, value: Binding<String>, fieldState: Binding<FieldState>, validator: @escaping (String) -> FieldState) {
-            self.prompt = prompt
-            self._value = value
-            self._fieldState = fieldState
-            self.validator = validator
-        }
-        
-        var body: some View {
-            VStack(alignment: .leading, spacing: 10) {
-                
-                TextField(prompt, text: $value)
-                    .onChange(of: value) { newValue in
-                        fieldState = validator(newValue)
-                    }
-                    .padding()
-                    .applyBoxShadowEffect(color: (fieldState == .valid || fieldState == .unset) ? .black : .red)
-                
-                Text(fieldState.errorString)
-                    .font(.callout)
-                    .padding(.leading)
-                    .foregroundStyle(.red)
-                    .bold()
-                    
-            }
+}
+
+struct FieldInput: View {
+    let prompt: String
+    @Binding var value: String
+    @Binding var fieldState: FieldState
+    let validator: (String) -> FieldState
+    
+    init(_ prompt: String, value: Binding<String>, fieldState: Binding<FieldState>, validator: @escaping (String) -> FieldState) {
+        self.prompt = prompt
+        self._value = value
+        self._fieldState = fieldState
+        self.validator = validator
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            
+            TextField(prompt, text: $value)
+                .onChange(of: value) { newValue in
+                    fieldState = validator(newValue)
+                }
+                .padding()
+                .applyBoxShadowEffect(color: (fieldState == .valid || fieldState == .unset) ? .black : .red)
+            
+            Text(fieldState.errorString)
+                .font(.callout)
+                .padding(.leading)
+                .foregroundStyle(.red)
+                .bold()
+            
         }
     }
 }

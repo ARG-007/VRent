@@ -22,36 +22,35 @@ struct VehicleDetails<BottomBar: View>: View {
    
     var body: some View {
         
-        if (orientation.isPortrait ){
+        if (orientation.isLandscape ){
+            overallView
+        } else {
             ScrollView {
                 overallView
                     .padding()
             }
-            .bottomSticky(cornerRadius: 45.0) {
+            .bottomSticky(cornerRadius: 25.0) {
                 bottomBar()
             }
-        } else {
-            overallView
-                
         }
         
     }
     
     @ViewBuilder private var overallView: some View {
-        let layout: AnyLayout = (orientation.isPortrait) ? AnyLayout(VStackLayout()): AnyLayout(HStackLayout())
+        let layout: AnyLayout = (orientation.isLandscape) ? AnyLayout(HStackLayout()): AnyLayout(VStackLayout())
         layout {
             
             carousel
             
-            if(orientation.isPortrait) {
-                detailsCard
-            } else {
+            if(orientation.isLandscape) {
                 ScrollView {
                     detailsCard
                 }
-                .bottomSticky(cornerRadius: 45.0) {
+                .bottomSticky(cornerRadius: 25.0) {
                     bottomBar()
                 }
+            } else {
+                detailsCard                
             }
             
         }
@@ -163,7 +162,7 @@ extension VehicleDetails {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .applyInnerShadowEffect(background: (colorScheme == .light ? .white : .offBlack),intensity: 0.6, blurRadius: 2, y: 1 )
+            .applyInnerShadowEffect(intensity: 0.6, blurRadius: 2, y: 1 )
         }
         
         init(_ value: String, icon: Image) {

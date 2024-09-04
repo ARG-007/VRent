@@ -10,8 +10,8 @@ import Foundation
 
 enum Charges {
     
-    static let convinenceCharge: Decimal = 100.0
-    static let driverChargePerKm: Decimal = 15.0
+    static let convinenceCharge: Decimal = 15.0
+    static let driverChargePerKm: Decimal = 5.0
     static let driverChargePerHr: Decimal = 20
     static let vehicleDeliveryChargePerKm: Decimal = 10
     

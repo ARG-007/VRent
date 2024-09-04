@@ -8,8 +8,12 @@
 import SwiftUI
 
 class ThemeManager: ObservableObject {
-    @Published var tint: Color = .orange
-    @Published var colorScheme: ColorScheme? = nil
+    @Published var tint: Color = .appTints[0]
+    @Published var colorScheme: ColorScheme? = nil {
+        didSet {
+            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = UIUserInterfaceStyle(colorScheme)
+        }
+    }
 }
 
 extension Color {

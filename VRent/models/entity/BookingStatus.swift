@@ -7,12 +7,22 @@
 
 import Foundation
 
-enum BookingStatus: Int, Hashable {
+enum BookingStatus: Int, Hashable, Codable {
     case Booked
     case Active
     case Completed
     case Cancelled
     case Rescheduled
+    
+    var statusName: String {
+        switch(self) {
+        case .Booked: "Booked"
+        case .Active: "Active"
+        case .Cancelled: "Cancelled"
+        case .Completed: "Completed"
+        case .Rescheduled: "Rescheduled"
+        }
+    }
 }
 
 typealias BookingHistory = Dictionary<BookingStatus, Date>

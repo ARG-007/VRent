@@ -31,32 +31,26 @@ struct RentingSearchView: View {
                             }
                         }
                     
-                    VStack {
+                    TimePickers
+                    
+                    HStack(spacing: 30) {
+                        Text("Driving")
+                            .bold()
                         
-                        RentDatePicker(
-                            "Pickup Date",
-                            selection: $searchState.pickupDate,
-                            range: searchState.pickupDateValidRange
-                        )
-                        
-                        
-                        RentDatePicker(
-                            "Drop Date",
-                            selection: $searchState.dropDate,
-                            range: searchState.dropDateValidRange
-                        )
-                        
-                        
-                        TimePickers
-                        
+                        Picker("Driving", selection: $searchState.isSelfDrive) {
+                            Text("Self-Drive")
+                                .tag(true)
+                            
+                            Text("Need Driver")
+                                .tag(false)
+                        }
+                        .pickerStyle(.segmented)
                     }
                     
                     
-                    HStack(spacing: 20) {
-                        Toggle("Self Driving", isOn: $searchState.isSelfDrive)
-                        Toggle("Delivery", isOn: $searchState.isRequiredDelivery)
-                    }
-                    .padding(.top)
+                    Toggle("Deliver to your location", isOn: $searchState.isRequiredDelivery)
+                        .bold()
+                        .disabled(!searchState.isSelfDrive)
                     
                 }
                 .padding()

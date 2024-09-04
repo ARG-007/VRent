@@ -14,15 +14,17 @@ struct AvailableVehiclesList: View {
     @Environment(\.colorScheme) var colorScheme
     
     @Orientation var orientation
+    
+    @State private var vehicleSearch = ""
 
     var body: some View {
         ScrollView {
-            if(orientation == .portrait || orientation == .portraitUpsideDown) {
-                LazyVStack {
+            if(orientation.isLandscape) {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                     results
                 }
             } else {
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                LazyVStack {
                     results
                 }
             }
@@ -30,16 +32,29 @@ struct AvailableVehiclesList: View {
         .toolbar(.hidden, for: .tabBar)
         .navigationTitle("Available Cars")
         .navigationBarTitleDisplayMode(.inline)
+        .searchable(text: $vehicleSearch,placement: .navigationBarDrawer, prompt: Text("Search by Vehicle Make, Model, Year"))
         
     }
     
+    var vehicles: [Vehicle] {
+        var vehicles = model.getVehicles()
+        
+        if(!vehicleSearch.isEmpty) {
+            vehicles = vehicles.filter { $0.name.contains(vehicleSearch) }
+        }
+        
+        return vehicles
+    }
+    
     var results: some View {
-        ForEach(model.getVehicles()){ vehicle in
+        ForEach(vehicles){ vehicle in
             NavigationLink(value: RentingScreenPages.vehicleDetails(vehicle))
             {
                 createVehicleCard(for: vehicle)
             }
+            .id(vehicle.id)
         }
+        .animation(.bouncy, value: vehicles)
     }
     
     func createVehicleCard(for vehicle: Vehicle) -> some View {
@@ -49,7 +64,7 @@ struct AvailableVehiclesList: View {
             
             HStack(alignment: .top) {
                 
-                Label(search.pickupLocation?.distance(from: vehicle.location).formatted(.measurement(width: .abbreviated, usage: .road)) ?? "0 KM", systemImage: "ruler")
+                Label(search.pickupLocation?.distance(from: vehicle.location).formatted(.measurement(width: .abbreviated, usage: .road)) ?? "0 KM", systemImage: "figure.walk")
 //                Label(getDistance(vehicle.location), systemImage: "ruler")
                 
                 Spacer()

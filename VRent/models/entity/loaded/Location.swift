@@ -40,7 +40,7 @@ struct Location: Codable, Identifiable{
 
 extension Location: Equatable {
     static func == (lhs: Location, rhs: Location) -> Bool {
-        return (lhs.latitude == rhs.latitude) && (lhs.longitude == rhs.longitude)
+        return (lhs.name == rhs.name) || (lhs.latitude == rhs.latitude) && (lhs.longitude == rhs.longitude)
     }
 }
 

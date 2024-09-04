@@ -44,11 +44,11 @@ enum VehicleType: String, Codable, CaseIterable, Identifiable, Hashable {
     
     var standardChargePerKm: Decimal {
         switch(self) {
-            case .HatchBack: 100.0
-            case .Sedan: 130.0
-            case .SUV: 160.0
-            case .MUV: 200.0
-            case .Maxicab: 250.0
+            case .HatchBack: 10.0
+            case .Sedan: 13.0
+            case .SUV: 16.0
+            case .MUV: 20.0
+            case .Maxicab: 25.0
         }
     }
     

@@ -82,9 +82,7 @@ class TaxiBookingViewModel: ObservableObject {
                 return
             }
             
-            if(vehicleType.capacity < newValue) {
-                taxiBookingAttributes.requestedVehicleType = VehicleType.typeWithCapacity(newValue)
-            }
+            taxiBookingAttributes.requestedVehicleType = VehicleType.typeWithCapacity(newValue)
             taxiBookingAttributes.passengerCount = newValue
         }
     }
@@ -92,16 +90,16 @@ class TaxiBookingViewModel: ObservableObject {
     var vehicleType: VehicleType {
         get { taxiBookingAttributes.requestedVehicleType }
         set {
-            if(newValue.capacity < passengerCount) {
-                taxiBookingAttributes.passengerCount = newValue.capacity
-            }
+            taxiBookingAttributes.passengerCount = newValue.capacity
             taxiBookingAttributes.requestedVehicleType = newValue
         }
     }
     
     
     
-    
+    var locationSame: Bool {
+        (dropOffLocation != nil ) && (dropOffLocation == pickupLocation)
+    }
     
     var allFieldsValid: Bool {
         pickupLocationField == .valid

@@ -21,7 +21,7 @@ struct FavoriteVehicleDetails: View {
                     .font(.title3)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .applyInnerShadowEffect(shape:.rect(cornerRadius: 10),background: .tint)
+                    .applyInnerShadowEffect(shape:.rect(cornerRadius: 25),background: .tint)
                     .padding()
             }
         }

@@ -23,7 +23,7 @@ class ModelTaxiService: ObservableObject {
     
     func getBookings() -> [TaxiBookingData] {
         if let currentUser {
-            return model.taxiBookings[currentUser]!
+            return model.taxiBookings[currentUser] ?? []
         }
         return []
     }
@@ -32,11 +32,19 @@ class ModelTaxiService: ObservableObject {
         return Dictionary(grouping: getBookings(), by: {$0.currentStatus})
     }
     
+    func getBookingsCount() -> Int {
+        guard let currentUser else { return 0 }
+        return model.taxiBookings[currentUser]!.count
+    }
+    
     @discardableResult
     func registerBooking(for context: TaxiBookingAttributes) -> Bool {
         if let currentUser {
-            model.taxiBookings[currentUser]!.append(TaxiBookingData(id: next_taxi_id,for: context)!)
+            model.taxiBookings[currentUser]!.insert(TaxiBookingData(id: next_taxi_id,for: context)!, at: 0)
             next_taxi_id += 1
+            
+            print(next_taxi_id)
+            model.saveModel()
             return true
         }
         return false

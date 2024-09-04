@@ -59,12 +59,23 @@ class RentSearchViewModel: ObservableObject {
     
     var isSelfDrive: Bool {
         get {search.isSelfDrive}
-        set {search.isSelfDrive = newValue}
+        set {
+            search.isSelfDrive = newValue
+            if (!isSelfDrive) {
+                isRequiredDelivery = true
+            }
+        }
     }
     
     var isRequiredDelivery: Bool {
         get {search.isRequiredDeliver}
-        set {search.isRequiredDeliver = newValue}
+        set {
+            if (isSelfDrive) {
+                search.isRequiredDeliver = newValue
+            } else {
+                search.isRequiredDeliver = true
+            }
+        }
     }
 
     init() {

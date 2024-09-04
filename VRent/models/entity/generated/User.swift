@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class User: Identifiable, Hashable {
+class User: Identifiable, Hashable, Codable {
     let id: Int
     var name: String
     var nickname: String

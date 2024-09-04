@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 fileprivate extension TaxiBookingAttributes {
     init(pickup: Location, drop: Location, pickupTime: Date, passengerCount: Int, requestedVehicleType: VehicleType) {
@@ -19,6 +20,7 @@ fileprivate extension TaxiBookingAttributes {
 
 struct PreviewData {
     static var data = PreviewData()
+    @AppStorage("firstLaunch") var firstLaunch: Bool = true
     
     private(set) var model = Model.shared
     
@@ -27,10 +29,21 @@ struct PreviewData {
     }
     
     private func initModel() {
-        createUser()
-        makeRentalBooking()
-        markFavorites()
-        makeTaxiBookings()
+        if(firstLaunch) {
+            createUser()
+            makeRentalBooking()
+            markFavorites()
+            makeTaxiBookings()
+            model.saveModel()
+            print("FirstLaunch")
+            firstLaunch = false
+            model.loadModel()
+        } else {
+            print("Subsequnt Launch")
+        }
+        
+        
+        
     }
     
     func createUser() {

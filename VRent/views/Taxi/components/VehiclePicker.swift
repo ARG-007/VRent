@@ -21,7 +21,7 @@ struct VehiclePicker: View {
             
             
             //            let pickerShape = UnevenRoundedRectangle(topLeadingRadius: 10, bottomTrailingRadius: 10)
-            Text(localizedCurrency(selection.standardChargePerKm)+"/hr")
+            Text(localizedCurrency(selection.standardChargePerKm)+"/km")
                 .padding(.horizontal,5)
             
             
@@ -31,6 +31,9 @@ struct VehiclePicker: View {
                     Text(vtype.rawValue)
                 }
             }
+            .animation(.easeIn, value: selection)
+            .contentTransition(.interpolate)
+            .frame(maxWidth: .infinity)
             
             //            VStack(spacing: 5) {
             //                .frame(maxWidth: .infinity, alignment: .trailing)

@@ -16,20 +16,24 @@ struct ProfilePicture: View {
             .overlay {
                 Group {
                     if !guestMode {
-                        AsyncImage(url: URL(string: "https://i.pinimg.com/originals/2a/cb/b4/2acbb4248c5fbd303a8a48065865bfa6.jpg")) { image in
-                            
-                            image
-                                .resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
+                        
+                        Image("Avatars/Yorha")
+                            .resizable()
+                        
+//                        AsyncImage(url: URL(string: "https://static.wikia.nocookie.net/nier/images/c/c5/YoRHa_Symbol.png/revision/latest?cb=20230714222052")) { image in
+//                            
+//                            image
+//                                .resizable()
+//                        } placeholder: {
+//                            ProgressView()
+//                        }
                     } else {
                         Image(systemName: "person.crop.circle.fill")
                             .resizable()
                     }
                 }
-                    .clipShape(Circle())
                     .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle())
             }
             .border(Circle(), style: .tint, lineWidth: 5)
             .applyBoxShadowEffect(shape: Circle(), blurRadius: 4, y: 5)

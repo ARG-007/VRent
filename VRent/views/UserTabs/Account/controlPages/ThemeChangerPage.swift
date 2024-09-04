@@ -10,21 +10,26 @@ import SwiftUI
 struct ThemeChangerPage: View {
     @EnvironmentObject private var themeMan: ThemeManager
     var body: some View {
-        VStack {
-            Text("Color Scheme")
-            Picker(selection: $themeMan.colorScheme) {
-                Text("System")
-                    .tag(nil as ColorScheme?)
-                Text("Light")
-                    .tag(ColorScheme.light)
-                Text("Dark")
-                    .tag(ColorScheme.dark)
-            } label: {
-                Text("Color Scheme")
+        VStack(alignment: .leading) {
+            Text("Theme")
+                .bold()
+            
+            HStack(spacing: 20) {
+                ForEach(Color.appTints, id: \.self) { color in
+                    Circle()
+                        .fill(color)
+                        .frame(height: 28)
+                        .border(.circle, style: (color==themeMan.tint) ? AnyShapeStyle(.foreground) : AnyShapeStyle(.clear), lineWidth: 3)
+                        .onTapGesture {
+                            themeMan.tint = color
+                        }
+                }
             }
-            .pickerStyle(.segmented)
+            .frame(maxWidth: .infinity)
 
         }
+        .frame(maxWidth: .infinity)
+
     }
 }
 

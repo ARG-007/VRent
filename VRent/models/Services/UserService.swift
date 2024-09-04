@@ -18,11 +18,27 @@ class UserService: ObservableObject {
     @Published private(set) var isInGuestMode: Bool = true
     @Published private(set) var currentUser: User? = nil {
         didSet {
+            
+            do {
+                let encoded = try JSONEncoder().encode(currentUser)
+                UserDefaults.standard.set(encoded, forKey: "currentUser")
+            } catch {
+                
+            }
             isInGuestMode = (currentUser == nil)
         }
     }
     
-    private init() {}
+    private init() {
+        let defaults = UserDefaults.standard
+        
+        if let data = defaults.data(forKey: "currentUser"),
+           let decodedUser = try? JSONDecoder().decode(User.self, from: data) {
+            currentUser = decodedUser
+            print("Successfully Decoded")
+        }
+        
+    }
     
     var nickname: String? {
         currentUser?.nickname
@@ -121,6 +137,8 @@ class UserService: ObservableObject {
         model.favorites.updateValue([], forKey: newUser)
         
         currentUser = newUser
+        
+        model.saveModel()
         
         return true
     }
