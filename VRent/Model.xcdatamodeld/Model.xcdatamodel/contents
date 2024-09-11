@@ -1,34 +1,75 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Owner_temp" representedClassName="Owner_temp" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23222.3" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="OwnerCD" representedClassName="OwnerCD" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="joinedOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="fleet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle_temp"/>
+        <relationship name="fleet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VehicleCD" inverseName="ownedBy" inverseEntity="VehicleCD"/>
     </entity>
-    <entity name="Vehicle_temp" representedClassName="Vehicle_temp" syncable="YES" codeGenerationType="class">
+    <entity name="RentalBookingCD" representedClassName="RentalBookingCD" syncable="YES" codeGenerationType="class">
+        <attribute name="baseCost" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="bookingID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="deliveryCost" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="driverCost" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="dropTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSelfDriving" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="needToDeliver" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pickupTIme" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="totalCost" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <relationship name="bookedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserCD" inverseName="rentalBookings" inverseEntity="UserCD"/>
+        <relationship name="selectedVehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleCD" inverseName="rentalBookings" inverseEntity="VehicleCD"/>
+    </entity>
+    <entity name="TaxiBookingCD" representedClassName="TaxiBookingCD" syncable="YES" codeGenerationType="class">
+        <attribute name="bookingID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="driverCost" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="passengerCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pickupTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="requestedVehicleType" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="totalFare" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="vehicleCost" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <relationship name="assignedVehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleCD" inverseName="taxiBookings" inverseEntity="VehicleCD"/>
+        <relationship name="bookedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserCD" inverseName="taxiBookings" inverseEntity="UserCD"/>
+    </entity>
+    <entity name="UserCD" representedClassName="UserCD" syncable="YES" codeGenerationType="class">
+        <attribute name="avatar" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="nickname" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="userID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="favorites" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="VehicleCD" inverseName="favoritedBy" inverseEntity="VehicleCD"/>
+        <relationship name="rentalBookings" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RentalBookingCD" inverseName="bookedBy" inverseEntity="RentalBookingCD"/>
+        <relationship name="taxiBookings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaxiBookingCD" inverseName="bookedBy" inverseEntity="TaxiBookingCD"/>
+    </entity>
+    <entity name="VehicleCD" representedClassName="VehicleCD" syncable="YES" codeGenerationType="class">
         <attribute name="addedOn" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="boughtOnYear" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="images" attributeType="Transformable" customClassName="[URL]"/>
-        <attribute name="location" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="pricePerHR" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="Owner_temp"/>
-        <relationship name="spec" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleSpecs_temp"/>
+        <attribute name="locationLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="locationLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="pricePerHR" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="tripsCompleted" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="favoritedBy" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="UserCD" inverseName="favorites" inverseEntity="UserCD"/>
+        <relationship name="ownedBy" maxCount="1" deletionRule="Nullify" destinationEntity="OwnerCD" inverseName="fleet" inverseEntity="OwnerCD"/>
+        <relationship name="rentalBookings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RentalBookingCD" inverseName="selectedVehicle" inverseEntity="RentalBookingCD"/>
+        <relationship name="spec" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleSpecsCD" inverseName="vehiclesOfSpec" inverseEntity="VehicleSpecsCD"/>
+        <relationship name="taxiBookings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaxiBookingCD" inverseName="assignedVehicle" inverseEntity="TaxiBookingCD"/>
     </entity>
-    <entity name="VehicleSpecs_temp" representedClassName="VehicleSpecs_temp" syncable="YES" codeGenerationType="class">
-        <attribute name="capacity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="driveTrain" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="VehicleSpecsCD" representedClassName="VehicleSpecsCD" syncable="YES" codeGenerationType="class">
+        <attribute name="capacity" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="driveTrain" attributeType="String"/>
         <attribute name="fuelCapacity" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="fuelType" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fuelType" attributeType="String"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isLuxury" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="make" attributeType="String"/>
         <attribute name="mileage" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="model" attributeType="String"/>
-        <attribute name="transmission" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="type" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="transmission" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
         <attribute name="year" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="vehiclesOfSpec" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle_temp"/>
+        <relationship name="vehiclesOfSpec" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VehicleCD" inverseName="spec" inverseEntity="VehicleCD"/>
     </entity>
 </model>

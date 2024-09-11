@@ -15,12 +15,13 @@ struct VRentApp: App {
    
     var body: some Scene {
         
+        
         WindowGroup {
             ContentView()
-//                .backgroundStyle(Color(.systemGray6))
                 .initiateServices()
-                .tint(themeManager.tint)
                 .environmentObject(themeManager)
+//                .preferredColorScheme(themeManager.colorScheme)
+//                .animation(.easeInOut, value: themeManager.colorScheme)
         }
     }
 }
