@@ -10,7 +10,7 @@ import SwiftUI
 
 
 
-class VehicleSpecs: Codable, Identifiable {
+struct VehicleSpecs: Codable, Identifiable {
     let id: Int
     
     let make: String

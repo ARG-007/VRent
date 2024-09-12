@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import SwiftUI
 
-class Vehicle: Codable, Identifiable {
+struct Vehicle: Codable, Identifiable {
     let id: Int
     var owner: Owner
     var spec: VehicleSpecs

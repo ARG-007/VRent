@@ -13,7 +13,7 @@ import CoreLocation
 class TaxiBookingData: Identifiable, Hashable, Codable {
     let id: Int
     let pickupLocation: Location
-    let dropOffLcoation: Location
+    let dropOffLocation: Location
     
     var pickupTime: Date
     
@@ -51,7 +51,7 @@ class TaxiBookingData: Identifiable, Hashable, Codable {
         }
         
         pickupLocation = pickupLocationAttribute
-        dropOffLcoation = dropOffLocationAttribute
+        dropOffLocation = dropOffLocationAttribute
         
         pickupTime = taxiBookingAttributes.pickupTime
         passengerCount = taxiBookingAttributes.passengerCount

@@ -46,7 +46,7 @@ struct TaxiBookingsPage: View {
         if !locationSearch.isEmpty{
             bookings = bookings.filter{ taxiData in
                 taxiData.pickupLocation.name.contains(locationSearch)
-                || taxiData.dropOffLcoation.name.contains(locationSearch)
+                || taxiData.dropOffLocation.name.contains(locationSearch)
             }
         }
         

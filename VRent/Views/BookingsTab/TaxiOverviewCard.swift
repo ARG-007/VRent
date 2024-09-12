@@ -13,7 +13,7 @@ struct TaxiOverviewCard: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("**Pickup:** \(taxiDetails.pickupLocation.name) ")
-            Text("**Drop:** \(taxiDetails.dropOffLcoation.name) ")
+            Text("**Drop:** \(taxiDetails.dropOffLocation.name) ")
             Text("**Pickup Date:** \(taxiDetails.pickupTime.formatted())")
             Text("**Status :** ") + Text("\(taxiDetails.currentStatus) on \(taxiDetails.statusUpdateDate.formatted())")
             

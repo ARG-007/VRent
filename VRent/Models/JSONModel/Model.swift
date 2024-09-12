@@ -41,7 +41,6 @@ class Model: ObservableObject {
         vehicles = load("vehicles.json")
         drivers = load("drivers.json")
         
-        
         loadModel()
         
         resolveVehicleStruct()
