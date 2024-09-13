@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RentalBookingsPage: View {
     
-    @EnvironmentObject var rentalService: ModelBookingService
+    @EnvironmentObject var rentalService: RentalManager
     
     @State private var modelSearch: String = ""
     

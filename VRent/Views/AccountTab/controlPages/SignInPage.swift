@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct SignInPage: View {
-    @EnvironmentObject var userService: UserService
+    @EnvironmentObject var userService: UserManager
     
     static private let signInError = "User Do Not Exists, Check and Reenter Phone Number, or Sign Up Instead"
     static private let signUpError = "User Already Exists, Sign In Instead"
@@ -136,7 +136,7 @@ struct SignInPage: View {
                 && fullNameFieldState.isValid
                 && nickNameFieldState.isValid else { return }
         
-        if(userService.signUp(name: fullName, phone: phone, nickname: nickName)) {
+        if(userService.signup(fullName: fullName, nickName: nickName, phone: phone)) {
             onSignInSuccess()
         } else {
             phoneFieldState = .invalid(SignInPage.signUpError)

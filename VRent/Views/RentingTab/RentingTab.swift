@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RentingTab: View {
     @EnvironmentObject var model: Model
-    @EnvironmentObject var bookingService: ModelBookingService
+    @EnvironmentObject var bookingService: RentalManager
     @StateObject private var searchState = RentSearchViewModel()
     @State private var nav = NavigationPath()
     

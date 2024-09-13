@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct PassengerStepper: View {
-    @Binding var passenger: Int
+    @Binding var passenger: Int32
     
     private var sliderBinding: Binding<Double> {
         
         Binding<Double> (
             get: { Double(passenger) },
-            set: { passenger = Int($0)}
+            set: { passenger = Int32($0)}
         )
     }
     

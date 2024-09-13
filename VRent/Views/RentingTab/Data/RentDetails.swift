@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct RentDetails: Codable {
+struct RentDetails {
     var pickupLocation: Location?
     var pickupDate: Date
     var dropDate: Date

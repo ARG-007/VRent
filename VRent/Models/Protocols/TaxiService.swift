@@ -7,10 +7,12 @@
 
 import Foundation
 
-protocol TaxiService: ObservableObject {
+protocol TaxiService: ObservableObject{
     
-    func getBookings() -> [BookingStatus: TaxiBookingData]
-    func registerBooking(for context: TaxiBookingData) -> Bool
-    func rescheduleBooking(_ booking: TaxiBookingData, to nextDate: Date) -> Bool
-    func cancelBooking(_ booking: TaxiBookingData) -> Bool
+    func getBookingsCount() -> Int
+    func getBookings() -> [TaxiBooking]
+    func getBookingsByState() -> [BookingState: [TaxiBooking]]
+    func registerBooking(for context: TaxiBookingAttributes) -> Bool
+    func rescheduleBooking(_ booking: TaxiBooking, to nextDate: Date) -> Bool
+    func cancelBooking(_ booking: TaxiBooking) -> Bool
 }

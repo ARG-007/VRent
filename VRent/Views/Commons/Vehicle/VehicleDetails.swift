@@ -82,12 +82,12 @@ struct VehicleDetails<BottomBar: View>: View {
                 (
                     Text(vehicle.spec.model)
                     + Text(" ")
-                    + Text(vehicle.yearFormatted)
+                    + Text(vehicle.spec.formattedYear)
                 )
                 .font(.title)
                 .fontWeight(.bold)
                 
-                Text("By \(vehicle.owner.name)")
+                Text("By \(vehicle.ownedBy.name)")
                     .font(.callout)
             }
             Spacer()
@@ -184,7 +184,7 @@ extension VehicleDetails {
 
 #Preview {
     NavigationStack {
-        VehicleDetails(vehicle: previewModel.getVehicles()[0]) {
+        VehicleDetails(vehicle: VehicleManager.shared.getVehicles()[0]) {
             SwipeControl(prompt: "DSAJNDKJN") {
                 
             }

@@ -12,12 +12,12 @@ struct RentOverviewCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("**Rented On:**  \(rentDetails.getBookingHistory()[.Booked]!.formatted())")
-            Text("**Rent Durtation:** \(rentDetails.details.duration.converted(to: .hours).value.formatted()) Hrs")
-            Text("**Pickup Date:**  \(rentDetails.details.pickupDate.formatted(date: .abbreviated, time: .shortened))")
-            Text("**Drop Date:** \(rentDetails.details.dropDate.formatted(date: .abbreviated, time: .shortened))")
-            Text("**Pickup Location:** \(rentDetails.details.pickupLocation!.name)")
-            Text("**Driving:** \(rentDetails.details.isSelfDrive ? "Self Drive" :  "Assign an Driver")")
+            Text("**Rented On:**  \(rentDetails.bookingStatus.dateWhen(.Booked)!.formatted())")
+            Text("**Rent Durtation:** \(rentDetails.duration.converted(to: .hours).value.formatted()) Hrs")
+            Text("**Pickup Date:**  \(rentDetails.pickupTime.formatted(date: .abbreviated, time: .shortened))")
+            Text("**Drop Date:** \(rentDetails.dropTime.formatted(date: .abbreviated, time: .shortened))")
+            Text("**Pickup Location:** \(rentDetails.pickupLocation.name)")
+            Text("**Driving:** \(rentDetails.isSelfDriving ? "Self Drive" :  "Assign an Driver")")
             Text("**Vehicle Selected:** \(rentDetails.selectedVehicle.name)")
             Text("**Total Price:** \(localizedCurrency(rentDetails.totalCost))")
         }
@@ -27,5 +27,5 @@ struct RentOverviewCard: View {
 
 #Preview {
     
-    RentOverviewCard(rentDetails: ModelBookingService.shared.getBookings()[0])
+    RentOverviewCard(rentDetails: UserManager.shared.rentalManager.getBookings()[0])
 }

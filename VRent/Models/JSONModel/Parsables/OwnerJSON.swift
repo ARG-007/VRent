@@ -7,14 +7,14 @@
 
 import Foundation
 
-class Owner: Codable, Identifiable{
+struct OwnerJSON: Codable, Identifiable{
     let id: Int
     let joinedOn: Date
     let name: String
     
 }
 
-extension Owner: Hashable {
+extension OwnerJSON: Hashable {
     static func == (lhs: Owner, rhs: Owner) -> Bool {
         lhs.id == rhs.id
     }

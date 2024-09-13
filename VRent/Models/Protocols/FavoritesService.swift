@@ -8,15 +8,15 @@
 import Foundation
 
 protocol FavoriteService: ObservableObject {
-    associatedtype Item: Hashable
     
-    var favorites: [Item] { get }
+    var favorites: [Vehicle] { get }
     
-//    var updates: Published<[Item]>.Publisher { get }
+    var updates: Published<[Vehicle]>.Publisher { get }
     
-    func isFavorite(_ item: Item) -> Bool
-    func favorite(_ item: Item) -> Bool
-    func unFavorite(_ item: Item) -> Bool
-    func toggleFavorite(for item: Item) -> Bool
+    func getFavoritesCount() -> Int
+    func isFavorite(_ item: Vehicle) -> Bool
+    func favorite(_ item: Vehicle) -> Bool
+    func unFavorite(_ item: Vehicle) -> Bool
+    func toggleFavorite(for item: Vehicle) -> Bool
     
 }

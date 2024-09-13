@@ -10,7 +10,7 @@ import SwiftUI
 
 
 
-struct VehicleSpecs: Codable, Identifiable {
+struct VehicleSpecsJSON: Codable, Identifiable {
     let id: Int
     
     let make: String
@@ -28,8 +28,8 @@ struct VehicleSpecs: Codable, Identifiable {
     
 }
 
-extension VehicleSpecs: Hashable {
-    static func == (lhs: VehicleSpecs, rhs: VehicleSpecs) -> Bool {
+extension VehicleSpecsJSON: Hashable {
+    static func == (lhs: VehicleSpecsJSON, rhs: VehicleSpecsJSON) -> Bool {
         lhs.id == rhs.id
     }
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserFavorites: View {
     
-    @EnvironmentObject private var favoriteService: ModelFavoriteService
+    @EnvironmentObject private var favoriteService: FavoritesManager
     
     @Orientation private var orientation
     

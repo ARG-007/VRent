@@ -74,7 +74,7 @@ class TaxiBookingViewModel: ObservableObject {
         set { taxiBookingAttributes.pickupTime = newValue }
     }
     
-    var passengerCount: Int {
+    var passengerCount: Int32 {
         get { taxiBookingAttributes.passengerCount }
         set {
             

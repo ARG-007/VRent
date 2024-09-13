@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct TaxiOverviewCard: View {
-    let taxiDetails: TaxiBookingData
+    let taxiDetails: TaxiBooking
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("**Pickup:** \(taxiDetails.pickupLocation.name) ")
-            Text("**Drop:** \(taxiDetails.dropOffLocation.name) ")
+            Text("**Drop:** \(taxiDetails.dropLocation.name) ")
             Text("**Pickup Date:** \(taxiDetails.pickupTime.formatted())")
-            Text("**Status :** ") + Text("\(taxiDetails.currentStatus) on \(taxiDetails.statusUpdateDate.formatted())")
+            Text("**Status :** ") + Text("\(taxiDetails.bookingstatus.current.statusName) on \(taxiDetails.bookingstatus.dateWhen(taxiDetails.bookingstatus.current)!.formatted())")
             
             
         }
@@ -23,5 +23,5 @@ struct TaxiOverviewCard: View {
 }
 
 #Preview {
-    TaxiOverviewCard(taxiDetails: ModelTaxiService.shared.getBookings()[0])
+    TaxiOverviewCard(taxiDetails: UserManager.shared.taxiManager.getBookings()[0])
 }

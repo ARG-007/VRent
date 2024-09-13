@@ -10,7 +10,7 @@ import SwiftUI
 struct AccountTab: View {
     @Orientation var orientation
     @GuestMode var guestMode
-    @EnvironmentObject var userService: UserService
+    @EnvironmentObject var userService: UserManager
     @EnvironmentObject var navMan: NavigationManager
     
     @Namespace var profileHeroSpace
@@ -55,7 +55,7 @@ struct AccountTab: View {
                 .animation(.easeIn, value: profilePagePresented)
                 
             
-            Text("Hello "+(guestMode ? "Guest" : userService.nickname!))
+            Text("Hello " + ( guestMode ? "Guest" : userService.nickName! ))
                 .font(.largeTitle)
                 .bold()
         }

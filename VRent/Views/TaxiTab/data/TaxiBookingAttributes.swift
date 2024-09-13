@@ -16,7 +16,7 @@ struct TaxiBookingAttributes {
     
     var pickupTime: Date
     
-    var passengerCount: Int 
+    var passengerCount: Int32
     var requestedVehicleType: VehicleType
     
     

@@ -10,7 +10,7 @@ import CoreLocation
 
 struct AvailableVehiclesList: View {
     @EnvironmentObject var search: RentSearchViewModel
-    @EnvironmentObject var model: Model
+    @EnvironmentObject var vehicleManager: VehicleManager
     @Environment(\.colorScheme) var colorScheme
     
     @Orientation var orientation
@@ -37,7 +37,7 @@ struct AvailableVehiclesList: View {
     }
     
     var vehicles: [Vehicle] {
-        var vehicles = model.getVehicles()
+        var vehicles = vehicleManager.getVehicles()
         
         if(!vehicleSearch.isEmpty) {
             vehicles = vehicles.filter { $0.name.contains(vehicleSearch) }
@@ -99,7 +99,7 @@ struct AvailableVehiclesList: View {
         @StateObject var state = RentSearchViewModel()
         
         init() {
-            state.pickupLocation = previewModel.popularPlaces[0]
+            state.pickupLocation = PlacesManager.shared.getPopularPlaces()[0]
         }
         
         

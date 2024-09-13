@@ -153,5 +153,5 @@ struct TaxiTab: View {
 
 #Preview {
     TaxiTab()
-        .environmentObject(previewModel)
+        .environmentObject(Model.shared)
 }

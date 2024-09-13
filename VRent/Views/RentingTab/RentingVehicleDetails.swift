@@ -134,11 +134,10 @@ struct RentingVehicleDetails: View {
 
 #Preview {
     NavigationStack {
-        let model = Model.shared
-        let vehicle = model.getVehicles()[0]
+        let vehicle = VehicleManager.shared.getVehicles()[0]
         
         let rentQuery = RentDetails(
-            pickupLocation: model.popularPlaces[0],
+            pickupLocation: PlacesManager.shared.getPopularPlaces()[0],
             pickupDate: .now.advanced(by: 2*3600),
             dropDate: .now.advanced(by: 6*3600),
             isSelfDrive: false,

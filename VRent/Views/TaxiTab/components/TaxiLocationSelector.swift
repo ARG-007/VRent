@@ -47,8 +47,8 @@ struct TaxiLocationSelector: View {
 
 #Preview {
     struct Provide: View {
-        @State var pick: Location? = previewModel.popularPlaces[0]
-        @State var drop: Location? = previewModel.popularPlaces[1]
+        @State var pick: Location? = PlacesManager.shared.getPopularPlaces()[0]
+        @State var drop: Location? = PlacesManager.shared.getPopularPlaces()[1]
         
         @State var location: LocationSelectionTab? = nil
         

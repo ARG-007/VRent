@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class User: Identifiable, Codable {
+struct UserJSON: Identifiable, Codable {
     let id: Int
     var name: String
     var nickname: String
@@ -28,8 +28,8 @@ class User: Identifiable, Codable {
 
 }
 
-extension User: Hashable {
-    static func == (lhs: User, rhs: User) -> Bool {
+extension UserJSON: Hashable {
+    static func == (lhs: UserJSON, rhs: UserJSON) -> Bool {
         lhs.id == rhs.id
     }
     

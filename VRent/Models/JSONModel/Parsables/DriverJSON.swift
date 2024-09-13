@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Driver: Codable, Identifiable {
+struct DriverJSON: Codable, Identifiable {
     let id: Int
     let name: String
     let joinedOn: Date = Date()
@@ -19,7 +19,7 @@ class Driver: Codable, Identifiable {
     
 }
 
-extension Driver: Hashable {
+extension DriverJSON: Hashable {
     static func == (lhs: Driver, rhs: Driver) -> Bool {
         lhs.id == rhs.id
     }

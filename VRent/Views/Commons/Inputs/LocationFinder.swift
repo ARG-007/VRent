@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LocationFinder: View {
-    @EnvironmentObject var model: Model
+    @EnvironmentObject var placesManager: PlacesManager
     @Binding var selectedLocation: Location?
     @State private var locationSearchText: String = ""
     
@@ -72,7 +72,7 @@ struct LocationFinder: View {
     }
     
     var popularPlaces: some View {
-        ForEach(model.popularPlaces) { place in
+        ForEach(placesManager.getPopularPlaces()) { place in
             makeLocationButton(place)
                 .id(place.id)
             Divider()
@@ -80,7 +80,7 @@ struct LocationFinder: View {
     }
     
     var searchingLocations: some View {
-        ForEach(model.fuzzyPlaceSearch(locationSearchText)) { place in
+        ForEach(placesManager.fuzzyPlaceSearch(query: locationSearchText)) { place in
             makeLocationButton(place)
                 .id(place.id)
             Divider()

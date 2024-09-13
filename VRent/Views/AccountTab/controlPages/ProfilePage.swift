@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfilePage: View {
     
-    @EnvironmentObject var userService: UserService
+    @EnvironmentObject var userService: UserManager
     
     let profileNameSpace: Namespace.ID
     
@@ -50,7 +50,7 @@ struct ProfilePage: View {
                 Group {
                     if(!edit) {
                         Text(userService.fullName!)
-                        Text(userService.nickname!)
+                        Text(userService.nickName!)
                     }
                     
                     Text(userService.phone!)

@@ -8,8 +8,8 @@
 import Foundation
 
 
-protocol PlacesService {
+protocol PlacesService: ObservableObject {
     func getPopularPlaces() -> [Location]
     func fuzzyPlaceSearch(query: String) -> [Location]
-    func getUserLocation() -> Location
+//    func getUserLocation() -> Location
 }

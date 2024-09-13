@@ -11,10 +11,6 @@ struct Rentable: Hashable {
     let vehicle: Vehicle
     let rentDetails: RentDetails
     
-    
-    
-    
-    
     init(vehicle: Vehicle, rentDetails: RentDetails) {
         self.vehicle = vehicle
         self.rentDetails = rentDetails

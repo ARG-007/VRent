@@ -9,10 +9,10 @@ import Foundation
 import CoreLocation
 import SwiftUI
 
-struct Vehicle: Codable, Identifiable {
+struct VehicleJSON: Codable, Identifiable {
     let id: Int
-    var owner: Owner
-    var spec: VehicleSpecs
+    var owner: OwnerJSON
+    var spec: VehicleSpecsJSON
     
     let addedOn: Date
     let broughtOnYear: Int16
@@ -31,8 +31,8 @@ struct Vehicle: Codable, Identifiable {
 
 }
 
-extension Vehicle {
-    var yearFormatted: String { 
+extension VehicleJSON {
+    var yearFormatted: String {
         spec.year.formatted(.number.grouping(.never))
     }
     
@@ -41,8 +41,8 @@ extension Vehicle {
     }
 }
 
-extension Vehicle: Hashable {
-    static func == (_ lhs: Vehicle, _ rhs: Vehicle) -> Bool{
+extension VehicleJSON: Hashable {
+    static func == (_ lhs: VehicleJSON, _ rhs: VehicleJSON) -> Bool{
         lhs.id == rhs.id
     }
     

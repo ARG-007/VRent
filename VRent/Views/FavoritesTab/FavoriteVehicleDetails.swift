@@ -30,5 +30,5 @@ struct FavoriteVehicleDetails: View {
 }
 
 #Preview {
-    FavoriteVehicleDetails(vehicle: previewModel.getVehicles()[0])
+    FavoriteVehicleDetails(vehicle: VehicleManager.shared.getVehicles()[0])
 }

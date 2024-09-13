@@ -34,9 +34,9 @@ struct ImageCarousel: View {
 }
 
 #Preview {
-    let imagesUrl = previewModel.getVehicles()[0].images
+    let imagesUrl = VehicleManager.shared.getVehicles()[0].images
     
-    return ImageCarousel(imageURLs: imagesUrl)
+    ImageCarousel(imageURLs: imagesUrl)
         .aspectRatio(3/2, contentMode: .fit)
         .clipShape(.rect(cornerRadius: 25.0))
         .padding()

@@ -51,7 +51,7 @@ struct PreviewData {
         let nickname = "007"
         let phone = "0070070070"
         
-        UserService.shared.signUp(name: name, phone: phone, nickname: nickname)
+        UserManager.shared.signUp(name: name, phone: phone, nickname: nickname)
     }
     
     

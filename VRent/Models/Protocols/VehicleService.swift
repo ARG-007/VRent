@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol VehicleService {
+protocol VehicleService: ObservableObject {
     func getVehicles() -> [Vehicle]
 }

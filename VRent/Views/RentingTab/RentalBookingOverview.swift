@@ -121,11 +121,11 @@ struct RentalBookingOverview: View {
         
         
         let model = Model.shared
-        let vehicle = model.getVehicles()[0]
+        let vehicle = VehicleManager.shared.getVehicles()[0]
         let offset = 16.0
         
         let rentQuery = RentDetails(
-            pickupLocation: model.popularPlaces[0],
+            pickupLocation: PlacesManager.shared.getPopularPlaces()[0],
             pickupDate: .now.advanced(by: offset*3600),
             dropDate: .now.advanced(by: (offset+6)*3600),
             isSelfDrive: false,
@@ -139,7 +139,7 @@ struct RentalBookingOverview: View {
                 switch(page) {
                 case .success(let rental): SuccessScreen {
                     try await Task.sleep(for: .seconds(3))
-                    let _ = ModelBookingService.shared.registerBooking(for: rental)
+                    let _ = UserManager.shared.rentalManager.registerBooking(for: rental)
                 } onCompletion: {
                     
                 }

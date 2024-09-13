@@ -90,6 +90,7 @@ struct VehicleCard: View {
                 .font(.subheadline)
                 .padding(topBarContentPadding)
                 .background(.background.opacity(0.4), in: .rect(cornerRadius: 6))
+
         }
         .font(.caption)
     }
@@ -131,6 +132,5 @@ struct VehicleCard: View {
 
 
 #Preview {
-    VehicleCard(for: previewModel.getVehicles()[0])
-        .initiateServices()
+    VehicleCard(for: VehicleManager.shared.getVehicles()[0])
 }

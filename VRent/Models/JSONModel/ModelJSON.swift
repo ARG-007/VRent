@@ -8,21 +8,21 @@
 import Foundation
 import SwiftUI
 
-typealias UserFavoriteVehicles = [User: [Vehicle]]
-typealias UserRentals = [User: [RentalBooking]]
-typealias UserTaxiBookings = [User: [TaxiBookingData]]
-typealias Users = [User]
+typealias UserFavoriteVehicles = [UserJSON: [VehicleJSON]]
+typealias UserRentals = [UserJSON: [RentalBooking]]
+typealias UserTaxiBookings = [UserJSON: [TaxiBooking]]
+typealias Users = [UserJSON]
 
-class Model: ObservableObject {
+class ModelJSON: ObservableObject {
     
-    static let shared = Model()
+    static let shared = ModelJSON()
     
     // Loaded from JSON from app Bundle
-    let places: [Location]
-    let vehicles: [Vehicle]
-    private(set) var owner: [Owner] = []
-    private(set) var specs: [VehicleSpecs] = []
-    private(set) var drivers: [Driver]
+    let places: [LocationJSON]
+    let vehicles: [VehicleJSON]
+    private(set) var owner: [OwnerJSON] = []
+    private(set) var specs: [VehicleSpecsJSON] = []
+    private(set) var drivers: [DriverJSON]
     
     // Generated after loading for either testing or production
     @Published var users: Users = []
@@ -32,7 +32,7 @@ class Model: ObservableObject {
     @Published var taxiBookings: UserTaxiBookings = [:]
     @Published var favorites: UserFavoriteVehicles = [:]
     
-    lazy var popularPlaces: [Location] = {
+    lazy var popularPlaces: [LocationJSON] = {
         Array(places.randomPick(7))
     }()
     
@@ -49,7 +49,7 @@ class Model: ObservableObject {
     }
     
     private func resolveVehicleStruct() {
-        for vehicle in vehicles {
+        for var vehicle in vehicles {
             if let owner = owner.first(where: {$0.id == vehicle.owner.id }) {
                 vehicle.owner = owner
             } else {
@@ -64,11 +64,11 @@ class Model: ObservableObject {
         }
     }
     
-    func fuzzyPlaceSearch(_ name: String)->[Location] {
+    func fuzzyPlaceSearch(_ name: String)->[LocationJSON] {
         places.filter { $0.name.contains(name) }
     }
     
-    func getVehicles()->[Vehicle] {
+    func getVehicles()->[VehicleJSON] {
         vehicles
     }
     

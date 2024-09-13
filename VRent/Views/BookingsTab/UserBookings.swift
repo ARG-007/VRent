@@ -17,8 +17,8 @@ enum Bookings: String, CaseIterable, Identifiable {
 
 struct UserBookings: View {
 //    @EnvironmentObject var model: Model
-    @EnvironmentObject var rentalService: ModelBookingService
-    @EnvironmentObject var taxiService: ModelTaxiService
+    @EnvironmentObject var rentalService: RentalManager
+    @EnvironmentObject var taxiService: TaxiManager
     
     @State private var selection: Bookings = .Rental
     

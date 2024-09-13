@@ -46,7 +46,7 @@ extension View {
 
 struct FavoriteButton: View {
     @EnvironmentObject var navMan: NavigationManager
-    @EnvironmentObject var favoriteService: ModelFavoriteService
+    @EnvironmentObject var favoriteService: FavoritesManager
     @Environment(\.favoriteButtonBehaviour) var behaviour
     
     @GuestMode var guestMode
@@ -99,7 +99,7 @@ struct FavoriteButton: View {
 }
 
 #Preview {
-    @State var favorite = ModelFavoriteService.shared.favorites[0]
+    @State var favorite = VehicleManager.shared.getVehicles()[0]
 //    @StateObject var model = previewModel
     
     HStack {

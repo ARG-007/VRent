@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,16 +14,12 @@
 		F309C93A2C84FF3300C85239 /* PassengerStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C9392C84FF3300C85239 /* PassengerStepper.swift */; };
 		F309C9432C85440000C85239 /* FavoriteVehicleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C9422C85440000C85239 /* FavoriteVehicleDetails.swift */; };
 		F309C9452C8550D700C85239 /* ProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C9442C8550D700C85239 /* ProfilePicture.swift */; };
-		F309C9472C8550E900C85239 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C9462C8550E900C85239 /* User.swift */; };
-		F309C9492C85519A00C85239 /* ModelBookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C9482C85519A00C85239 /* ModelBookingService.swift */; };
-		F309C94B2C8551A600C85239 /* ModelTaxiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C94A2C8551A600C85239 /* ModelTaxiService.swift */; };
 		F309C94D2C857C6F00C85239 /* TermsAndConditionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C94C2C857C6F00C85239 /* TermsAndConditionPage.swift */; };
 		F309C9502C857C9300C85239 /* PoliciesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C94F2C857C9300C85239 /* PoliciesPage.swift */; };
 		F309C9522C857CA600C85239 /* LegalNoticePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C9512C857CA600C85239 /* LegalNoticePage.swift */; };
 		F309C9562C85818D00C85239 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C9552C85818D00C85239 /* ProfilePage.swift */; };
 		F309C9592C85819E00C85239 /* ThemeChangerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C9582C85819E00C85239 /* ThemeChangerPage.swift */; };
 		F309C95B2C8581AB00C85239 /* ColorSchemeChangePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C95A2C8581AB00C85239 /* ColorSchemeChangePage.swift */; };
-		F309C95D2C8589A900C85239 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F309C95C2C8589A900C85239 /* UserService.swift */; };
 		F3368C1E2C4FBE050023A1FD /* VRentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C1D2C4FBE050023A1FD /* VRentApp.swift */; };
 		F3368C202C4FBE050023A1FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C1F2C4FBE050023A1FD /* ContentView.swift */; };
 		F3368C222C4FBE060023A1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3368C212C4FBE060023A1FD /* Assets.xcassets */; };
@@ -33,16 +29,11 @@
 		F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C392C50D3910023A1FD /* AccountTab.swift */; };
 		F3618ADB2C8789D9007F1404 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3618ADA2C8789D9007F1404 /* Color+Extension.swift */; };
 		F3618AE02C87CF26007F1404 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F3618ADF2C87CF26007F1404 /* MarkdownUI */; };
-		F3627E7E2C60ADA60047198B /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E7D2C60ADA60047198B /* Vehicle.swift */; };
-		F3627E802C60AF3D0047198B /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E7F2C60AF3D0047198B /* Owner.swift */; };
-		F3627E822C60AF7D0047198B /* VehicleSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E812C60AF7D0047198B /* VehicleSpecs.swift */; };
 		F3627E842C60D4730047198B /* vehicles.json in Resources */ = {isa = PBXBuildFile; fileRef = F3627E832C60D4730047198B /* vehicles.json */; };
 		F3627E882C60E20C0047198B /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E872C60E20C0047198B /* ImageCarousel.swift */; };
 		F3627E8B2C61FC000047198B /* VehicleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8A2C61FC000047198B /* VehicleCard.swift */; };
 		F3627E8E2C624ECB0047198B /* AvailableVehiclesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8D2C624ECB0047198B /* AvailableVehiclesList.swift */; };
 		F3627E902C628B800047198B /* VehicleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E8F2C628B800047198B /* VehicleDetails.swift */; };
-		F3627E992C64F50D0047198B /* Rentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E982C64F50D0047198B /* Rentable.swift */; };
-		F3627E9B2C65EBDC0047198B /* RentalBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E9A2C65EBDC0047198B /* RentalBooking.swift */; };
 		F3627E9D2C65F1690047198B /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E9C2C65F1690047198B /* FavoriteButton.swift */; };
 		F3627E9F2C6611D90047198B /* RentingVehicleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627E9E2C6611D90047198B /* RentingVehicleDetails.swift */; };
 		F3627EA12C6614C40047198B /* RentalBookingOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EA02C6614C40047198B /* RentalBookingOverview.swift */; };
@@ -58,23 +49,18 @@
 		F3627EC62C7368530047198B /* LocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EC52C7368530047198B /* LocationField.swift */; };
 		F3627EC82C73687F0047198B /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EC72C73687F0047198B /* FieldState.swift */; };
 		F3627ECA2C75B24E0047198B /* TaxiBilling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EC92C75B24E0047198B /* TaxiBilling.swift */; };
-		F3627ECC2C75B2650047198B /* TaxiBookingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627ECB2C75B2650047198B /* TaxiBookingData.swift */; };
 		F3627ECF2C75BF1D0047198B /* Charges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627ECE2C75BF1D0047198B /* Charges.swift */; };
 		F3627ED22C75C4BC0047198B /* Measurements+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627ED12C75C4BC0047198B /* Measurements+Extensions.swift */; };
 		F3627ED42C774D050047198B /* UserFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3368C352C50D3570023A1FD /* UserFavorites.swift */; };
 		F3627ED92C7C41AB0047198B /* RentOverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627ED82C7C41AB0047198B /* RentOverviewCard.swift */; };
-		F3627EDB2C7C43E20047198B /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3627EDA2C7C43E20047198B /* PreviewData.swift */; };
-		F3890F712C7CD07600D5B88E /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F702C7CD07600D5B88E /* Driver.swift */; };
 		F3890F742C7DAE6800D5B88E /* drivers.json in Resources */ = {isa = PBXBuildFile; fileRef = F3890F722C7DAE6800D5B88E /* drivers.json */; };
 		F3890F752C7DAE6800D5B88E /* jsonPopulator.py in Resources */ = {isa = PBXBuildFile; fileRef = F3890F732C7DAE6800D5B88E /* jsonPopulator.py */; };
 		F3890F772C7F5DF100D5B88E /* TaxiOverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F762C7F5DF100D5B88E /* TaxiOverviewCard.swift */; };
 		F3890F792C809A7600D5B88E /* BookingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F782C809A7600D5B88E /* BookingStatus.swift */; };
 		F3890F7C2C81724200D5B88E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F7B2C81724200D5B88E /* FavoritesService.swift */; };
-		F3890F7F2C81728000D5B88E /* ModelFavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F7E2C81727F00D5B88E /* ModelFavoriteService.swift */; };
 		F3890F822C8172AA00D5B88E /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F812C8172AA00D5B88E /* Collection+Extension.swift */; };
 		F3890F842C8173D600D5B88E /* ShapeStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F832C8173D600D5B88E /* ShapeStyle+Extensions.swift */; };
-		F3890F862C818EE700D5B88E /* ServiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F852C818EE700D5B88E /* ServiceRepository.swift */; };
-		F3890F882C81950100D5B88E /* BookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F872C81950100D5B88E /* BookingService.swift */; };
+		F3890F882C81950100D5B88E /* RentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F872C81950100D5B88E /* RentalService.swift */; };
 		F3890F8A2C81951700D5B88E /* TaxiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3890F892C81951700D5B88E /* TaxiService.swift */; };
 		F38C43242C5A683E003D84B2 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38C43232C5A683E003D84B2 /* LocationFinder.swift */; };
 		F3A38ADE2C8999C50093FCCC /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38ADA2C8999C50093FCCC /* Navigation.swift */; };
@@ -90,7 +76,40 @@
 		F3A38CB32C92A34D0093FCCC /* PlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38CB22C92A34D0093FCCC /* PlacesService.swift */; };
 		F3A38CB62C92A4300093FCCC /* VRent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3A38CB42C92A4300093FCCC /* VRent.xcdatamodeld */; };
 		F3A38CB82C92A47B0093FCCC /* VehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38CB72C92A47B0093FCCC /* VehicleService.swift */; };
-		F3A38CBD2C92AE9E0093FCCC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38CBB2C92AE9E0093FCCC /* Model.swift */; };
+		F3A38CC02C92C3AC0093FCCC /* RentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38CBE2C92C3AC0093FCCC /* RentDetails.swift */; };
+		F3A38CC12C92C3AC0093FCCC /* Rentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38CBF2C92C3AC0093FCCC /* Rentable.swift */; };
+		F3A38D352C92CC900093FCCC /* Owner+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D262C92CC900093FCCC /* Owner+CoreDataClass.swift */; };
+		F3A38D362C92CC900093FCCC /* RentalBooking+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D272C92CC900093FCCC /* RentalBooking+CoreDataClass.swift */; };
+		F3A38D372C92CC900093FCCC /* TaxiBooking+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D282C92CC900093FCCC /* TaxiBooking+CoreDataClass.swift */; };
+		F3A38D382C92CC900093FCCC /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D292C92CC900093FCCC /* User+CoreDataClass.swift */; };
+		F3A38D392C92CC900093FCCC /* Vehicle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D2A2C92CC900093FCCC /* Vehicle+CoreDataClass.swift */; };
+		F3A38D3A2C92CC900093FCCC /* VehicleSpecs+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D2B2C92CC900093FCCC /* VehicleSpecs+CoreDataClass.swift */; };
+		F3A38D3B2C92CC900093FCCC /* Owner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D2D2C92CC900093FCCC /* Owner+CoreDataProperties.swift */; };
+		F3A38D3C2C92CC900093FCCC /* RentalBooking+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D2E2C92CC900093FCCC /* RentalBooking+CoreDataProperties.swift */; };
+		F3A38D3D2C92CC900093FCCC /* TaxiBooking+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D2F2C92CC900093FCCC /* TaxiBooking+CoreDataProperties.swift */; };
+		F3A38D3E2C92CC900093FCCC /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D302C92CC900093FCCC /* User+CoreDataProperties.swift */; };
+		F3A38D3F2C92CC900093FCCC /* Vehicle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D312C92CC900093FCCC /* Vehicle+CoreDataProperties.swift */; };
+		F3A38D402C92CC900093FCCC /* VehicleSpecs+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D322C92CC900093FCCC /* VehicleSpecs+CoreDataProperties.swift */; };
+		F3A38D422C92CD1C0093FCCC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D412C92CD1C0093FCCC /* Location.swift */; };
+		F3A38D682C92E6100093FCCC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D662C92E6100093FCCC /* Model.swift */; };
+		F3A38D8E2C9312FF0093FCCC /* LocationCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D8D2C9312FF0093FCCC /* LocationCD+CoreDataProperties.swift */; };
+		F3A38D8F2C9312FF0093FCCC /* LocationCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D8C2C9312FF0093FCCC /* LocationCD+CoreDataClass.swift */; };
+		F3A38D972C9315E20093FCCC /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D932C9315E20093FCCC /* PlacesManager.swift */; };
+		F3A38D982C9315E20093FCCC /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D942C9315E20093FCCC /* UserManager.swift */; };
+		F3A38D992C9315E20093FCCC /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D952C9315E20093FCCC /* VehicleManager.swift */; };
+		F3A38D9A2C9315E20093FCCC /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D922C9315E20093FCCC /* FavoritesManager.swift */; };
+		F3A38D9C2C9316700093FCCC /* RentalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D9B2C9316700093FCCC /* RentalManager.swift */; };
+		F3A38D9E2C9317FB0093FCCC /* TaxiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38D9D2C9317FB0093FCCC /* TaxiManager.swift */; };
+		F3A38DA32C9420F40093FCCC /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DA22C9420F40093FCCC /* Repository.swift */; };
+		F3A38DA52C9423430093FCCC /* RepositryViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DA42C9423430093FCCC /* RepositryViewModifier.swift */; };
+		F3A38DAA2C942C360093FCCC /* UserRentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DA72C942C360093FCCC /* UserRentalService.swift */; };
+		F3A38DAB2C942C360093FCCC /* UserFavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DA62C942C360093FCCC /* UserFavoriteService.swift */; };
+		F3A38DAC2C942C360093FCCC /* UserTaxiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DA82C942C360093FCCC /* UserTaxiService.swift */; };
+		F3A38DB12C942C380093FCCC /* GuestFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DAD2C942C380093FCCC /* GuestFavoritesService.swift */; };
+		F3A38DB22C942C380093FCCC /* GuestRentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DAE2C942C380093FCCC /* GuestRentalService.swift */; };
+		F3A38DB32C942C380093FCCC /* GuestTaxiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DAF2C942C380093FCCC /* GuestTaxiService.swift */; };
+		F3A38DBC2C942CCB0093FCCC /* GuestMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A38DBA2C942CCB0093FCCC /* GuestMode.swift */; };
+		F3A38DC02C9449230093FCCC /* PreloadedDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F3A38DBF2C9449230093FCCC /* PreloadedDB.sqlite */; };
 		F3A54BED2C85DE82000DF754 /* SignInRequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A54BEC2C85DE82000DF754 /* SignInRequestPage.swift */; };
 		F3A54BF32C86EA7A000DF754 /* SignInPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A54BF22C86EA7A000DF754 /* SignInPage.swift */; };
 		F3A54BF52C870DC8000DF754 /* FavoritesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A54BF42C870DC8000DF754 /* FavoritesTab.swift */; };
@@ -99,9 +118,7 @@
 		F3A54BFB2C876AFE000DF754 /* NoFavoritesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A54BFA2C876AFE000DF754 /* NoFavoritesPage.swift */; };
 		F3A54BFD2C876C79000DF754 /* RentalBookingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A54BFC2C876C79000DF754 /* RentalBookingsPage.swift */; };
 		F3A54BFF2C876C84000DF754 /* TaxiBookingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A54BFE2C876C84000DF754 /* TaxiBookingsPage.swift */; };
-		F3D2BADC2C5B9A6C000BBE6E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2BADB2C5B9A6C000BBE6E /* Location.swift */; };
 		F3D2BAE02C5BB941000BBE6E /* places.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D2BADF2C5BB941000BBE6E /* places.json */; };
-		F3D3BD4F2C575FBC004DB3E1 /* RentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD4E2C575FBC004DB3E1 /* RentDetails.swift */; };
 		F3D3BD552C5A062C004DB3E1 /* RentTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */; };
 		F3D3BD572C5A07A7004DB3E1 /* RentDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */; };
 		F3D3BD592C5A0860004DB3E1 /* RentSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3BD582C5A0860004DB3E1 /* RentSearchViewModel.swift */; };
@@ -117,16 +134,12 @@
 		F309C9392C84FF3300C85239 /* PassengerStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerStepper.swift; sourceTree = "<group>"; };
 		F309C9422C85440000C85239 /* FavoriteVehicleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVehicleDetails.swift; sourceTree = "<group>"; };
 		F309C9442C8550D700C85239 /* ProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicture.swift; sourceTree = "<group>"; };
-		F309C9462C8550E900C85239 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F309C9482C85519A00C85239 /* ModelBookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelBookingService.swift; sourceTree = "<group>"; };
-		F309C94A2C8551A600C85239 /* ModelTaxiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTaxiService.swift; sourceTree = "<group>"; };
 		F309C94C2C857C6F00C85239 /* TermsAndConditionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionPage.swift; sourceTree = "<group>"; };
 		F309C94F2C857C9300C85239 /* PoliciesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliciesPage.swift; sourceTree = "<group>"; };
 		F309C9512C857CA600C85239 /* LegalNoticePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticePage.swift; sourceTree = "<group>"; };
 		F309C9552C85818D00C85239 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		F309C9582C85819E00C85239 /* ThemeChangerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChangerPage.swift; sourceTree = "<group>"; };
 		F309C95A2C8581AB00C85239 /* ColorSchemeChangePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeChangePage.swift; sourceTree = "<group>"; };
-		F309C95C2C8589A900C85239 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		F3368C1A2C4FBE050023A1FD /* VRent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VRent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3368C1D2C4FBE050023A1FD /* VRentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRentApp.swift; sourceTree = "<group>"; };
 		F3368C1F2C4FBE050023A1FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,16 +150,11 @@
 		F3368C372C50D3660023A1FD /* UserBookings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBookings.swift; sourceTree = "<group>"; };
 		F3368C392C50D3910023A1FD /* AccountTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTab.swift; sourceTree = "<group>"; };
 		F3618ADA2C8789D9007F1404 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
-		F3627E7D2C60ADA60047198B /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
-		F3627E7F2C60AF3D0047198B /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
-		F3627E812C60AF7D0047198B /* VehicleSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleSpecs.swift; sourceTree = "<group>"; };
 		F3627E832C60D4730047198B /* vehicles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vehicles.json; sourceTree = "<group>"; };
 		F3627E872C60E20C0047198B /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		F3627E8A2C61FC000047198B /* VehicleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCard.swift; sourceTree = "<group>"; };
 		F3627E8D2C624ECB0047198B /* AvailableVehiclesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableVehiclesList.swift; sourceTree = "<group>"; };
 		F3627E8F2C628B800047198B /* VehicleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetails.swift; sourceTree = "<group>"; };
-		F3627E982C64F50D0047198B /* Rentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rentable.swift; sourceTree = "<group>"; };
-		F3627E9A2C65EBDC0047198B /* RentalBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalBooking.swift; sourceTree = "<group>"; };
 		F3627E9C2C65F1690047198B /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		F3627E9E2C6611D90047198B /* RentingVehicleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentingVehicleDetails.swift; sourceTree = "<group>"; };
 		F3627EA02C6614C40047198B /* RentalBookingOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalBookingOverview.swift; sourceTree = "<group>"; };
@@ -162,22 +170,17 @@
 		F3627EC52C7368530047198B /* LocationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationField.swift; sourceTree = "<group>"; };
 		F3627EC72C73687F0047198B /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
 		F3627EC92C75B24E0047198B /* TaxiBilling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiBilling.swift; sourceTree = "<group>"; };
-		F3627ECB2C75B2650047198B /* TaxiBookingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiBookingData.swift; sourceTree = "<group>"; };
 		F3627ECE2C75BF1D0047198B /* Charges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charges.swift; sourceTree = "<group>"; };
 		F3627ED12C75C4BC0047198B /* Measurements+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Measurements+Extensions.swift"; sourceTree = "<group>"; };
 		F3627ED82C7C41AB0047198B /* RentOverviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentOverviewCard.swift; sourceTree = "<group>"; };
-		F3627EDA2C7C43E20047198B /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
-		F3890F702C7CD07600D5B88E /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		F3890F722C7DAE6800D5B88E /* drivers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = drivers.json; sourceTree = "<group>"; };
 		F3890F732C7DAE6800D5B88E /* jsonPopulator.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = jsonPopulator.py; sourceTree = "<group>"; };
 		F3890F762C7F5DF100D5B88E /* TaxiOverviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiOverviewCard.swift; sourceTree = "<group>"; };
 		F3890F782C809A7600D5B88E /* BookingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingStatus.swift; sourceTree = "<group>"; };
 		F3890F7B2C81724200D5B88E /* FavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
-		F3890F7E2C81727F00D5B88E /* ModelFavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFavoriteService.swift; sourceTree = "<group>"; };
 		F3890F812C8172AA00D5B88E /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		F3890F832C8173D600D5B88E /* ShapeStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extensions.swift"; sourceTree = "<group>"; };
-		F3890F852C818EE700D5B88E /* ServiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRepository.swift; sourceTree = "<group>"; };
-		F3890F872C81950100D5B88E /* BookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingService.swift; sourceTree = "<group>"; };
+		F3890F872C81950100D5B88E /* RentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalService.swift; sourceTree = "<group>"; };
 		F3890F892C81951700D5B88E /* TaxiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiService.swift; sourceTree = "<group>"; };
 		F38C43232C5A683E003D84B2 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		F3A38AD82C8999C50093FCCC /* DeviceOrientationDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOrientationDetector.swift; sourceTree = "<group>"; };
@@ -193,7 +196,40 @@
 		F3A38CB22C92A34D0093FCCC /* PlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesService.swift; sourceTree = "<group>"; };
 		F3A38CB52C92A4300093FCCC /* VRent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VRent.xcdatamodel; sourceTree = "<group>"; };
 		F3A38CB72C92A47B0093FCCC /* VehicleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleService.swift; sourceTree = "<group>"; };
-		F3A38CBB2C92AE9E0093FCCC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F3A38CBE2C92C3AC0093FCCC /* RentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentDetails.swift; sourceTree = "<group>"; };
+		F3A38CBF2C92C3AC0093FCCC /* Rentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rentable.swift; sourceTree = "<group>"; };
+		F3A38D262C92CC900093FCCC /* Owner+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Owner+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F3A38D272C92CC900093FCCC /* RentalBooking+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RentalBooking+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F3A38D282C92CC900093FCCC /* TaxiBooking+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaxiBooking+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F3A38D292C92CC900093FCCC /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F3A38D2A2C92CC900093FCCC /* Vehicle+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vehicle+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F3A38D2B2C92CC900093FCCC /* VehicleSpecs+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleSpecs+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F3A38D2D2C92CC900093FCCC /* Owner+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Owner+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F3A38D2E2C92CC900093FCCC /* RentalBooking+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RentalBooking+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F3A38D2F2C92CC900093FCCC /* TaxiBooking+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaxiBooking+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F3A38D302C92CC900093FCCC /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F3A38D312C92CC900093FCCC /* Vehicle+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vehicle+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F3A38D322C92CC900093FCCC /* VehicleSpecs+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleSpecs+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F3A38D412C92CD1C0093FCCC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F3A38D662C92E6100093FCCC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F3A38D8C2C9312FF0093FCCC /* LocationCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F3A38D8D2C9312FF0093FCCC /* LocationCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F3A38D922C9315E20093FCCC /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		F3A38D932C9315E20093FCCC /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
+		F3A38D942C9315E20093FCCC /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		F3A38D952C9315E20093FCCC /* VehicleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleManager.swift; sourceTree = "<group>"; };
+		F3A38D9B2C9316700093FCCC /* RentalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalManager.swift; sourceTree = "<group>"; };
+		F3A38D9D2C9317FB0093FCCC /* TaxiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiManager.swift; sourceTree = "<group>"; };
+		F3A38DA22C9420F40093FCCC /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		F3A38DA42C9423430093FCCC /* RepositryViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositryViewModifier.swift; sourceTree = "<group>"; };
+		F3A38DA62C942C360093FCCC /* UserFavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoriteService.swift; sourceTree = "<group>"; };
+		F3A38DA72C942C360093FCCC /* UserRentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRentalService.swift; sourceTree = "<group>"; };
+		F3A38DA82C942C360093FCCC /* UserTaxiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTaxiService.swift; sourceTree = "<group>"; };
+		F3A38DAD2C942C380093FCCC /* GuestFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestFavoritesService.swift; sourceTree = "<group>"; };
+		F3A38DAE2C942C380093FCCC /* GuestRentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRentalService.swift; sourceTree = "<group>"; };
+		F3A38DAF2C942C380093FCCC /* GuestTaxiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTaxiService.swift; sourceTree = "<group>"; };
+		F3A38DBA2C942CCB0093FCCC /* GuestMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMode.swift; sourceTree = "<group>"; };
+		F3A38DBF2C9449230093FCCC /* PreloadedDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PreloadedDB.sqlite; sourceTree = "<group>"; };
 		F3A54BEC2C85DE82000DF754 /* SignInRequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequestPage.swift; sourceTree = "<group>"; };
 		F3A54BF22C86EA7A000DF754 /* SignInPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPage.swift; sourceTree = "<group>"; };
 		F3A54BF42C870DC8000DF754 /* FavoritesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTab.swift; sourceTree = "<group>"; };
@@ -202,15 +238,17 @@
 		F3A54BFA2C876AFE000DF754 /* NoFavoritesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFavoritesPage.swift; sourceTree = "<group>"; };
 		F3A54BFC2C876C79000DF754 /* RentalBookingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalBookingsPage.swift; sourceTree = "<group>"; };
 		F3A54BFE2C876C84000DF754 /* TaxiBookingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiBookingsPage.swift; sourceTree = "<group>"; };
-		F3D2BADB2C5B9A6C000BBE6E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F3D2BADF2C5BB941000BBE6E /* places.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = places.json; path = VRent/resources/places.json; sourceTree = SOURCE_ROOT; };
-		F3D3BD4E2C575FBC004DB3E1 /* RentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentDetails.swift; sourceTree = "<group>"; };
 		F3D3BD542C5A062C004DB3E1 /* RentTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTimePicker.swift; sourceTree = "<group>"; };
 		F3D3BD562C5A07A7004DB3E1 /* RentDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentDatePicker.swift; sourceTree = "<group>"; };
 		F3D3BD582C5A0860004DB3E1 /* RentSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentSearchViewModel.swift; sourceTree = "<group>"; };
 		F3D3BD5A2C5A0D71004DB3E1 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		F3D3BD5D2C5A0DAA004DB3E1 /* RentingSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentingSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F3A38D602C92CE5D0093FCCC /* JSONModel */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JSONModel; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F3368C172C4FBE050023A1FD /* Frameworks */ = {
@@ -319,28 +357,6 @@
 			path = controlPages;
 			sourceTree = "<group>";
 		};
-		F309C95E2C859E7000C85239 /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				F3627ECD2C75BD760047198B /* Taxi */,
-				F3627EC22C731E090047198B /* Rent */,
-			);
-			path = Generated;
-			sourceTree = "<group>";
-		};
-		F309C95F2C859FAA00C85239 /* Parsables */ = {
-			isa = PBXGroup;
-			children = (
-				F3627E7D2C60ADA60047198B /* Vehicle.swift */,
-				F3627E812C60AF7D0047198B /* VehicleSpecs.swift */,
-				F3D2BADB2C5B9A6C000BBE6E /* Location.swift */,
-				F3627E7F2C60AF3D0047198B /* Owner.swift */,
-				F3890F702C7CD07600D5B88E /* Driver.swift */,
-				F309C9462C8550E900C85239 /* User.swift */,
-			);
-			path = Parsables;
-			sourceTree = "<group>";
-		};
 		F3368C112C4FBE050023A1FD = {
 			isa = PBXGroup;
 			children = (
@@ -377,7 +393,6 @@
 		F3368C232C4FBE060023A1FD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				F3627EDA2C7C43E20047198B /* PreviewData.swift */,
 				F3368C242C4FBE060023A1FD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -386,6 +401,7 @@
 		F3627E722C6099F60047198B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F3A38DBF2C9449230093FCCC /* PreloadedDB.sqlite */,
 				F3890F722C7DAE6800D5B88E /* drivers.json */,
 				F3890F732C7DAE6800D5B88E /* jsonPopulator.py */,
 				F3627E832C60D4730047198B /* vehicles.json */,
@@ -431,6 +447,8 @@
 		F3627E922C6291A50047198B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F3A38CBE2C92C3AC0093FCCC /* RentDetails.swift */,
+				F3A38CBF2C92C3AC0093FCCC /* Rentable.swift */,
 				F3D3BD582C5A0860004DB3E1 /* RentSearchViewModel.swift */,
 				F3627EB32C6B611C0047198B /* RentingScreenPages.swift */,
 			);
@@ -461,30 +479,13 @@
 		F3627EC12C731DF30047198B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				F3A38D342C92CC900093FCCC /* CoreDataTypes */,
 				F3A38AF52C899A140093FCCC /* VehicleComponents */,
-				F309C95E2C859E7000C85239 /* Generated */,
 				F3627ECE2C75BF1D0047198B /* Charges.swift */,
+				F3A38D412C92CD1C0093FCCC /* Location.swift */,
 				F3890F782C809A7600D5B88E /* BookingStatus.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		F3627EC22C731E090047198B /* Rent */ = {
-			isa = PBXGroup;
-			children = (
-				F3D3BD4E2C575FBC004DB3E1 /* RentDetails.swift */,
-				F3627E982C64F50D0047198B /* Rentable.swift */,
-				F3627E9A2C65EBDC0047198B /* RentalBooking.swift */,
-			);
-			path = Rent;
-			sourceTree = "<group>";
-		};
-		F3627ECD2C75BD760047198B /* Taxi */ = {
-			isa = PBXGroup;
-			children = (
-				F3627ECB2C75B2650047198B /* TaxiBookingData.swift */,
-			);
-			path = Taxi;
 			sourceTree = "<group>";
 		};
 		F3627ED02C75C47F0047198B /* Extensions */ = {
@@ -517,24 +518,12 @@
 			isa = PBXGroup;
 			children = (
 				F3890F7B2C81724200D5B88E /* FavoritesService.swift */,
-				F3890F872C81950100D5B88E /* BookingService.swift */,
+				F3890F872C81950100D5B88E /* RentalService.swift */,
 				F3890F892C81951700D5B88E /* TaxiService.swift */,
 				F3A38CB22C92A34D0093FCCC /* PlacesService.swift */,
 				F3A38CB72C92A47B0093FCCC /* VehicleService.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		F3890F7D2C81725900D5B88E /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				F3890F7E2C81727F00D5B88E /* ModelFavoriteService.swift */,
-				F309C9482C85519A00C85239 /* ModelBookingService.swift */,
-				F309C94A2C8551A600C85239 /* ModelTaxiService.swift */,
-				F309C95C2C8589A900C85239 /* UserService.swift */,
-				F3890F852C818EE700D5B88E /* ServiceRepository.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		F3A38ADD2C8999C50093FCCC /* Helpers */ = {
@@ -561,21 +550,120 @@
 			path = VehicleComponents;
 			sourceTree = "<group>";
 		};
-		F3A38CBC2C92AE9E0093FCCC /* JSONModel */ = {
+		F3A38D2C2C92CC900093FCCC /* Enitity */ = {
 			isa = PBXGroup;
 			children = (
-				F309C95F2C859FAA00C85239 /* Parsables */,
-				F3890F7D2C81725900D5B88E /* Services */,
-				F3A38CBB2C92AE9E0093FCCC /* Model.swift */,
+				F3A38D262C92CC900093FCCC /* Owner+CoreDataClass.swift */,
+				F3A38D272C92CC900093FCCC /* RentalBooking+CoreDataClass.swift */,
+				F3A38D282C92CC900093FCCC /* TaxiBooking+CoreDataClass.swift */,
+				F3A38D292C92CC900093FCCC /* User+CoreDataClass.swift */,
+				F3A38D2A2C92CC900093FCCC /* Vehicle+CoreDataClass.swift */,
+				F3A38D2B2C92CC900093FCCC /* VehicleSpecs+CoreDataClass.swift */,
+				F3A38D8C2C9312FF0093FCCC /* LocationCD+CoreDataClass.swift */,
 			);
-			path = JSONModel;
+			path = Enitity;
+			sourceTree = "<group>";
+		};
+		F3A38D332C92CC900093FCCC /* Entity+CoreDataProperties */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38D2D2C92CC900093FCCC /* Owner+CoreDataProperties.swift */,
+				F3A38D2E2C92CC900093FCCC /* RentalBooking+CoreDataProperties.swift */,
+				F3A38D2F2C92CC900093FCCC /* TaxiBooking+CoreDataProperties.swift */,
+				F3A38D302C92CC900093FCCC /* User+CoreDataProperties.swift */,
+				F3A38D312C92CC900093FCCC /* Vehicle+CoreDataProperties.swift */,
+				F3A38D322C92CC900093FCCC /* VehicleSpecs+CoreDataProperties.swift */,
+				F3A38D8D2C9312FF0093FCCC /* LocationCD+CoreDataProperties.swift */,
+			);
+			path = "Entity+CoreDataProperties";
+			sourceTree = "<group>";
+		};
+		F3A38D342C92CC900093FCCC /* CoreDataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38D2C2C92CC900093FCCC /* Enitity */,
+				F3A38D332C92CC900093FCCC /* Entity+CoreDataProperties */,
+			);
+			path = CoreDataTypes;
+			sourceTree = "<group>";
+		};
+		F3A38D672C92E6100093FCCC /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38DBB2C942CCB0093FCCC /* Property Wrapper */,
+				F3A38DA12C9420500093FCCC /* Repository */,
+				F3A38D6E2C92E7970093FCCC /* Services */,
+				F3A38D962C9315E20093FCCC /* Managers */,
+				F3A38D662C92E6100093FCCC /* Model.swift */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		F3A38D6E2C92E7970093FCCC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38DB02C942C380093FCCC /* GuestServices */,
+				F3A38DA92C942C360093FCCC /* UserServices */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F3A38D962C9315E20093FCCC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38D942C9315E20093FCCC /* UserManager.swift */,
+				F3A38D932C9315E20093FCCC /* PlacesManager.swift */,
+				F3A38D952C9315E20093FCCC /* VehicleManager.swift */,
+				F3A38D922C9315E20093FCCC /* FavoritesManager.swift */,
+				F3A38D9B2C9316700093FCCC /* RentalManager.swift */,
+				F3A38D9D2C9317FB0093FCCC /* TaxiManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F3A38DA12C9420500093FCCC /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38DA22C9420F40093FCCC /* Repository.swift */,
+				F3A38DA42C9423430093FCCC /* RepositryViewModifier.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F3A38DA92C942C360093FCCC /* UserServices */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38DA62C942C360093FCCC /* UserFavoriteService.swift */,
+				F3A38DA72C942C360093FCCC /* UserRentalService.swift */,
+				F3A38DA82C942C360093FCCC /* UserTaxiService.swift */,
+			);
+			path = UserServices;
+			sourceTree = "<group>";
+		};
+		F3A38DB02C942C380093FCCC /* GuestServices */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38DAD2C942C380093FCCC /* GuestFavoritesService.swift */,
+				F3A38DAE2C942C380093FCCC /* GuestRentalService.swift */,
+				F3A38DAF2C942C380093FCCC /* GuestTaxiService.swift */,
+			);
+			path = GuestServices;
+			sourceTree = "<group>";
+		};
+		F3A38DBB2C942CCB0093FCCC /* Property Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				F3A38DBA2C942CCB0093FCCC /* GuestMode.swift */,
+			);
+			path = "Property Wrapper";
 			sourceTree = "<group>";
 		};
 		F3D3BD4D2C575F8E004DB3E1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F3890F7A2C81722800D5B88E /* Protocols */,
-				F3A38CBC2C92AE9E0093FCCC /* JSONModel */,
+				F3A38D672C92E6100093FCCC /* CoreDataModel */,
+				F3A38D602C92CE5D0093FCCC /* JSONModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -657,6 +745,7 @@
 			files = (
 				F3890F742C7DAE6800D5B88E /* drivers.json in Resources */,
 				F3890F752C7DAE6800D5B88E /* jsonPopulator.py in Resources */,
+				F3A38DC02C9449230093FCCC /* PreloadedDB.sqlite in Resources */,
 				F3627E842C60D4730047198B /* vehicles.json in Resources */,
 				F3D2BAE02C5BB941000BBE6E /* places.json in Resources */,
 				F3368C252C4FBE060023A1FD /* Preview Assets.xcassets in Resources */,
@@ -674,51 +763,51 @@
 				F309C93A2C84FF3300C85239 /* PassengerStepper.swift in Sources */,
 				F3618ADB2C8789D9007F1404 /* Color+Extension.swift in Sources */,
 				F309C94D2C857C6F00C85239 /* TermsAndConditionPage.swift in Sources */,
-				F3890F882C81950100D5B88E /* BookingService.swift in Sources */,
-				F3627E802C60AF3D0047198B /* Owner.swift in Sources */,
+				F3890F882C81950100D5B88E /* RentalService.swift in Sources */,
 				F3A38CB62C92A4300093FCCC /* VRent.xcdatamodeld in Sources */,
-				F3890F712C7CD07600D5B88E /* Driver.swift in Sources */,
 				F3A54BF32C86EA7A000DF754 /* SignInPage.swift in Sources */,
+				F3A38D8E2C9312FF0093FCCC /* LocationCD+CoreDataProperties.swift in Sources */,
+				F3A38D8F2C9312FF0093FCCC /* LocationCD+CoreDataClass.swift in Sources */,
 				F3890F772C7F5DF100D5B88E /* TaxiOverviewCard.swift in Sources */,
-				F3627E7E2C60ADA60047198B /* Vehicle.swift in Sources */,
 				F309C9432C85440000C85239 /* FavoriteVehicleDetails.swift in Sources */,
 				F3627E8E2C624ECB0047198B /* AvailableVehiclesList.swift in Sources */,
 				F38C43242C5A683E003D84B2 /* LocationFinder.swift in Sources */,
 				F3D3BD552C5A062C004DB3E1 /* RentTimePicker.swift in Sources */,
-				F309C94B2C8551A600C85239 /* ModelTaxiService.swift in Sources */,
 				F3A38ADE2C8999C50093FCCC /* Navigation.swift in Sources */,
 				F3A38ADF2C8999C50093FCCC /* ThemeManager.swift in Sources */,
 				F3A38AE02C8999C50093FCCC /* NavigationManager.swift in Sources */,
+				F3A38D422C92CD1C0093FCCC /* Location.swift in Sources */,
 				F3A38AE12C8999C50093FCCC /* Helpers.swift in Sources */,
 				F3A38AE22C8999C50093FCCC /* DeviceOrientationDetector.swift in Sources */,
 				F3A54BF72C870E2B000DF754 /* BookingsTab.swift in Sources */,
-				F309C9492C85519A00C85239 /* ModelBookingService.swift in Sources */,
 				F3627ED92C7C41AB0047198B /* RentOverviewCard.swift in Sources */,
 				F3627EA32C6617B90047198B /* PriceRow.swift in Sources */,
 				F309C9262C843F6200C85239 /* BottomStickyArea.swift in Sources */,
 				F3A54BFB2C876AFE000DF754 /* NoFavoritesPage.swift in Sources */,
 				F309C9382C84DE2000C85239 /* VehiclePicker.swift in Sources */,
 				F3627EAF2C6A02B30047198B /* PinkSlipIcon.swift in Sources */,
-				F3627EDB2C7C43E20047198B /* PreviewData.swift in Sources */,
 				F3627ED42C774D050047198B /* UserFavorites.swift in Sources */,
-				F3627E992C64F50D0047198B /* Rentable.swift in Sources */,
 				F3627EC42C7349C20047198B /* TaxiBookingViewModel.swift in Sources */,
 				F3627EA12C6614C40047198B /* RentalBookingOverview.swift in Sources */,
-				F309C9472C8550E900C85239 /* User.swift in Sources */,
-				F309C95D2C8589A900C85239 /* UserService.swift in Sources */,
 				F3627EB42C6B611C0047198B /* RentingScreenPages.swift in Sources */,
+				F3A38DB12C942C380093FCCC /* GuestFavoritesService.swift in Sources */,
+				F3A38DB22C942C380093FCCC /* GuestRentalService.swift in Sources */,
+				F3A38DB32C942C380093FCCC /* GuestTaxiService.swift in Sources */,
 				F3890F8A2C81951700D5B88E /* TaxiService.swift in Sources */,
 				F3627EBB2C6F82160047198B /* TaxiTab.swift in Sources */,
 				F3368C322C50D33D0023A1FD /* RentingTab.swift in Sources */,
 				F3627E9F2C6611D90047198B /* RentingVehicleDetails.swift in Sources */,
-				F3627E822C60AF7D0047198B /* VehicleSpecs.swift in Sources */,
+				F3A38DA52C9423430093FCCC /* RepositryViewModifier.swift in Sources */,
 				F3D3BD592C5A0860004DB3E1 /* RentSearchViewModel.swift in Sources */,
 				F3890F842C8173D600D5B88E /* ShapeStyle+Extensions.swift in Sources */,
 				F3627E9D2C65F1690047198B /* FavoriteButton.swift in Sources */,
 				F3890F792C809A7600D5B88E /* BookingStatus.swift in Sources */,
 				F3627EBD2C6F84C60047198B /* TaxiBookingAttributes.swift in Sources */,
-				F3D3BD4F2C575FBC004DB3E1 /* RentDetails.swift in Sources */,
+				F3A38DAA2C942C360093FCCC /* UserRentalService.swift in Sources */,
+				F3A38DAB2C942C360093FCCC /* UserFavoriteService.swift in Sources */,
+				F3A38DAC2C942C360093FCCC /* UserTaxiService.swift in Sources */,
 				F3A54BFF2C876C84000DF754 /* TaxiBookingsPage.swift in Sources */,
+				F3A38DBC2C942CCB0093FCCC /* GuestMode.swift in Sources */,
 				F3627EC62C7368530047198B /* LocationField.swift in Sources */,
 				F3627ECF2C75BF1D0047198B /* Charges.swift in Sources */,
 				F309C9502C857C9300C85239 /* PoliciesPage.swift in Sources */,
@@ -728,9 +817,22 @@
 				F3627ECA2C75B24E0047198B /* TaxiBilling.swift in Sources */,
 				F3D3BD5E2C5A0DAA004DB3E1 /* RentingSearchView.swift in Sources */,
 				F309C9362C84D52300C85239 /* TaxiLocationSelector.swift in Sources */,
-				F3890F862C818EE700D5B88E /* ServiceRepository.swift in Sources */,
 				F3627EC82C73687F0047198B /* FieldState.swift in Sources */,
+				F3A38DA32C9420F40093FCCC /* Repository.swift in Sources */,
 				F3A38CB82C92A47B0093FCCC /* VehicleService.swift in Sources */,
+				F3A38D352C92CC900093FCCC /* Owner+CoreDataClass.swift in Sources */,
+				F3A38D362C92CC900093FCCC /* RentalBooking+CoreDataClass.swift in Sources */,
+				F3A38D372C92CC900093FCCC /* TaxiBooking+CoreDataClass.swift in Sources */,
+				F3A38D382C92CC900093FCCC /* User+CoreDataClass.swift in Sources */,
+				F3A38D392C92CC900093FCCC /* Vehicle+CoreDataClass.swift in Sources */,
+				F3A38D3A2C92CC900093FCCC /* VehicleSpecs+CoreDataClass.swift in Sources */,
+				F3A38D3B2C92CC900093FCCC /* Owner+CoreDataProperties.swift in Sources */,
+				F3A38D3C2C92CC900093FCCC /* RentalBooking+CoreDataProperties.swift in Sources */,
+				F3A38D3D2C92CC900093FCCC /* TaxiBooking+CoreDataProperties.swift in Sources */,
+				F3A38D9C2C9316700093FCCC /* RentalManager.swift in Sources */,
+				F3A38D3E2C92CC900093FCCC /* User+CoreDataProperties.swift in Sources */,
+				F3A38D3F2C92CC900093FCCC /* Vehicle+CoreDataProperties.swift in Sources */,
+				F3A38D402C92CC900093FCCC /* VehicleSpecs+CoreDataProperties.swift in Sources */,
 				F3627EA52C6618A50047198B /* SwipeControl.swift in Sources */,
 				F3368C202C4FBE050023A1FD /* ContentView.swift in Sources */,
 				F3890F822C8172AA00D5B88E /* Collection+Extension.swift in Sources */,
@@ -740,21 +842,24 @@
 				F3627E882C60E20C0047198B /* ImageCarousel.swift in Sources */,
 				F3368C1E2C4FBE050023A1FD /* VRentApp.swift in Sources */,
 				F309C95B2C8581AB00C85239 /* ColorSchemeChangePage.swift in Sources */,
-				F3627E9B2C65EBDC0047198B /* RentalBooking.swift in Sources */,
 				F3D3BD5B2C5A0D71004DB3E1 /* View+Extensions.swift in Sources */,
 				F3627ED22C75C4BC0047198B /* Measurements+Extensions.swift in Sources */,
-				F3890F7F2C81728000D5B88E /* ModelFavoriteService.swift in Sources */,
+				F3A38CC02C92C3AC0093FCCC /* RentDetails.swift in Sources */,
+				F3A38CC12C92C3AC0093FCCC /* Rentable.swift in Sources */,
 				F3368C382C50D3660023A1FD /* UserBookings.swift in Sources */,
 				F3627E8B2C61FC000047198B /* VehicleCard.swift in Sources */,
 				F3A54BF92C8764C1000DF754 /* NoBookingsPage.swift in Sources */,
+				F3A38D682C92E6100093FCCC /* Model.swift in Sources */,
 				F3627EB12C6A05DA0047198B /* SuccessScreen.swift in Sources */,
+				F3A38D9E2C9317FB0093FCCC /* TaxiManager.swift in Sources */,
 				F309C9522C857CA600C85239 /* LegalNoticePage.swift in Sources */,
-				F3A38CBD2C92AE9E0093FCCC /* Model.swift in Sources */,
-				F3627ECC2C75B2650047198B /* TaxiBookingData.swift in Sources */,
 				F3A54BF52C870DC8000DF754 /* FavoritesTab.swift in Sources */,
-				F3D2BADC2C5B9A6C000BBE6E /* Location.swift in Sources */,
 				F3A54BFD2C876C79000DF754 /* RentalBookingsPage.swift in Sources */,
 				F3627EAD2C69E8A40047198B /* PinkSlipMarkerIcon.swift in Sources */,
+				F3A38D972C9315E20093FCCC /* PlacesManager.swift in Sources */,
+				F3A38D982C9315E20093FCCC /* UserManager.swift in Sources */,
+				F3A38D992C9315E20093FCCC /* VehicleManager.swift in Sources */,
+				F3A38D9A2C9315E20093FCCC /* FavoritesManager.swift in Sources */,
 				F3A38CB32C92A34D0093FCCC /* PlacesService.swift in Sources */,
 				F309C9592C85819E00C85239 /* ThemeChangerPage.swift in Sources */,
 				F3368C3A2C50D3910023A1FD /* AccountTab.swift in Sources */,
@@ -808,6 +913,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = /VRent/Models/JSONModel;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -871,6 +977,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = /VRent/Models/JSONModel;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -900,6 +1007,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"VRent/Preview Content\"";
 				DEVELOPMENT_TEAM = 744FHWR2MX;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = /VRent/Models/JSONModel;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "V Rent";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -938,6 +1046,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"VRent/Preview Content\"";
 				DEVELOPMENT_TEAM = 744FHWR2MX;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = /VRent/Models/JSONModel;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "V Rent";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";

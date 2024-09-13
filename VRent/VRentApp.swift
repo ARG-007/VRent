@@ -11,14 +11,12 @@ import SwiftUI
 struct VRentApp: App {
     @Environment(\.colorScheme) var colorScheme
     @StateObject var themeManager = ThemeManager()
-    let model = previewModel
+    @StateObject var repository = Repository.shared
    
     var body: some Scene {
-        
-        
         WindowGroup {
             ContentView()
-                .initiateServices()
+                .initiateServices(onRepo: repository)
                 .environmentObject(themeManager)
 //                .preferredColorScheme(themeManager.colorScheme)
 //                .animation(.easeInOut, value: themeManager.colorScheme)

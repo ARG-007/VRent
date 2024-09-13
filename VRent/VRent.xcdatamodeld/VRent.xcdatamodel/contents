@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23222.3" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="LocationCD" representedClassName="LocationCD" syncable="YES" codeGenerationType="class">
+    <entity name="LocationCD" representedClassName="LocationCD" syncable="YES">
         <attribute name="location" attributeType="Transformable" valueTransformerName="LocationSecureCodingTransformer"/>
     </entity>
-    <entity name="Owner" representedClassName="Owner" syncable="YES" codeGenerationType="class">
+    <entity name="Owner" representedClassName="Owner" syncable="YES">
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="joinedOn" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="fleet" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="ownedBy" inverseEntity="Vehicle"/>
     </entity>
-    <entity name="RentalBooking" representedClassName="RentalBooking" syncable="YES" codeGenerationType="class">
-        <attribute name="baseCost" attributeType="Decimal" defaultValueString="0.0"/>
+    <entity name="RentalBooking" representedClassName="RentalBooking" syncable="YES">
         <attribute name="bookingStatus" attributeType="Transformable" valueTransformerName="BookingStatusSecureCodingTransformer"/>
-        <attribute name="deliveryCost" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="driverCost" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="dropTime" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isSelfDriving" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="needToDeliver" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="nsBaseCost" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="nsDeliveryCost" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="nsDriverCost" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="nsTotalCost" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="pickupLocation" attributeType="Transformable" valueTransformerName="LocationSecureCodingTransformer"/>
         <attribute name="pickupTime" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="totalCost" attributeType="Decimal" defaultValueString="0.0"/>
         <relationship name="bookedBy" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="rentalBookings" inverseEntity="User"/>
         <relationship name="selectedVehicle" maxCount="1" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="rentalBookings" inverseEntity="Vehicle"/>
     </entity>
-    <entity name="TaxiBooking" representedClassName="TaxiBooking" syncable="YES" codeGenerationType="class">
+    <entity name="TaxiBooking" representedClassName="TaxiBooking" syncable="YES">
         <attribute name="bookingstatus" attributeType="Transformable" valueTransformerName="BookingStatusSecureCodingTransformer"/>
-        <attribute name="driverCost" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="dropLocation" attributeType="Transformable" valueTransformerName="LocationSecureCodingTransformer"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="nsDriverCost" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="nsTotalCost" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="nsVehicleCost" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="passengerCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="pickupLocation" attributeType="Transformable" valueTransformerName="LocationSecureCodingTransformer"/>
         <attribute name="pickupTime" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="requestedVehicleTypeRawValue" attributeType="String"/>
-        <attribute name="totalCost" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="vehicleCost" attributeType="Decimal" defaultValueString="0.0"/>
         <relationship name="assignedVehicle" maxCount="1" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="taxiBookings" inverseEntity="Vehicle"/>
         <relationship name="bookedBy" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="taxiBookings" inverseEntity="User"/>
     </entity>
-    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+    <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="avatar" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
@@ -48,14 +48,14 @@
         <relationship name="rentalBookings" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RentalBooking" inverseName="bookedBy" inverseEntity="RentalBooking"/>
         <relationship name="taxiBookings" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TaxiBooking" inverseName="bookedBy" inverseEntity="TaxiBooking"/>
     </entity>
-    <entity name="Vehicle" representedClassName="Vehicle" syncable="YES" codeGenerationType="class">
+    <entity name="Vehicle" representedClassName="Vehicle" syncable="YES">
         <attribute name="addedOn" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="boughtOnYear" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="images" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
         <attribute name="locationLatitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="locationLongitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="pricePerHR" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="nsPricePerHR" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="rating" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="tripsCompleted" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="favoritedBy" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="favorites" inverseEntity="User"/>
@@ -64,7 +64,7 @@
         <relationship name="spec" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleSpecs" inverseName="vehiclesOfSpec" inverseEntity="VehicleSpecs"/>
         <relationship name="taxiBookings" toMany="YES" deletionRule="Nullify" destinationEntity="TaxiBooking" inverseName="assignedVehicle" inverseEntity="TaxiBooking"/>
     </entity>
-    <entity name="VehicleSpecs" representedClassName="VehicleSpecs" syncable="YES" codeGenerationType="class">
+    <entity name="VehicleSpecs" representedClassName="VehicleSpecs" syncable="YES">
         <attribute name="capacity" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="driveTrainRawValue" attributeType="String"/>
         <attribute name="fuelCapacity" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>

@@ -17,7 +17,7 @@ enum VehicleType: String, Codable, CaseIterable, Identifiable, Hashable {
     case MUV
     case Maxicab
     
-    var capacity: Int {
+    var capacity: Int32 {
         switch(self) {
             case .HatchBack: 4
             case .Sedan: 5
@@ -27,7 +27,7 @@ enum VehicleType: String, Codable, CaseIterable, Identifiable, Hashable {
         }
     }
     
-    static func typeWithCapacity(_ capacity: Int) -> VehicleType {
+    static func typeWithCapacity(_ capacity: Int32) -> VehicleType {
         switch(capacity) {
             case 0...4 : .HatchBack
             case 5: .Sedan

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaxiBookingsPage: View {
-    @EnvironmentObject var taxiService: ModelTaxiService
+    @EnvironmentObject var taxiService: TaxiManager
     @State private var locationSearch: String = ""
     
     var body: some View {
@@ -40,13 +40,13 @@ struct TaxiBookingsPage: View {
         .searchable(text: $locationSearch,placement: .navigationBarDrawer(displayMode: .always), prompt: "Search by Pickup or Drop Location")
     }
     
-    private var bookingsList: [TaxiBookingData] {
+    private var bookingsList: [TaxiBooking] {
         var bookings = taxiService.getBookings()
         
         if !locationSearch.isEmpty{
             bookings = bookings.filter{ taxiData in
                 taxiData.pickupLocation.name.contains(locationSearch)
-                || taxiData.dropOffLocation.name.contains(locationSearch)
+                || taxiData.dropLocation.name.contains(locationSearch)
             }
         }
         

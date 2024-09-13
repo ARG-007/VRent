@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct TaxiBilling: View {
-    
-    @EnvironmentObject var model: Model
-    @EnvironmentObject var taxiService: ModelTaxiService
+    @EnvironmentObject var taxiService: TaxiManager
 
     @EnvironmentObject var navMan: Navigation
     @EnvironmentObject var taxiVM: TaxiBookingViewModel
@@ -80,9 +78,8 @@ struct TaxiBilling: View {
     
     var att = TaxiBookingAttributes()
     
-    att.pickupLocation = previewModel.popularPlaces[0]
-    att.dropOffLocation = previewModel.popularPlaces[1]
+    att.pickupLocation = PlacesManager.shared.getPopularPlaces()[0]
+    att.dropOffLocation = PlacesManager.shared.getPopularPlaces()[1]
     
     return TaxiBilling(attributes: att)
-        .environmentObject(previewModel)
 }
