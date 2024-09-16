@@ -18,7 +18,7 @@ struct UserFavorites: View {
     var body: some View {
         NavigationStack {
             Group {
-                
+                let _ = print("User Favorites View: Rendering")
                 if(favoriteService.getFavoritesCount() > 0) {
                     ScrollView {
                         if(orientation.isLandscape) {
@@ -45,6 +45,7 @@ struct UserFavorites: View {
     }
     
     @ViewBuilder var cards: some View {
+        let _ = print(" ------- Favorites View: Rendering Favorited Vehicles -------")
         ForEach(vehicles) { vehicle in
             NavigationLink {
                 FavoriteVehicleDetails(vehicle: vehicle)
@@ -62,6 +63,8 @@ struct UserFavorites: View {
     }
     
     var vehicles: [Vehicle] {
+        print(" ---- Favorites View: Getting Favorited Vehicles")
+        
         var vehicles = favoriteService.favorites
         
         if(!modelSearch.isEmpty) {

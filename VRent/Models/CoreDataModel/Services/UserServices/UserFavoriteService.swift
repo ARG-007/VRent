@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class UserFavoriteService: FavoriteService, ObservableObject {
-    
+    private var getCount  = 0
     
     private let user: User
     private let model: Model
@@ -24,7 +24,12 @@ class UserFavoriteService: FavoriteService, ObservableObject {
     @Published private var internalUpdates: [Vehicle] = []
     
     var updates: Published<[Vehicle]>.Publisher { $internalUpdates }
-    var favorites: [Vehicle] { user.favorites }
+    var favorites: [Vehicle] {
+        print("--------------- Getting Vehicles (Current Count: \(getCount)) ------------- ")
+        getCount += 1
+        print(user.favorites)
+        return user.favorites
+    }
     
     
     func isFavorite(_ item: Vehicle) -> Bool {
@@ -64,6 +69,7 @@ class UserFavoriteService: FavoriteService, ObservableObject {
     
     
     func getFavoritesCount() -> Int {
-        favorites.count
+        print("Getting Favorites Count: \(favorites.count)")
+        return favorites.count
     }
 }

@@ -72,10 +72,10 @@ class Model: ObservableObject {
             
             if fileManager.fileExists(atPath: applicationSQLiteURL.path()) {
                 print("An Imposter File is Already Exists at That Location, Deleting it")
+                try fileManager.removeItem(at: applicationSQLiteURL)
                 print("Delete Successful")
             }
             
-            try fileManager.removeItem(at: applicationSQLiteURL)
             try fileManager.copyItem(at: bundlePreloadedDB, to: applicationSQLiteURL)
             UserDefaults.standard.set(true, forKey: "applicationFirstLaunchConfigured")
             print("Prepopulated DB was Copied Successfully")
@@ -94,7 +94,7 @@ class Model: ObservableObject {
         
         do {
             try container.viewContext.save()
-            print("")
+            print("Saved Successfully")
         } catch {
             print("Error occured during saving changes are not saved\nError: \(error)")
             

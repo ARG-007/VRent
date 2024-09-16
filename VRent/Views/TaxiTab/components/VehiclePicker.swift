@@ -17,27 +17,29 @@ struct VehiclePicker: View {
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(3/2, contentMode: .fit)
+                .id(selection)
                 .frame(height: 130)
             
             
-            //            let pickerShape = UnevenRoundedRectangle(topLeadingRadius: 10, bottomTrailingRadius: 10)
             Text(localizedCurrency(selection.standardChargePerKm)+"/km")
+                .contentTransition(.numericText())
                 .padding(.horizontal,5)
-            
-            
-            
-            Picker("Vehicle Category", selection: $selection) {
+
+            Picker(selection: $selection) {
                 ForEach(VehicleType.allCases) { vtype in
                     Text(vtype.rawValue)
                 }
+            } label: {
+                Text(selection.rawValue)
             }
-            .border(Color.mint)
-            .frame(maxWidth: .infinity)
-            .border(Color.pink)
+//            .border(Color.mint)
+//            .frame(maxWidth: .infinity)
+//            .border(Color.pink)
             .animation(.easeIn, value: selection)
             .contentTransition(.interpolate)
         }
         .frame(maxWidth: .infinity)
+        .animation(.spring, value: selection)
         
     }
 }

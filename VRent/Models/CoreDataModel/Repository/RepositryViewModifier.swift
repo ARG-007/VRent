@@ -13,7 +13,9 @@ struct RepositryViewModifier: ViewModifier {
     
     
     
-    func body(content: Content) -> some View {
+    @ViewBuilder func body(content: Content) -> some View {
+        let _ = print("Switching Out Repo")
+        
         content
             .environmentObject(repository.placesManager)
             .environmentObject(repository.vehicleManager)

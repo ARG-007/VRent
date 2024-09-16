@@ -674,9 +674,9 @@
 				F3627E8C2C61FC4B0047198B /* Commons */,
 				F3627E912C62918C0047198B /* RentingTab */,
 				F3627EB92C6F81A10047198B /* TaxiTab */,
-				F309C93C2C8519E400C85239 /* AccountTab */,
 				F309C93B2C8519D700C85239 /* FavoritesTab */,
 				F3627ED72C7C407D0047198B /* BookingsTab */,
+				F309C93C2C8519E400C85239 /* AccountTab */,
 				F3368C1F2C4FBE050023A1FD /* ContentView.swift */,
 			);
 			path = Views;

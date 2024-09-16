@@ -16,7 +16,7 @@ struct RentingTab: View {
     
     var body: some View {
             
-        NavigationStack(path: $nav){
+        NavigationStack(path: $nav) {
             ScrollView {
                 RentingSearchView() {
                     

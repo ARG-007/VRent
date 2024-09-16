@@ -36,6 +36,8 @@ class UserTaxiService: TaxiService {
         
         newTaxi.assignedVehicle = randomVehicle
         
+        user.addToTaxiBookings(newTaxi)
+        
         model.save()
         
         return true

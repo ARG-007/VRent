@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ColorSchemeChangePage: View {
     @EnvironmentObject private var themeMan: ThemeManager
+//    @State private var preferredColorScheme: ColorScheme? = nil
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Color Scheme")
@@ -26,6 +28,7 @@ struct ColorSchemeChangePage: View {
             .pickerStyle(.segmented)
 
         }
+//        .preferredColorScheme(preferredColorScheme)
     }
 }
 

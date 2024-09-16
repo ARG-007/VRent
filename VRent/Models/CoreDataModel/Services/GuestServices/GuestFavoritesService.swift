@@ -9,7 +9,8 @@ import Foundation
 
 class GuestFavoritesService: FavoriteService {
     func getFavoritesCount() -> Int {
-        0
+        print("Getting Favorites From Guest")
+        return 0
     }
     
     @Published private var internalEmptyUpdates: [Vehicle] = []

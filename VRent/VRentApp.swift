@@ -20,6 +20,10 @@ struct VRentApp: App {
                 .environmentObject(themeManager)
 //                .preferredColorScheme(themeManager.colorScheme)
 //                .animation(.easeInOut, value: themeManager.colorScheme)
+            
+//            VStack {
+//                Text("FHHa;lshdlkasdlhj")
+//            }
         }
     }
 }
